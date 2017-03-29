@@ -1,0 +1,25 @@
+{
+  "name": "project-fluffypurrkins",
+  "version": "1.0.0",
+  "description": "a new page for Jeff",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.15.2",
+    "mustache-express": "^1.2.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0xStarcat/project-fluffypurrkins.git"
+  },
+  "author": "0xStarcat",
+  "license": "whatever",
+  "bugs": {
+    "url": "https://github.com/0xStarcat/project-fluffypurrkins/issues"
+  },
+  "homepage": "https://github.com/0xStarcat/project-fluffypurrkins#readme"
+}
