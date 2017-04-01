@@ -1,8 +1,18 @@
 .asciiFontSize{
-  font-size: 0.2rem;
-  line-height: 60%;
+  font-size: 10px;
+  line-height: 5px;
+}
+
+.ascii-char:hover {
+  background: dodgerblue;
+  color: gold;
 }
 
 code {
   position: absolute;
+}
+
+.fade {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
 }
