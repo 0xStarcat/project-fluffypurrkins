@@ -5,15 +5,24 @@ export default class AsciiFaces extends Component {
     super()
     this.state = {
       left: 0,
-      size: 1
+      size: 1,
+      sentence: 'Hi, my name is Jeff'
     }
     this.asciiFace = this.asciiFace.bind(this)
     this.updateDimensions = this.updateDimensions.bind(this)
     this.parseAsciiText = this.parseAsciiText.bind(this)
     this.wrapChars = this.wrapChars.bind(this)
-    this.fadeAscii = this.fadeAscii.bind(this)
     this.asciiText = this.asciiText.bind(this)
     this.randomSpot = this.randomSpot.bind(this)
+    //Fade methods
+    this.fadeAsciiRandomly = this.fadeAsciiRandomly.bind(this)
+    this.fadeAsciiTopToBottom = this.fadeAsciiTopToBottom.bind(this)
+    this.fadeAsciiBottomToTop = this.fadeAsciiBottomToTop.bind(this)
+    this.resetAscii = this.resetAscii.bind(this)
+
+    this.assignCoordinatesToLetters = this.assignCoordinatesToLetters.bind(this)
+    this.moveLetters = this.moveLetters.bind(this)
+    this.checkAsciiVisibility = this.checkAsciiVisibility.bind(this)
   }
 
   setDimensions
@@ -24,71 +33,142 @@ export default class AsciiFaces extends Component {
     document.querySelector('code').style.left = (window.innerWidth - document.querySelector('code').offsetWidth) / 2
     document.querySelector('code').style.top = (window.innerHeight - document.querySelector('code').offsetHeight) / 2
   }
-  componentWillMount() {
-    window.addEventListener("resize", this.updateDimensions)
-
-  }
-
-  componentWillUnmount() {
-      window.removeEventListener("resize", this.updateDimensions)
-  }
+  componentWillMount() { window.addEventListener("resize", this.updateDimensions) }
+  componentWillUnmount() { window.removeEventListener("resize", this.updateDimensions) }
   componentDidMount() {
     this.updateDimensions()
     this.parseAsciiText()
   }
-
   parseAsciiText() {
     let preparedAscii = this.insertLetters(this.asciiText())
     document.querySelector('code').innerHTML = this.wrapChars(preparedAscii)
+    this.assignCoordinatesToLetters()
   }
   randomSpot(sentenceLength, asciiLength) {
     let randomNumber = Math.round(Math.random() * 9)
-    if (randomNumber === 0 || sentenceLength === asciiLength ) {
-      return true
-    } else {
-      return false
-    }
+    if (randomNumber === 0 || sentenceLength === asciiLength ) { return true }
+    else { return false }
   }
   insertLetters(str) {
-    let sentence = "Hi, my name is Jeff"
+    let sentence = this.state.sentence
     let newString = ''
 
     for (let i = 0; i < str.length; i++) {
       if (str.charAt(i).match(/[@#]/g) && sentence.length > 0 && this.randomSpot(sentence.length, this.asciiText().length)) {
         newString += sentence.charAt(0)
         sentence = sentence.substr(1)
-      } else {
-        newString += str.charAt(i)
-      }
+      } else { newString += str.charAt(i) }
     }
     return newString
   }
-  wrapChars(str, tmpl) {
+  wrapChars(str) {
     let newString = ''
+    let currentLine = ''
     for (let i = 0; i < str.length; i++) {
-      if (str.charAt(i).match(/\W/g)) newString += `<span class="ascii-char">${str.charAt(i)}</span>`
-      if (str.charAt(i).match(/\w/g)) newString += `<span class="ascii-letter">${str.charAt(i)}</span>`
+
+      if (str.charAt(i).match(/\W/g)) { currentLine += str.charAt(i) }
+      if (str.charAt(i).match(/\w/g)) { //need to parse this.state.sentence and make special characters into a code, then check for code and render character wrapped in ascii-letter
+        newString += `<span class="ascii-letter">${str.charAt(i)}</span>`
+        newString += `<span class="ascii-band">${currentLine}</span>`
+        currentLine = ''
+      }
+      if (currentLine.length >= 536 || i >= (str.length -1))
+      {
+        newString += `<span class="ascii-band">${currentLine}</span>`
+        currentLine = ''
+      }
     }
     return newString
   }
-  fadeAscii() {
-    let start = 0
-    let elements = document.getElementsByClassName('ascii-char')
 
-    let addFade = (elements) => {
-      for (let i = start; i <= (start + 500); i++) {
-        console.log(start, i, elements.length)
-        if (i >= elements.length) {
-          clearInterval(interval)
-          return
-        }
-        elements[i].className += ' fade'
-      }
-      start += 500
+  assignCoordinatesToLetters() {
+    let letters = document.getElementsByClassName('ascii-letter')
+    for (let i = 0; i <= (letters.length - 1); i++) {
+      var rect = letters[i].getBoundingClientRect()
+      letters[i].style.top = letters[i].offsetTop
+      letters[i].style.left = letters[i].offsetLeft
     }
-    addFade(elements)
-    let interval = setInterval(addFade, 25, elements)
   }
+  fadeAsciiRandomly() {
+    let elements = document.getElementsByClassName('ascii-band')
+    let invisibleElements = 0
+    for (let i = 0; i <= (elements.length - 1); i++) {
+      let randomDuration = (Math.random() * 1500) + 500
+      elements[i].style.transition = `opacity ${randomDuration}ms linear`
+      elements[i].style.opacity = '0'
+      elements[i].addEventListener('transitionend', () => {
+        invisibleElements++
+        this.checkAsciiVisibility(invisibleElements)
+      })
+    }
+  }
+  fadeAsciiTopToBottom() {
+    let elements = document.getElementsByClassName('ascii-band')
+    let linearDuration = 0
+    let invisibleElements = 0
+    for (let i = 0; i <= (elements.length - 1); i++) {
+      elements[i].style.transition = `opacity ${linearDuration}ms linear`
+      elements[i].style.opacity = '0'
+      elements[i].addEventListener('transitionend', () => {
+        invisibleElements++
+        this.checkAsciiVisibility(invisibleElements)
+      })
+      if (elements[i].innerHTML.length > 200) { linearDuration += 100 }
+      else { linearDuration += 10 }
+    }
+  }
+  fadeAsciiBottomToTop() {
+    let elements = document.getElementsByClassName('ascii-band')
+    let linearDuration = 0
+    let invisibleElements = 0
+    for (let i = (elements.length - 1); i >= 0; i--) {
+      elements[i].style.transition = `opacity ${linearDuration}ms linear`
+      elements[i].style.opacity = '0'
+      elements[i].addEventListener('transitionend', () => {
+        invisibleElements++
+        this.checkAsciiVisibility(invisibleElements)
+      })
+      if (elements[i].innerHTML.length > 200) { linearDuration += 100 }
+      else { linearDuration += 10 }
+    }
+  }
+  resetAscii() {
+    let elements = document.getElementsByClassName('ascii-band')
+    for (let i = 0; i <= (elements.length - 1); i++) { elements[i].style.opacity = '1' }
+  }
+
+  checkAsciiVisibility(invisibleElements) {
+    let elements = document.getElementsByClassName('ascii-band')
+    for (let i = 0; i <= (elements.length - 1); i++) {
+      if (invisibleElements === elements.length - 1) { setTimeout(this.moveLetters, 500) }
+    }
+  }
+
+  moveLetters() {
+    let letters = document.getElementsByClassName('ascii-letter')
+    let textWrapper = document.querySelector('.text-wrapper').getBoundingClientRect()
+    let t = document.querySelector('.text-wrapper')
+    let textWrapperCoordinates = {
+      top: textWrapper.top,
+      left: textWrapper.left
+    }
+    for (let i = 0; i <= (letters.length - 1); i++) {
+      let randomDuration = (Math.random() * 2000 + 2000)
+      letters[i].style.transition = `all ${randomDuration}ms linear`
+      letters[i].style.position = 'absolute'
+      letters[i].style.top = 0
+      letters[i].style.left = 0
+      letters[i].addEventListener('transitionend', () => {
+        letters[i].style.transition = 'opacity 500ms linear'
+        letters[i].style.opacity = 0
+      })
+    }
+  }
+
+  addLettersToSentence() {
+
+  }
+
   asciiText() {
     return `
 ++++++++++''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''+''''''''''+'''''''''++'++++++++++++##
@@ -232,7 +312,7 @@ export default class AsciiFaces extends Component {
       <pre className='asciiFontSize'>
         <code>
           {this.asciiText()}
-      </code>
+        </code>
     </pre>
     )
   }
@@ -240,9 +320,15 @@ export default class AsciiFaces extends Component {
   render() {
     return (
 
-      <div id='faceWrapper'>
-        {this.asciiFace()}
-        <button onClick={this.fadeAscii}>Click me</button>
+      <div>
+        <button onClick={this.resetAscii}>Reset</button>
+        <button onClick={this.fadeAsciiRandomly}>Fade Randomly</button>
+        <button onClick={this.fadeAsciiTopToBottom}>Fade Top-to-bottom</button>
+        <button onClick={this.fadeAsciiBottomToTop}>Fade Bottom-to-top</button>
+        <div id='faceWrapper'>
+          <div className = 'text-wrapper' />
+          {this.asciiFace()}
+        </div>
       </div>
     )
   }
