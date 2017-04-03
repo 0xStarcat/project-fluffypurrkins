@@ -6,7 +6,7 @@ export default class AsciiFaces extends Component {
     this.state = {
       left: 0,
       size: 1,
-      sentence: 'Hi, my name is Jeff'
+      sentence: 'I wish I had a cat. HELLO morgan'
     }
     this.asciiFace = this.asciiFace.bind(this)
     this.updateDimensions = this.updateDimensions.bind(this)
@@ -23,6 +23,10 @@ export default class AsciiFaces extends Component {
     this.assignCoordinatesToLetters = this.assignCoordinatesToLetters.bind(this)
     this.moveLetters = this.moveLetters.bind(this)
     this.checkAsciiVisibility = this.checkAsciiVisibility.bind(this)
+
+    this.codifySentence = this.codifySentence.bind(this)
+    this.parseSentence = this.parseSentence.bind(this)
+    this.disperseAscii = this.disperseAscii.bind(this)
   }
 
   setDimensions
@@ -38,25 +42,62 @@ export default class AsciiFaces extends Component {
   componentDidMount() {
     this.updateDimensions()
     this.parseAsciiText()
+    this.parseSentence()
+    document.querySelector('code').addEventListener('mouseover', this.disperseAscii)
+  }
+  disperseAscii() {
+    let randomMethod = Math.floor(Math.random() * 3)
+    document.querySelector('code').removeEventListener('mouseover', this.disperseAscii)
+    switch (randomMethod) {
+      case 0:
+      this.fadeAsciiRandomly()
+      break
+      case 1:
+      this.fadeAsciiTopToBottom()
+      break
+      case 2:
+      this.fadeAsciiBottomToTop()
+      break
+    }
+  }
+  codifySentence() {
+    let sentence = this.state.sentence
+    let newSentence = ''
+    for (let i = 0; i < sentence.length; i++) {
+      if (sentence[i].match(/[^\s\w]|\d/)) { newSentence += `\`${sentence[i]}` }
+      else { newSentence+=sentence[i] }
+    }
+    console.log(newSentence)
+    return newSentence
   }
   parseAsciiText() {
-    let preparedAscii = this.insertLetters(this.asciiText())
+    let preparedAscii = this.insertLetters(this.asciiText(), this.codifySentence())
     document.querySelector('code').innerHTML = this.wrapChars(preparedAscii)
     this.assignCoordinatesToLetters()
   }
-  randomSpot(sentenceLength, asciiLength) {
-    let randomNumber = Math.round(Math.random() * 9)
-    if (randomNumber === 0 || sentenceLength === asciiLength ) { return true }
+  parseSentence() {
+    let sentence = this.state.sentence
+    let newSentence = ''
+    for (let i = 0; i < (sentence.length); i++) { newSentence += `<span class='sentence-letter hidden'>${sentence[i]}</span>` }
+    document.querySelector('.text-wrapper').innerHTML = newSentence
+  }
+  randomSpot(checkForEnd) { //needs to improve to account for longer strings and number of @# in ascii maybe?
+    let randomNumber = Math.round(Math.random() * 50)
+    if (randomNumber === 0 || checkForEnd ) { return true }
     else { return false }
   }
-  insertLetters(str) {
-    let sentence = this.state.sentence
+  insertLetters(str, codifiedSentence) {
+    let sentence = codifiedSentence
     let newString = ''
-
     for (let i = 0; i < str.length; i++) {
-      if (str.charAt(i).match(/[@#]/g) && sentence.length > 0 && this.randomSpot(sentence.length, this.asciiText().length)) {
-        newString += sentence.charAt(0)
-        sentence = sentence.substr(1)
+      if (str.charAt(i).match(/[@#]/g) && sentence.length > 0 && this.randomSpot(sentence.length === this.asciiText().length)) {
+        if (sentence.charAt(0).match(/[`]/)) {
+          newString += sentence.substr(0, 2)
+          sentence = sentence.substr(2)
+        } else {
+          newString += sentence.charAt(0)
+          sentence = sentence.substr(1)
+        }
       } else { newString += str.charAt(i) }
     }
     return newString
@@ -66,12 +107,18 @@ export default class AsciiFaces extends Component {
     let currentLine = ''
     for (let i = 0; i < str.length; i++) {
 
-      if (str.charAt(i).match(/\W/g)) { currentLine += str.charAt(i) }
-      if (str.charAt(i).match(/\w/g)) { //need to parse this.state.sentence and make special characters into a code, then check for code and render character wrapped in ascii-letter
-        newString += `<span class="ascii-letter">${str.charAt(i)}</span>`
+      if (str.charAt(i).match(/[`]/g)) {
         newString += `<span class="ascii-band">${currentLine}</span>`
+        newString += `<span class="ascii-letter">${str.charAt(i+1)}</span>`
         currentLine = ''
       }
+      if (str.charAt(i).match(/\W/g)) { currentLine += str.charAt(i) }
+      if (str.charAt(i).match(/\w/g)) { //need to parse this.state.sentence and make special characters into a code, then check for code and render character wrapped in ascii-letter
+        newString += `<span class="ascii-band">${currentLine}</span>`
+        newString += `<span class="ascii-letter">${str.charAt(i)}</span>`
+        currentLine = ''
+      }
+
       if (currentLine.length >= 536 || i >= (str.length -1))
       {
         newString += `<span class="ascii-band">${currentLine}</span>`
@@ -83,7 +130,7 @@ export default class AsciiFaces extends Component {
 
   assignCoordinatesToLetters() {
     let letters = document.getElementsByClassName('ascii-letter')
-    for (let i = 0; i <= (letters.length - 1); i++) {
+    for (let i = 0; i < (letters.length); i++) {
       var rect = letters[i].getBoundingClientRect()
       letters[i].style.top = letters[i].offsetTop
       letters[i].style.left = letters[i].offsetLeft
@@ -92,7 +139,7 @@ export default class AsciiFaces extends Component {
   fadeAsciiRandomly() {
     let elements = document.getElementsByClassName('ascii-band')
     let invisibleElements = 0
-    for (let i = 0; i <= (elements.length - 1); i++) {
+    for (let i = 0; i < elements.length; i++) {
       let randomDuration = (Math.random() * 1500) + 500
       elements[i].style.transition = `opacity ${randomDuration}ms linear`
       elements[i].style.opacity = '0'
@@ -106,7 +153,7 @@ export default class AsciiFaces extends Component {
     let elements = document.getElementsByClassName('ascii-band')
     let linearDuration = 0
     let invisibleElements = 0
-    for (let i = 0; i <= (elements.length - 1); i++) {
+    for (let i = 0; i < elements.length; i++) {
       elements[i].style.transition = `opacity ${linearDuration}ms linear`
       elements[i].style.opacity = '0'
       elements[i].addEventListener('transitionend', () => {
@@ -121,7 +168,7 @@ export default class AsciiFaces extends Component {
     let elements = document.getElementsByClassName('ascii-band')
     let linearDuration = 0
     let invisibleElements = 0
-    for (let i = (elements.length - 1); i >= 0; i--) {
+    for (let i = elements.length - 1; i >= 0; i--) {
       elements[i].style.transition = `opacity ${linearDuration}ms linear`
       elements[i].style.opacity = '0'
       elements[i].addEventListener('transitionend', () => {
@@ -134,12 +181,12 @@ export default class AsciiFaces extends Component {
   }
   resetAscii() {
     let elements = document.getElementsByClassName('ascii-band')
-    for (let i = 0; i <= (elements.length - 1); i++) { elements[i].style.opacity = '1' }
+    for (let i = 0; i < elements.length; i++) { elements[i].style.opacity = '1' }
   }
 
   checkAsciiVisibility(invisibleElements) {
     let elements = document.getElementsByClassName('ascii-band')
-    for (let i = 0; i <= (elements.length - 1); i++) {
+    for (let i = 0; i < elements.length; i++) {
       if (invisibleElements === elements.length - 1) { setTimeout(this.moveLetters, 500) }
     }
   }
@@ -152,20 +199,28 @@ export default class AsciiFaces extends Component {
       top: textWrapper.top,
       left: textWrapper.left
     }
-    for (let i = 0; i <= (letters.length - 1); i++) {
+    for (let i = 0; i < letters.length; i++) {
       let randomDuration = (Math.random() * 2000 + 2000)
       letters[i].style.transition = `all ${randomDuration}ms linear`
       letters[i].style.position = 'absolute'
       letters[i].style.top = 0
       letters[i].style.left = 0
+      letters[i].style.fontSize = '22px'
       letters[i].addEventListener('transitionend', () => {
         letters[i].style.transition = 'opacity 500ms linear'
         letters[i].style.opacity = 0
+        this.addLettersToSentence(letters[i].innerHTML)
       })
     }
   }
 
-  addLettersToSentence() {
+  addLettersToSentence(letter) {
+    let sentenceLetters = document.getElementsByClassName('sentence-letter')
+    for (let i = 0; i < sentenceLetters.length; i++) {
+      if (sentenceLetters[i].innerHTML.includes(letter) && sentenceLetters[i].classList.contains('hidden') >= 0) {
+        sentenceLetters[i].classList.remove('hidden')
+      }
+    }
 
   }
 
@@ -326,7 +381,7 @@ export default class AsciiFaces extends Component {
         <button onClick={this.fadeAsciiTopToBottom}>Fade Top-to-bottom</button>
         <button onClick={this.fadeAsciiBottomToTop}>Fade Bottom-to-top</button>
         <div id='faceWrapper'>
-          <div className = 'text-wrapper' />
+          <div className = 'text-wrapper'/>
           {this.asciiFace()}
         </div>
       </div>
