@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
 import { fadeAsciiRandomly, fadeAsciiTopToBottom, fadeAsciiBottomToTop} from './lib/faders.react'
+import { onMobileSize, onDesktopSize } from './lib/windowSizeHelpers.react'
 import { asciiText } from './lib/asciiText.react'
 
 import './Style/asciiFaces.scss'
@@ -15,7 +16,6 @@ export default class AsciiFaces extends Component {
     }
 
     this.asciiFace = this.asciiFace.bind(this)
-    this.updateDimensions = this.updateDimensions.bind(this)
 
     //Add HTML tags to ascii face
     this.parseAsciiText = this.parseAsciiText.bind(this)
@@ -28,7 +28,7 @@ export default class AsciiFaces extends Component {
     this.fadeAscii = this.fadeAscii.bind(this)
 
     //Make letters move
-    this.assignCoordinatesToLetters = this.assignCoordinatesToLetters.bind(this)
+    // this.assignCoordinatesToLetters = this.assignCoordinatesToLetters.bind(this)
     this.moveLetters = this.moveLetters.bind(this)
     this.mobileMoveLetters = this.mobileMoveLetters.bind(this)
 
@@ -38,35 +38,15 @@ export default class AsciiFaces extends Component {
     this.skipToEnd = this.skipToEnd.bind(this)
   }
 
-  componentWillMount() { window.addEventListener("resize", this.updateDimensions) }
-  componentWillUnmount() { window.removeEventListener("resize", this.updateDimensions) }
   componentDidMount() {
-    this.updateDimensions()
+
     this.parseAsciiText()
     this.parseSentence()
-    document.querySelector('code').addEventListener('mouseover', this.fadeAscii)
-  }
-  updateDimensions() {
-    let code = ReactDOM.findDOMNode(this.refs.codeElement)
-    let textWrapper = ReactDOM.findDOMNode(this.refs.textWrapperElement)
-    let jeffName = ReactDOM.findDOMNode(this.refs.jeffName)
-    let windowHeight = window.innerHeight
-    let windowWidth = window.innerWidth
-    let windowOffset = window.innerWidth > 768 ? 0.25 : 0.3
-
-
-    code.style.fontSize = Math.min(windowWidth * 0.01, 11)
-    code.style.lineHeight = Math.min(Math.max((windowWidth * 0.005), 3.5), 5.6)+'px'
-    code.style.left = (windowWidth - code.offsetWidth) / 2
-    code.style.top = (windowHeight - code.offsetHeight) / 2
-    textWrapper.style.left = code.style.display !== 'none' ? code.style.left : windowWidth * 0.15
-    textWrapper.style.top = code.style.display !== 'none' && window.innerWidth > 768 ?
-      parseInt(code.style.top.split('px')[0]) + (code.getBoundingClientRect().height * windowOffset) :
-      (windowHeight * windowOffset)
-
-    jeffName.style.left = window.innerWidth > 768 ? '50%' : textWrapper.style.left
+    let deviceEvent = onMobileSize() ? 'click' : 'mouseover'
+    document.querySelector('code').addEventListener(deviceEvent, this.fadeAscii)
 
   }
+
   codifySentence() {
     let sentence = this.state.sentence
     let newSentence = ''
@@ -79,7 +59,7 @@ export default class AsciiFaces extends Component {
   parseAsciiText() {
     let preparedAscii = this.insertLetters(asciiText(), this.codifySentence())
     document.querySelector('code').innerHTML = this.wrapChars(preparedAscii)
-    this.assignCoordinatesToLetters()
+
   }
   parseSentence() {
     let sentence = this.state.sentence
@@ -134,21 +114,14 @@ export default class AsciiFaces extends Component {
     return newString
   }
 
-  assignCoordinatesToLetters() {
-    let letters = document.getElementsByClassName('ascii-letter')
-    for (let i = 0; i < (letters.length); i++) {
-      var rect = letters[i].getBoundingClientRect()
-      letters[i].style.top = letters[i].offsetTop
-      letters[i].style.left = letters[i].offsetLeft
-    }
-  }
   fadeAscii() {
-    document.body.addEventListener('click', this.skipToEnd)
-    document.querySelector('code').removeEventListener('mouseover', this.fadeAscii)
+    let oldDeviceEvent = onMobileSize() ? 'click' : 'mouseover'
+    let deviceEvent = onMobileSize() ? 'touchstart' : 'click'
+    document.body.addEventListener(deviceEvent, this.skipToEnd)
+    document.querySelector('code').removeEventListener(oldDeviceEvent, this.fadeAscii)
 
     let randomFadeMethod = Math.floor(Math.random() * 3)
-    let moveLettersMethod = window.innerWidth > 768 ? this.moveLetters : this.mobileMoveLetters
-    console.log(window.innerWidth)
+    let moveLettersMethod = onDesktopSize() ? this.moveLetters : this.mobileMoveLetters
     switch (randomFadeMethod) {
       case 0:
       fadeAsciiRandomly(moveLettersMethod)
@@ -165,7 +138,7 @@ export default class AsciiFaces extends Component {
     let letters = document.getElementsByClassName('ascii-letter')
     let sentenceLetters = document.getElementsByClassName('sentence-letter')
     let textWrapper = ReactDOM.findDOMNode(this.refs.textWrapperElement)
-    let sentenceLeft = 0
+    let sentenceLeft = textWrapper.offsetLeft
     let duration = 1000
     let fadeInDuration = 2000
     let degrees = 1600
@@ -176,7 +149,7 @@ export default class AsciiFaces extends Component {
       letters[i].style.transition = `all ${duration}ms linear`
       letters[i].style.position = 'absolute'
       letters[i].style.fontSize = '2.5rem'
-      letters[i].style.top = parseInt(textWrapper.style.top.split('px')[0]) - parseInt(document.querySelector('code').style.top.split('px')[0]) + ((6 * parseFloat(letters[i].style.fontSize.split('rem')[0])))
+      letters[i].style.top = textWrapper.offsetTop + ((6 * parseFloat(letters[i].style.fontSize.split('rem')[0])))
       letters[i].style.left = sentenceLeft + 'px'
 
       letters[i].addEventListener('transitionend', () => {
@@ -197,6 +170,7 @@ export default class AsciiFaces extends Component {
   }
 
   mobileMoveLetters() {
+    console.log('mobile')
     let letters = document.getElementsByClassName('ascii-letter')
     let sentenceLetters = document.getElementsByClassName('sentence-letter')
     let textWrapper = ReactDOM.findDOMNode(this.refs.textWrapperElement)
@@ -242,13 +216,14 @@ export default class AsciiFaces extends Component {
   }
 
   cueName() {
-    let jeffName = document.querySelector('#jeffName')
-    jeffName.style.opacity = 1
-    jeffName.addEventListener('transitionend', () => { jeffName.style.borderBottom = '8px solid black' })
+    let myName = document.querySelector('#myName')
+    myName.style.opacity = 1
+    myName.addEventListener('transitionend', () => { myName.style.borderBottom = '8px solid black' })
   }
 
   skipToEnd() {
-    document.body.removeEventListener('click', this.skipToEnd)
+    let oldDeviceEvent = onMobileSize() ? 'touchstart' : 'click'
+    document.body.removeEventListener(oldDeviceEvent, this.skipToEnd)
     this.createLinks()
     this.cueName()
   }
@@ -270,7 +245,7 @@ export default class AsciiFaces extends Component {
           <div className = 'text-wrapper' ref='textWrapperElement' />
           {this.asciiFace()}
         </div>
-        <span id='jeffName' ref='jeffName'>Jeff Ahking</span>
+        <span id='myName' ref='myName'>Jeff Ahking</span>
       </div>
     )
   }

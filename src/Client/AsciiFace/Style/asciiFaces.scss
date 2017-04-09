@@ -19,7 +19,14 @@ a:hover {
 
 code {
   font-family: "Courier New", Courier, monospace;
-  position: absolute;
+}
+
+pre {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
 }
 
 .fade {
@@ -30,7 +37,7 @@ code {
 .text-wrapper {
   position: absolute;
   font-family: "Courier New", Courier, monospace;
-  font-size: 10rem;
+  font-size: 15rem;
   line-height: 140%;
   letter-spacing: 0.05px;
   max-width: 20px;
@@ -42,11 +49,11 @@ code {
   opacity: 0;
 }
 
-#jeffName{
+#myName{
   display: inline-block;
   opacity: 0;
   transition: opacity 4000ms ease-in-out;
-  font-size: 12rem;
+  font-size: 16rem;
   font-family: "Courier New", Courier, monospace;
   position: absolute;
   top: 10%;
@@ -54,26 +61,40 @@ code {
   box-sizing: border-box;
 }
 
-@media screen and (min-width:768px) {
-  body, html {
-    font-size: 10px;
-  }
+// Desktop sizes
+@media all and (min-device-width: 768px) {
+  @media all and (min-width: 768px) {
+    body, html {
+      font-size: 10px;
+    }
 
-  #jeffName {
-    top: 60%;
-    left: 50%;
-    font-size: 5rem;
-  }
+    #myName {
+      top: 60%;
+      left: 50%;
+      font-size: 5rem;
+    }
 
-  .text-wrapper {
-    max-width: 100%;
-    margin: 0;
-    font-size: 2.5rem;
+    .text-wrapper {
+      max-width: 100%;
+      margin: 0;
+      font-size: 2.5rem;
+    }
+  }
+  // Desktop small window
+  @media all and (max-width: 768px) {
+    #myName {
+      font-size: 12rem
+    }
+
+    .text-wrapper {
+      font-size: 10rem;
+    }
   }
 }
 
-@media screen and (max-width:468px) {
-  #jeffName {
+// Misc
+@media screen and (max-width: 468px) {
+  #myName {
     max-width: 220px;
   }
 }
