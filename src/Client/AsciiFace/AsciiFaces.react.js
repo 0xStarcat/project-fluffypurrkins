@@ -170,7 +170,6 @@ export default class AsciiFaces extends Component {
   }
 
   mobileMoveLetters() {
-    console.log('mobile')
     let letters = document.getElementsByClassName('ascii-letter')
     let sentenceLetters = document.getElementsByClassName('sentence-letter')
     let textWrapper = ReactDOM.findDOMNode(this.refs.textWrapperElement)
@@ -244,8 +243,9 @@ export default class AsciiFaces extends Component {
         <div id='faceWrapper'>
           <div className = 'text-wrapper' ref='textWrapperElement' />
           {this.asciiFace()}
+          <span id='myName' ref='myName'>Jeff Ahking</span>
         </div>
-        <span id='myName' ref='myName'>Jeff Ahking</span>
+
       </div>
     )
   }

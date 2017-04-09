@@ -1,3 +1,5 @@
+//Mobile-size first
+
 body, html {
   font-family: "Courier New", Courier, monospace;
   font-size: 5px;
@@ -9,17 +11,7 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  border-bottom: 4px solid black;
-}
-
-.asciiFontSize{
-   margin: 0;
-}
-
-code {
-  font-family: "Courier New", Courier, monospace;
-}
+a:hover { border-bottom: 4px solid black; }
 
 pre {
   display: flex;
@@ -29,34 +21,31 @@ pre {
   width: 100vw;
 }
 
-.fade {
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
+code {
+  font-size: calc(100vw * 0.01);
+  line-height: calc(100vw * 0.005);
 }
 
 .text-wrapper {
   position: absolute;
-  font-family: "Courier New", Courier, monospace;
+  top: 30%;
+  left: 15%;
+
   font-size: 15rem;
   line-height: 140%;
-  letter-spacing: 0.05px;
   max-width: 20px;
-  margin: 0 auto;
-
 }
 
-.sentence-letter {
-  opacity: 0;
-}
+.sentence-letter { opacity: 0; }
 
-#myName{
+#myName {
   display: inline-block;
   opacity: 0;
   transition: opacity 4000ms ease-in-out;
   font-size: 16rem;
-  font-family: "Courier New", Courier, monospace;
   position: absolute;
   top: 10%;
+  left: 15%;
   line-height: 120%;
   box-sizing: border-box;
 }
@@ -68,16 +57,17 @@ pre {
       font-size: 10px;
     }
 
+    .text-wrapper {
+      top: 25%;
+      max-width: 100%;
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
     #myName {
       top: 60%;
       left: 50%;
       font-size: 5rem;
-    }
-
-    .text-wrapper {
-      max-width: 100%;
-      margin: 0;
-      font-size: 2.5rem;
     }
   }
   // Desktop small window
@@ -90,11 +80,11 @@ pre {
       font-size: 10rem;
     }
   }
-}
 
-// Misc
-@media screen and (max-width: 468px) {
-  #myName {
-    max-width: 220px;
+  // Desktop Tiny window
+  @media screen and (max-width: 468px) {
+    #myName {
+      max-width: 220px;
+    }
   }
 }

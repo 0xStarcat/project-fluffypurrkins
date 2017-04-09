@@ -1,19 +1,17 @@
-the ```updateDimensions``` function
+# Making this responsive
 
-vs
+- Keep track of where the text-row is for the letters to find the right spot.
+- Keep the ascii face sized right no matter the screen size.
 
-using ```state```
 
-The ```updateDimensions``` function takes the window width and heightOffset and resizes various styles inside the ```code``` accordingly.
+Keep the AsciiFace centered on the screen and resize it according to the screen size.
 
-The whole point of this is to keep the AsciiFace centered on the screen and resize it according to the screen size.
-
-Setting the inline style of text-box
-- using percents for position, offsetTop/offsetLeft for pixel perfect aiming.
-- ```position: absolute```
-- ```top```
-- ```left```
+- Doing it all with CSS
+- Using percents
+- Using offsetTop and offsetLeft for pixel-perfect animations
 
 Since the AsciiFace is composed entirely of text, the way we resize it is by adjusting :
 - ```font-size```
 - ```line-height```
+- using Calc() in CSS with view width
+- using REMs
