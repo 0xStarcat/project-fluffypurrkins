@@ -28,7 +28,7 @@ export default class AsciiFaceSizeWrapper extends Component {
 
   render() {
     return(
-      <div className='windowSizer'>{this.state.width} X {this.state.height}
+      <div className='windowSizer'>
         <AsciiFaces/>
       </div>
     )

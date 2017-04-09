@@ -25,6 +25,12 @@ var config = {
       }
     ]
   },
+  resolve: {
+    alias: {
+      react: path.resolve(__dirname, './node_modules/react'),
+      React: path.resolve(__dirname, './node_modules/react')
+    }
+  },
   plugins: [
         new ExtractTextPlugin(
               {

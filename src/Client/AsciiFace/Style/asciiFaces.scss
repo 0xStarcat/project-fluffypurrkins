@@ -1,14 +1,24 @@
-.asciiFontSize{
-  font-size: 10px;
-  line-height: 5px;
+body, html {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 5px;
+  margin: 0;
 }
 
-.ascii-char:hover {
-  background: dodgerblue;
-  color: gold;
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  border-bottom: 4px solid black;
+}
+
+.asciiFontSize{
+   margin: 0;
 }
 
 code {
+  font-family: "Courier New", Courier, monospace;
   position: absolute;
 }
 
@@ -19,13 +29,51 @@ code {
 
 .text-wrapper {
   position: absolute;
-  top: 25%;
-  left: 15%;
-  font-family: 'HELVETICA';
-  font-size: 22px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 10rem;
   line-height: 140%;
+  letter-spacing: 0.05px;
+  max-width: 20px;
+  margin: 0 auto;
+
 }
 
-.hidden {
+.sentence-letter {
   opacity: 0;
+}
+
+#jeffName{
+  display: inline-block;
+  opacity: 0;
+  transition: opacity 4000ms ease-in-out;
+  font-size: 12rem;
+  font-family: "Courier New", Courier, monospace;
+  position: absolute;
+  top: 10%;
+  line-height: 120%;
+  box-sizing: border-box;
+}
+
+@media screen and (min-width:768px) {
+  body, html {
+    font-size: 10px;
+  }
+
+  #jeffName {
+    top: 60%;
+    left: 50%;
+    font-size: 5rem;
+  }
+
+  .text-wrapper {
+    max-width: 100%;
+    margin: 0;
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (max-width:468px) {
+  #jeffName {
+    max-width: 220px;
+  }
 }
