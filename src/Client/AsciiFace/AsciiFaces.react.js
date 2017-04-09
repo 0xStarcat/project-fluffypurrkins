@@ -214,6 +214,7 @@ export default class AsciiFaces extends Component {
         letters[i].style.top = '200%'
         letters[i].style.fontSize = '10rem'
 
+        sentenceLetters[i].style.transition = 'opacity 3000ms ease-in-out'
         sentenceLetters[i].style.opacity = 1
         if (i === letters.length - 1) {
             setTimeout(this.createLinks, 4000)
