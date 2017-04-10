@@ -2,17 +2,15 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
 import { fadeAsciiRandomly, fadeAsciiTopToBottom, fadeAsciiBottomToTop} from './lib/faders.react'
-import { onMobileSize, onDesktopSize } from './lib/windowSizeHelpers.react'
+import { onMobileSize, onDesktopSize, onDesktop } from './lib/windowSizeHelpers.react'
 import { asciiText } from './lib/asciiText.react'
-
+import { BrowserRouter as Router, Link } from 'react-router-dom'
 import './Style/asciiFaces.scss'
 export default class AsciiFaces extends Component {
   constructor() {
     super()
     this.state = {
-      left: 0,
-      size: 1,
-      sentence: 'About | Blog | Resume/CV | Code'
+      sentence: 'About | Blog | C.V. | Code'
     }
 
     this.asciiFace = this.asciiFace.bind(this)
@@ -33,6 +31,8 @@ export default class AsciiFaces extends Component {
     this.mobileMoveLetters = this.mobileMoveLetters.bind(this)
 
     //end animations
+    this.endLetterTransition = this.endLetterTransition.bind(this)
+    this.appendLettersToWrapper = this.appendLettersToWrapper.bind(this)
     this.createLinks = this.createLinks.bind(this)
     this.cueName = this.cueName.bind(this)
     this.skipToEnd = this.skipToEnd.bind(this)
@@ -41,8 +41,8 @@ export default class AsciiFaces extends Component {
   componentDidMount() {
 
     this.parseAsciiText()
-    this.parseSentence()
-    let deviceEvent = onMobileSize() ? 'click' : 'mouseover'
+    if (onMobileSize()) this.parseSentence()
+    let deviceEvent = onDesktop() ? 'mouseover' : 'click'
     document.querySelector('code').addEventListener(deviceEvent, this.fadeAscii)
 
   }
@@ -91,18 +91,21 @@ export default class AsciiFaces extends Component {
   wrapChars(str) {
     let newString = ''
     let currentLine = ''
+    let numberOfLetters = 0;
     for (let i = 0; i < str.length; i++) {
 
       if (str.charAt(i).match(/[`]/g)) {
         newString += `<span class="ascii-band">${currentLine}</span>`
-        newString += `<span class="ascii-letter">${str.charAt(i+1)}</span>`
+        newString += `<span class="ascii-letter" number=${numberOfLetters}>${str.charAt(i+1)}</span>`
         currentLine = ''
+        numberOfLetters++
       }
       else if (str.charAt(i).match(/\W/g)) { currentLine += str.charAt(i) }
       else if (str.charAt(i).match(/\w/g)) { //need to parse this.state.sentence and make special characters into a code, then check for code and render character wrapped in ascii-letter
         newString += `<span class="ascii-band">${currentLine}</span>`
-        newString += `<span class="ascii-letter">${str.charAt(i)}</span>`
+        newString += `<span class="ascii-letter" number=${numberOfLetters}>${str.charAt(i)}</span>`
         currentLine = ''
+        numberOfLetters++
       }
 
       if (currentLine.length >= 536 || i >= (str.length -1))
@@ -115,10 +118,10 @@ export default class AsciiFaces extends Component {
   }
 
   fadeAscii() {
-    let oldDeviceEvent = onMobileSize() ? 'click' : 'mouseover'
-    let deviceEvent = onMobileSize() ? 'touchstart' : 'click'
-    document.body.addEventListener(deviceEvent, this.skipToEnd)
+    let oldDeviceEvent = onDesktop() ? 'mouseover' : 'click'
+    let deviceEvent = onDesktop() ? 'click' : 'touchend'
     document.querySelector('code').removeEventListener(oldDeviceEvent, this.fadeAscii)
+    document.body.addEventListener(deviceEvent, this.skipToEnd)
 
     let randomFadeMethod = Math.floor(Math.random() * 3)
     let moveLettersMethod = onDesktopSize() ? this.moveLetters : this.mobileMoveLetters
@@ -136,36 +139,46 @@ export default class AsciiFaces extends Component {
   }
   moveLetters() {
     let letters = document.getElementsByClassName('ascii-letter')
-    let sentenceLetters = document.getElementsByClassName('sentence-letter')
     let textWrapper = ReactDOM.findDOMNode(this.refs.textWrapperElement)
     let sentenceLeft = textWrapper.offsetLeft
-    let duration = 1000
+    let duration = 2000
     let fadeInDuration = 2000
-    let degrees = 1600
 
     for (let i = 0; i < letters.length; i++) {
-      let degrees = (Math.random() * 800) + 800
-
-      letters[i].style.transition = `all ${duration}ms linear`
+      let degrees = 360 * ((Math.random() * 5) + 3)
+      letters[i].style.transition = `all ${duration}ms linear, opacity ${duration*2}ms ease-in-out`
       letters[i].style.position = 'absolute'
-      letters[i].style.fontSize = '2.5rem'
-      letters[i].style.top = textWrapper.offsetTop + ((6 * parseFloat(letters[i].style.fontSize.split('rem')[0])))
+      letters[i].style.fontSize = '25px'
+      letters[i].style.top = textWrapper.offsetTop + 17 //why 17px? (25px(font-size) * 1.5 (line-height 150%))... still don't really know
       letters[i].style.left = sentenceLeft + 'px'
+      letters[i].addEventListener('transitionend', this.endLetterTransition)
+      sentenceLeft += 15 //why 15px? it's the width of every letter + letter-spacing in .text-wrapper
+      duration += 100;
+    }
 
-      letters[i].addEventListener('transitionend', () => {
-        letters[i].style.transition = 'transform 800ms ease-in-out, opacity 750ms linear'
-        letters[i].style.opacity = 0
-        i != letters.length - 1 ? letters[i].style.transform = `rotateY(${degrees}deg)` : letters[i].style.transform = `rotateY(360deg)`
-        i != letters.length - 1 ? sentenceLetters[i].style.transition = `opacity ${fadeInDuration}ms ease-in-out` : sentenceLetters[i].style.transition = `opacity 4000ms ease-in-out`
+  }
 
-        sentenceLetters[i].style.opacity = 1
-        if (i === letters.length - 1) {
-            setTimeout(this.createLinks, 4000)
-            this.cueName()
-        }
-      })
-      sentenceLeft += (textWrapper.clientWidth / sentenceLetters.length)
-      duration += 150;
+  endLetterTransition(event) {
+    let degrees = 360 * (Math.random() * 3)
+    let spinDuration = 1000;
+
+    event.target.removeEventListener('transitionend', this.endLetterTransition)
+    event.target.style.transition = `all ${spinDuration}ms ease-in-out, opacity ${spinDuration}ms linear`
+    event.target.style.opacity = 0
+    event.target.style.transform = `rotateY(${degrees}deg)`
+    setTimeout(this.appendLettersToWrapper, spinDuration, event.target)
+
+  }
+
+  appendLettersToWrapper(letter) {
+    let duration = 100 * (1 + parseInt(letter.getAttribute('number')))
+    letter.removeEventListener('transitionend', this.appendLettersToWrapper)
+
+    letter.style.transition = `all ${duration}ms ease-in-out`
+    letter.style.transform = 'rotateY(0deg)'
+    letter.style.opacity = 1
+    if (parseInt(letter.getAttribute('number')) == this.state.sentence.split('').length - 1) {
+      setTimeout(this.createLinks, duration)
     }
   }
 
@@ -173,45 +186,44 @@ export default class AsciiFaces extends Component {
     let letters = document.getElementsByClassName('ascii-letter')
     let sentenceLetters = document.getElementsByClassName('sentence-letter')
     let textWrapper = ReactDOM.findDOMNode(this.refs.textWrapperElement)
-    let sentenceLeft = 0
-    let duration = 1000
+    let sentenceLeft = window.innerWidth * 0.05
+    let duration = 1500
     for (let i = 0; i < letters.length; i++) {
       letters[i].style.transition = `all ${duration}ms linear`
       letters[i].style.position = 'absolute'
       letters[i].style.fontSize = '10rem'
       letters[i].style.top = '-100%'
       letters[i].style.left = sentenceLeft + 'px'
-
       letters[i].addEventListener('transitionend', () => {
         letters[i].style.transition = 'all 800ms ease-in-out, opacity 750ms linear'
         letters[i].style.top = '200%'
         letters[i].style.fontSize = '10rem'
-
         sentenceLetters[i].style.transition = 'opacity 3000ms ease-in-out'
         sentenceLetters[i].style.opacity = 1
-        if (i === letters.length - 1) {
-            setTimeout(this.createLinks, 4000)
-            this.cueName()
-        }
+        if (i === letters.length - 1) { setTimeout(this.createLinks, 3000) }
       })
-      sentenceLeft += ((window.innerWidth / (sentenceLetters.length - 1)) / 2)
-      duration += 150;
+      sentenceLeft += 15
+      duration += 200;
     }
   }
 
   createLinks() {
     let textWrapper = ReactDOM.findDOMNode(this.refs.textWrapperElement)
-    let links = this.state.sentence.split(' | ')
+    let linksWrapper = ReactDOM.findDOMNode(this.refs.linksWrapper)
+    // let links = this.state.sentence.split(' | ')
     textWrapper.innerHTML = ''
-    document.querySelector('code').style.display = 'none'
-    for(let i = 0; i < links.length; i++) {
-      let a = document.createElement('a')
-      a.innerHTML = links[i];
-      a.setAttribute('href', `/${links[i]}`)
-      textWrapper.append(a)
-      if (i < links.length - 1)
-        textWrapper.innerHTML +=' | '
-    }
+    document.querySelector('pre').style.display = 'none'
+    linksWrapper.style.display = 'block'
+    textWrapper.appendChild(ReactDOM.findDOMNode(this.refs.linksWrapper))
+    // for(let i = 0; i < links.length; i++) {
+    //   // let a = React.createElement(Link, {to: `/${links[i]}`.match(/[a-zA-Z0-9-]/g).join('').toLowerCase()}, `/${links[i]}`)
+    //   // a.innerHTML = links[i];
+    //   // a.setAttribute('href', `/${links[i]}`.match(/[a-zA-Z0-9-]/g).join('').toLowerCase())
+    //   // textWrapper.append(a)
+    //   // ReactDOM.render(a, document.querySelector('.text-wrapper'))
+    //   // if (i < links.length - 1) textWrapper.innerHTML +=' | '
+    // }
+    this.cueName()
   }
 
   cueName() {
@@ -241,11 +253,18 @@ export default class AsciiFaces extends Component {
     return (
       <div>
         <div id='faceWrapper'>
-          <div className = 'text-wrapper' ref='textWrapperElement' />
+          <div className = 'text-wrapper' ref='textWrapperElement'>
+
+          </div>
+          <div className = 'links-wrapper' ref='linksWrapper'>
+            <Link to='/about'>About</Link><span> | </span>
+            <Link to='/blog'>Blog</Link><span> | </span>
+            <Link to='/cv'>C.V.</Link><span> | </span>
+            <Link to='/code'>Code</Link>
+          </div>
           {this.asciiFace()}
           <span id='myName' ref='myName'>Jeff Ahking</span>
         </div>
-
       </div>
     )
   }

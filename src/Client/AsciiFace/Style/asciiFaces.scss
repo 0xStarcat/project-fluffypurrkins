@@ -3,7 +3,11 @@
 body, html {
   font-family: "Courier New", Courier, monospace;
   font-size: 5px;
+}
+
+*{
   margin: 0;
+  padding: 0;
 }
 
 a {
@@ -11,19 +15,24 @@ a {
   text-decoration: none;
 }
 
+
+
 a:hover { border-bottom: 4px solid black; }
 
 pre {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
+  position: relative;
 }
 
 code {
-  font-size: calc(100vw * 0.01);
-  line-height: calc(100vw * 0.005);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.95rem;
+  line-height: 50%;
+  font-weight: 200;
 }
 
 .text-wrapper {
@@ -32,8 +41,12 @@ code {
   left: 15%;
 
   font-size: 15rem;
-  line-height: 140%;
+  line-height: 150%;
   max-width: 20px;
+}
+
+.links-wrapper {
+  display: none;
 }
 
 .sentence-letter { opacity: 0; }
@@ -61,7 +74,7 @@ code {
       top: 25%;
       max-width: 100%;
       margin: 0;
-      font-size: 2.5rem;
+      font-size: 25px;
     }
 
     #myName {

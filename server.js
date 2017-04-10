@@ -1,17 +1,21 @@
-var express = require('express');
-var app = express();
-var mustache = require('mustache-express');
 
-app.engine('html',mustache());
-app.set('view engine', 'html');
-app.set('views', __dirname+'/views');
-app.use("/public", express.static(__dirname+'/public'));
+// server/app.js
+const express = require('express');
+const morgan = require('morgan');
+const path = require('path');
 
-var port = 8080;
+const app = express();
 
-app.get('/',function(req,res)
-{
-  res.render("index");
+var port = 8080
+// Setup logger
+app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
+
+// Serve static assets
+app.use(express.static(path.resolve(__dirname, 'src/Client/build')));
+
+// Always return the main index.html, so react-router render the route in the client
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'src/Client/build', 'index.html'));
 });
 
 app.listen(port, function()

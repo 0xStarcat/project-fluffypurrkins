@@ -6,4 +6,8 @@ function onDesktopSize() {
   return window.innerWidth > 768 && screen.width > 768
 }
 
-export { onMobileSize, onDesktopSize }
+function onDesktop() {
+  return screen.width > 1080
+}
+
+export { onMobileSize, onDesktopSize, onDesktop }
