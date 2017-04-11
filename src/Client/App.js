@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import AsciiFaceSizeWrapper from './AsciiFace/AsciiFaceSizeWrapper.react'
+import WindowContainer from './AsciiFace/WindowContainer.react'
 
 export default class App extends Component {
   constructor() { super() }
@@ -8,7 +8,7 @@ export default class App extends Component {
   render() {
     return (
     <div className="App">
-      <AsciiFaceSizeWrapper />
+      <WindowContainer />
     </div>
     );
   }
