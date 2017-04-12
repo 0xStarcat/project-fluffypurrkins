@@ -4,32 +4,44 @@ import ReactDOM from 'react-dom';
 import { fadeAsciiRandomly, fadeAsciiTopToBottom, fadeAsciiBottomToTop} from './lib/faders.react'
 import { onMobileSize, onDesktopSize, onDesktop } from './lib/windowSizeHelpers.react'
 import AsciiFormatter from './AsciiFormatter.react'
+import { startPlayback } from '../Actions'
 import './Style/asciiFaces.scss'
 export default class AsciiFaces extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
+    this.handlePlayback = this.handlePlayback.bind(this)
     //Add sentence letters to AsciiFace
     this.preparedSentence = this.preparedSentence.bind(this)
     this.wrapSentenceChars = this.wrapSentenceChars.bind(this)
     this.fadeAscii = this.fadeAscii.bind(this)
 
     //Make letters move
-    // this.assignCoordinatesToLetters = this.assignCoordinatesToLetters.bind(this)
     this.moveLetters = this.moveLetters.bind(this)
     this.mobileMoveLetters = this.mobileMoveLetters.bind(this)
 
     //end animations
     this.endLetterTransition = this.endLetterTransition.bind(this)
     this.appendLettersToWrapper = this.appendLettersToWrapper.bind(this)
-    this.clearAnimations = this.clearAnimations.bind(this)
-    this.skipToEnd = this.skipToEnd.bind(this)
   }
 
   componentDidMount() {
-    if (onMobileSize()) this.wrapSentenceChars()
-    let deviceEvent = onDesktop() ? 'mouseover' : 'click'
-    document.querySelector('code').addEventListener(deviceEvent, this.fadeAscii)
+    this.handlePlayback()
+  }
+
+  componentDidUpdate() {
+    this.handlePlayback()
+  }
+
+  handlePlayback() {
+    if (this.props.play) {
+      if (onMobileSize()) this.wrapSentenceChars()
+      let deviceEvent = onDesktop() ? 'mouseover' : 'click'
+      document.querySelector('code').addEventListener(deviceEvent, this.fadeAscii)
+      this.props.assignCoordinatesToLetters()
+    } else {
+      this.props.skipToEnd()
+    }
   }
 
   wrapSentenceChars() {
@@ -53,7 +65,7 @@ export default class AsciiFaces extends Component {
     let oldDeviceEvent = onDesktop() ? 'mouseover' : 'click'
     let deviceEvent = onDesktop() ? 'click' : 'touchend'
     document.querySelector('code').removeEventListener(oldDeviceEvent, this.fadeAscii)
-    document.body.addEventListener(deviceEvent, this.skipToEnd)
+    document.body.addEventListener(deviceEvent, this.props.skipToEnd)
 
     let randomFadeMethod = Math.floor(Math.random() * 3)
     let moveLettersMethod = onDesktopSize() ? this.moveLetters : this.mobileMoveLetters
@@ -107,7 +119,7 @@ export default class AsciiFaces extends Component {
     letter.style.transform = 'rotateY(0deg)'
     letter.style.opacity = 1
     if (parseInt(letter.getAttribute('number')) == this.props.sentence.split('').length - 1) {
-      setTimeout(this.clearAnimations, duration / 2)
+      setTimeout(this.props.clearAnimations, duration / 2)
     }
   }
 
@@ -130,7 +142,7 @@ export default class AsciiFaces extends Component {
         sentenceLetters[i].style.transition = 'opacity 3000ms ease-in-out'
         sentenceLetters[i].style.opacity = 1
         if (i === letters.length - 1) {
-          setTimeout( this.clearAnimations, 3000)
+          setTimeout( this.props. fclearAnimations, 3000)
         }
       })
       sentenceLeft += 15
@@ -138,25 +150,14 @@ export default class AsciiFaces extends Component {
     }
   }
 
-  clearAnimations() {
-    let textWrapper = document.querySelector('.text-wrapper')
-    textWrapper.innerHTML = ''
-    ReactDOM.findDOMNode(this.refs.preElement).style.display = 'none'
-    this.props.appendLinks()
-  }
-
-
-  skipToEnd() {
-    let oldDeviceEvent = onDesktop() ? 'click' : 'touchend'
-    document.body.removeEventListener(oldDeviceEvent, this.skipToEnd)
-    this.clearAnimations()
-  }
-
   render() {
     return (
       <div>
-        <AsciiFormatter ref='preElement' sentence={this.preparedSentence()}/>
-        <span id='myName' ref='myName'>Jeff Ahking</span>
+        <AsciiFormatter
+          ref='preElement'
+          asciiText={this.props.asciiText}
+          sentence={this.preparedSentence()}
+        />
       </div>
     )
   }
