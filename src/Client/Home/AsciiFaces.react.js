@@ -10,7 +10,7 @@ export default class AsciiFaces extends Component {
   constructor(props) {
     super(props)
 
-    this.handlePlayback = this.handlePlayback.bind(this)
+    this.assignEventListener = this.assignEventListener.bind(this)
     //Add sentence letters to AsciiFace
     this.preparedSentence = this.preparedSentence.bind(this)
     this.wrapSentenceChars = this.wrapSentenceChars.bind(this)
@@ -21,26 +21,38 @@ export default class AsciiFaces extends Component {
     this.mobileMoveLetters = this.mobileMoveLetters.bind(this)
 
     //end animations
+    this.clearFace = this.clearFace.bind(this)
     this.endLetterTransition = this.endLetterTransition.bind(this)
     this.appendLettersToWrapper = this.appendLettersToWrapper.bind(this)
   }
 
   componentDidMount() {
-    this.handlePlayback()
+    if (this.props.play) {
+      this.assignEventListener()
+      this.props.assignCoordinatesToLetters()
+
+    } else {
+      this.clearFace()
+    }
+
   }
 
   componentDidUpdate() {
-    this.handlePlayback()
+    if (this.props.play) {
+      this.assignEventListener()
+      this.props.assignCoordinatesToLetters()
+
+    } else {
+      this.clearFace()
+    }
   }
 
-  handlePlayback() {
+  assignEventListener() {
     if (this.props.play) {
       if (onMobileSize()) this.wrapSentenceChars()
       let deviceEvent = onDesktop() ? 'mouseover' : 'click'
       document.querySelector('code').addEventListener(deviceEvent, this.fadeAscii)
       this.props.assignCoordinatesToLetters()
-    } else {
-      this.props.skipToEnd()
     }
   }
 
@@ -61,11 +73,15 @@ export default class AsciiFaces extends Component {
     return newSentence
   }
 
+  clearFace() {
+    ReactDOM.findDOMNode(this.refs.formatter).style.display = 'none'
+  }
+
   fadeAscii() {
     let oldDeviceEvent = onDesktop() ? 'mouseover' : 'click'
     let deviceEvent = onDesktop() ? 'click' : 'touchend'
     document.querySelector('code').removeEventListener(oldDeviceEvent, this.fadeAscii)
-    document.body.addEventListener(deviceEvent, this.props.skipToEnd)
+    ReactDOM.findDOMNode(this.refs.formatter).addEventListener(deviceEvent, this.props.endAnimations)
 
     let randomFadeMethod = Math.floor(Math.random() * 3)
     let moveLettersMethod = onDesktopSize() ? this.moveLetters : this.mobileMoveLetters
@@ -82,10 +98,11 @@ export default class AsciiFaces extends Component {
     }
   }
   moveLetters() {
+    this.refs.formatter.refs.codeElement.style.textShadow = ''
     let letters = document.getElementsByClassName('ascii-letter')
     let textWrapper = document.querySelector('.text-wrapper')
     let sentenceLeft = textWrapper.offsetLeft
-    let duration = 2000
+    let duration = 1250
     let fadeInDuration = 2000
 
     for (let i = 0; i < letters.length; i++) {
@@ -113,17 +130,18 @@ export default class AsciiFaces extends Component {
   }
 
   appendLettersToWrapper(letter) {
-    let duration = 200 * (1 + parseInt(letter.getAttribute('number')))
+    let duration = 150 * (1 + parseInt(letter.getAttribute('number')))
     letter.removeEventListener('transitionend', this.appendLettersToWrapper)
     letter.style.transition = `opacity ${duration}ms ease-in-out`
     letter.style.transform = 'rotateY(0deg)'
     letter.style.opacity = 1
     if (parseInt(letter.getAttribute('number')) == this.props.sentence.split('').length - 1) {
-      setTimeout(this.props.clearAnimations, duration / 2)
+      setTimeout(this.props.endAnimations, duration / 2.5)
     }
   }
 
   mobileMoveLetters() {
+    this.refs.formatter.refs.codeElement.style.textShadow = ''
     let letters = document.getElementsByClassName('ascii-letter')
     let sentenceLetters = document.getElementsByClassName('sentence-letter')
     let textWrapper = document.querySelector('.text-wrapper')
@@ -142,7 +160,7 @@ export default class AsciiFaces extends Component {
         sentenceLetters[i].style.transition = 'opacity 3000ms ease-in-out'
         sentenceLetters[i].style.opacity = 1
         if (i === letters.length - 1) {
-          setTimeout( this.props. fclearAnimations, 3000)
+          setTimeout( this.props.endAnimations, 3000)
         }
       })
       sentenceLeft += 15
@@ -154,7 +172,7 @@ export default class AsciiFaces extends Component {
     return (
       <div>
         <AsciiFormatter
-          ref='preElement'
+          ref='formatter'
           asciiText={this.props.asciiText}
           sentence={this.preparedSentence()}
         />

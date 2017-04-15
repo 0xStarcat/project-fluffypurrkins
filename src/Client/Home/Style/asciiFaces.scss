@@ -1,0 +1,108 @@
+@import '../../style.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+//Mobile-size first
+body, html {
+  font-family: "Courier New", Courier, monospace;
+  @include font-scale(1);
+  color: $primaryFontColor;
+  background-color: $backgroundColor;
+}
+
+a {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+}
+
+pre {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+code {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.92rem;
+  line-height: 53%;
+  font-weight: 200;
+  max-width: 780px;
+  z-index: 1;
+}
+
+.text-wrapper {
+  position: absolute;
+  top: 32%;
+  left: 15%;
+  @include font-scale(10);
+  max-width: 20px;
+}
+
+.divider { display: block }
+
+.links-wrapper { display: none; }
+
+.sentence-letter { opacity: 0; }
+
+#myName {
+  display: inline-block;
+  opacity: 0;
+  @include font-scale(14);
+  position: absolute;
+  top: 5%;
+  left: 15%;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.hiddenText {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  color: transparent;
+  width: 100%;
+}
+
+.mirrored { transform: rotateY(180deg); }
+
+.suppressed { z-index: -1 }
+
+// Desktop sizes
+@media #{$desktopScreen} {
+  @media #{$desktopMedWindow} {
+
+    .text-wrapper {
+      top: 25%;
+      max-width: 100%;
+      margin: 0;
+      @include font-scale(2.5);
+    }
+
+    .divider { display: inline }
+
+    #myName {
+      top: 60%;
+      left: 50%;
+      @include font-scale(5);
+    }
+  }
+  // Desktop small window
+  @media #{$desktopSmWindow} {
+    body, html { @include font-scale(0.5); }
+    #myName { @include font-scale(6) }
+
+    .text-wrapper { @include font-scale(5); }
+  }
+
+  // Desktop Tiny window
+  @media #{$desktopTinyWindow} {
+    #myName { max-width: 220px; }
+  }
+}

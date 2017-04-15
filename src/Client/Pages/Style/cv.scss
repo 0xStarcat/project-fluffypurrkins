@@ -1,0 +1,33 @@
+@import '../../style.scss';
+
+.cv {
+  @include font-scale(5)
+
+  section {
+    width: 100%;
+    border-bottom: 1px solid black;
+  }
+
+  .header {
+
+  }
+  .section-header {
+
+  }
+  .title-header {
+
+  }
+
+
+  @media #{$desktopScreen} {
+    @media #{$desktopMedWindow} {
+      width: 75%;
+    }
+    @media #{$desktopSmWindow} {
+
+    }
+    @media #{$desktopTinyWindow} {
+
+    }
+  }
+}

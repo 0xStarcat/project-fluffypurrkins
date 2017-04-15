@@ -6,6 +6,9 @@ import AsciiContainer from './Containers/AsciiContainer.react'
 import About from './Pages/About.react'
 import Code from './Pages/Code.react'
 import CV from './Pages/CV.react'
+import Analytics from './Pages/Analytics.react'
+import Canary from './Pages/Canary.react'
+
 
 export default class Routes extends Component {
   constructor() {
@@ -20,6 +23,8 @@ export default class Routes extends Component {
           <Route path="/about" component={About} />
           <Route path="/code" component={Code} />
           <Route path="/cv" component={CV} />
+          <Route path="/analytics" component={Analytics} />
+          <Route path="/canary" component={Canary} />
         </div>
       </Router>
     )

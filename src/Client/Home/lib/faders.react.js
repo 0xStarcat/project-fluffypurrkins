@@ -2,7 +2,7 @@ function fadeAsciiRandomly(callback) {
   let elements = document.getElementsByClassName('ascii-band')
   let invisibleElements = 0
   for (let i = 0; i < elements.length; i++) {
-    let randomDuration = (Math.random() * 1500) + 500
+    let randomDuration = (Math.random() * 1000) + 500
     elements[i].style.transition = `opacity ${randomDuration}ms linear`
     elements[i].style.opacity = '0'
     elements[i].addEventListener('transitionend', () => {
@@ -27,7 +27,7 @@ function fadeAsciiTopToBottom(callback) {
       }
     })
     if (elements[i].innerHTML.length > 200) { linearDuration += 100 }
-    else { linearDuration += 10 }
+    else { linearDuration += 5 }
   }
 }
 
@@ -45,7 +45,7 @@ function fadeAsciiBottomToTop(callback) {
       }
     })
     if (elements[i].innerHTML.length > 200) { linearDuration += 100 }
-    else { linearDuration += 10 }
+    else { linearDuration += 5 }
   }
 }
 function resetAscii() {
