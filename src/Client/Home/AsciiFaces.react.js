@@ -51,7 +51,8 @@ export default class AsciiFaces extends Component {
     if (this.props.play) {
       if (onMobileSize()) this.wrapSentenceChars()
       let deviceEvent = onDesktop() ? 'mouseover' : 'click'
-      document.querySelector('code').addEventListener(deviceEvent, this.fadeAscii)
+      let deviceElement = onDesktop() ? document.querySelector('code') : document.body
+      deviceElement.addEventListener(deviceEvent, this.fadeAscii)
       this.props.assignCoordinatesToLetters()
     }
   }
@@ -80,7 +81,8 @@ export default class AsciiFaces extends Component {
   fadeAscii() {
     let oldDeviceEvent = onDesktop() ? 'mouseover' : 'click'
     let deviceEvent = onDesktop() ? 'click' : 'touchend'
-    document.querySelector('code').removeEventListener(oldDeviceEvent, this.fadeAscii)
+    let deviceElement = onDesktop() ? document.querySelector('code') : document.body
+    deviceElement.removeEventListener(oldDeviceEvent, this.fadeAscii)
     ReactDOM.findDOMNode(this.refs.formatter).addEventListener(deviceEvent, this.props.endAnimations)
 
     let randomFadeMethod = Math.floor(Math.random() * 3)

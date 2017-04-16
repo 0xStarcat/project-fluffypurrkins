@@ -46,7 +46,7 @@ export default class WindowSizer extends Component {
       position: absolute;
       top: ${Math.random() * (window.innerHeight - 100)};
       left: ${Math.random() * (window.innerWidth - 100)};
-      font-size: 6rem;
+      font-size: 3rem;
       color: transparent;`
 
     window.addEventListener("resize", this.assignCoordinatesToLetters);

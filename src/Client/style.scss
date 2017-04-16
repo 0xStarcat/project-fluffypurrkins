@@ -14,4 +14,5 @@ $baseFontSize: 10px;
 @mixin font-scale($scale) {
   font-size: $baseFontSize * $scale;
   line-height: 150%;
+  font-weight: 200;
 }
