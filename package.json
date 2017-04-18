@@ -10,7 +10,6 @@
     "babel-preset-react": "^6.22.0",
     "css-loader": "^0.26.1",
     "express": "^4.15.2",
-    "extract-text-webpack-plugin": "^2.0.0-rc.3",
     "morgan": "^1.8.1",
     "mustache-express": "^1.2.4",
     "node-sass": "^4.5.0",
