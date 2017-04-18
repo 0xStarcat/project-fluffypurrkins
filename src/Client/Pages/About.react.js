@@ -16,7 +16,7 @@ export default class About extends Component {
             <div className='sub-section text-body'>
               <p>My name is Jeff. I'm based in Brooklyn, NY. I like information security, internet freedom, cultural diversity, open and consensual communities, art, games, and music.</p>
               <br />
-              <p>I currently work as a software engineer for <a href="https://everplans.com target="_blank"" className="linky">Everplans</a> and enjoy doing projects that help activist communities. Before this, I worked as an emergency room nurse and I have a B.A. in political science.</p>
+              <p>I currently work as a software engineer for <a href="https://everplans.com" target="_blank" className="linky">Everplans</a> and enjoy doing projects that help activist communities. Before this, I worked as an emergency room nurse and I have a B.A. in political science.</p>
             </div>
           </section>
         </div>

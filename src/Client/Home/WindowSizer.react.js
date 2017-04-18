@@ -53,14 +53,8 @@ export default class WindowSizer extends Component {
     if (!this.props.play) { this.endAnimations() }
     if (this.props.shadow) { this.shadowMode() }
   }
-  componentDidUpdate() {
-    if (!this.props.play) {
-      this.endAnimations()
-    }
-  }
-  componentWillUnmount() {
-      window.removeEventListener("resize", this.assignCoordinatesToLetters);
-  }
+  componentDidUpdate() { if (!this.props.play) { this.endAnimations() } }
+  componentWillUnmount() { window.removeEventListener("resize", this.assignCoordinatesToLetters); }
   appendLinks() {
     let textWrapper = ReactDOM.findDOMNode(this.refs.textWrapperElement)
     textWrapper.appendChild(ReactDOM.findDOMNode(this.refs.linksWrapper))
@@ -94,9 +88,9 @@ export default class WindowSizer extends Component {
 
   resetStyles() {
     this.refs.face.refs.formatter.mountAsciiFace()
-    let formatter = ReactDOM.findDOMNode(this.refs.face.refs.formatter)
-    formatter.style = ''
-    ReactDOM.findDOMNode(this.refs.titleNameElement).style = '';
+    let formatter = ReactDOM.findDOMNode(this.refs.face.refs.formatter.refs.codeElement)
+    formatter.removeAttribute('style')
+    ReactDOM.findDOMNode(this.refs.titleNameElement).removeAttribute('style')
     ReactDOM.findDOMNode(this.refs.textWrapperElement).innerHTML = ''
     let spans = formatter.children[0].children
     for (let i = 0; i < spans.length; i++) {

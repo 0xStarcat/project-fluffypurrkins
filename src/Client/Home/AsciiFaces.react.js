@@ -128,6 +128,7 @@ export default class AsciiFaces extends Component {
     event.target.style.transition = `all ${spinDuration}ms ease-in-out, opacity ${spinDuration}ms linear`
     event.target.style.opacity = 0
     event.target.style.transform = `rotateY(${degrees}deg)`
+    event.target.style.webkitTransform = `rotateY(${degrees}deg)`
     setTimeout(this.appendLettersToWrapper, spinDuration, event.target)
   }
 
@@ -136,6 +137,7 @@ export default class AsciiFaces extends Component {
     letter.removeEventListener('transitionend', this.appendLettersToWrapper)
     letter.style.transition = `opacity ${duration}ms ease-in-out`
     letter.style.transform = 'rotateY(0deg)'
+    letter.style.webkitTransform = 'rotateY(0deg)'
     letter.style.opacity = 1
     if (parseInt(letter.getAttribute('number')) == this.props.sentence.split('').length - 1) {
       setTimeout(this.props.endAnimations, duration / 2.5)
