@@ -17,7 +17,7 @@ export default class WindowSizer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      sentence: 'About | Blog | C.V. | Code',
+      sentence: 'About | Blog | C.V. | Contact',
     }
     this.assignCoordinatesToLetters = this.assignCoordinatesToLetters.bind(this)
     this.appendLinks = this.appendLinks.bind(this)
@@ -44,8 +44,8 @@ export default class WindowSizer extends Component {
     this.refs.secret.style.cssText =
       `cursor: help;
       position: absolute;
-      top: ${Math.random() * (window.innerHeight - 100)};
-      left: ${Math.random() * (window.innerWidth - 100)};
+      top: 10%;
+      left: 40%;
       font-size: 3rem;
       color: transparent;`
 
@@ -157,11 +157,11 @@ export default class WindowSizer extends Component {
         <div>
           <div>
             <div>
-              <quotes>
-                <are>
-                  <sometimes>
-                    <really>
-                      <pretentious>
+              <please>
+                <clean>
+                  <your>
+                    <computer>
+                      <screen>
                         <secret ref='secret'>
                           <span
                             onMouseOver={startHoverEffect}
@@ -179,11 +179,11 @@ export default class WindowSizer extends Component {
                             Hello from the other side.
                           </span>
                         </secret>
-                      </pretentious>
-                    </really>
-                  </sometimes>
-                </are>
-              </quotes>
+                      </screen>
+                    </computer>
+                  </your>
+                </clean>
+              </please>
             </div>
           </div>
         </div>

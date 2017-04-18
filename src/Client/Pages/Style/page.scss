@@ -1,0 +1,81 @@
+@import '../../style.scss';
+
+.page {
+  @include font-scale(2.5)
+  margin: 240px 40px;
+
+  section {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  hr {
+    margin: 80px auto;
+    font-weight: 100;
+  }
+
+  p {
+    @include font-scale(2)
+  }
+
+  li {
+    list-style-position: inside;
+    margin-left: 20px;
+    @include font-scale(2);
+    padding-left: 65px;
+    text-indent: -65px;
+  }
+
+  .section-header {
+    @include font-scale(4);
+    text-align: left;
+    margin-top: 40px;
+    font-weight: bold;
+  }
+  .sub-section {
+    margin-top: 40px;
+    margin-left: 0px;
+    text-align: left;
+  }
+  .title-header {
+    @include font-scale(2.5);
+    line-height: 150%;
+    margin: 20px 0;
+  }
+  .sub-header{
+    @include font-scale(2);
+    font-style: italic;
+  }
+
+  .text-body {
+    max-width: 680px;
+  }
+
+  .linky {
+    text-decoration: underline;
+  }
+
+  @media #{$desktopScreen} {
+    @media #{$desktopMedWindow} {
+      margin: 120px 40px;
+      li {
+        padding-left: 38px;
+        text-indent: -38px;
+      }
+
+      .sub-section {
+        margin-left: 80px;
+      }
+    }
+    @media #{$desktopSmWindow} {
+        li {
+          padding-left: 65px;
+          text-indent: -35px;
+        }
+
+      }
+    @media #{$desktopTinyWindow} {
+
+    }
+  }
+}

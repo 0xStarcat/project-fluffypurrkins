@@ -6,7 +6,7 @@ export default class About extends Component {
   }
   render() {
     return(
-      <h1>Analytics Page</h1>
+      <h1>Under Construction</h1>
     )
   }
 }

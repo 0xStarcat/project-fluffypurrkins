@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import PageHeader from './PageHeader'
 
+import './Style/page.scss'
 export default class About extends Component {
   constructor() {
     super()
@@ -9,7 +10,16 @@ export default class About extends Component {
     return(
       <div>
         <PageHeader/>
-        <h1>About Page</h1>
+        <div className ='page'>
+          <section>
+            <h2 className='section-header'>Hi,</h2>
+            <div className='sub-section text-body'>
+              <p>My name is Jeff. I'm based in Brooklyn, NY. I like information security, internet freedom, cultural diversity, open and consensual communities, art, games, and music.</p>
+              <br />
+              <p>I currently work as a software engineer for <a href="https://everplans.com" className="linky">Everplans</a> and enjoy doing projects that help activist communities. Before this, I worked as an emergency room nurse and I have a B.A. in political science.</p>
+            </div>
+          </section>
+        </div>
       </div>
     )
   }

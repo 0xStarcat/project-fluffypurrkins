@@ -4,7 +4,7 @@ import {IndexRoute} from 'react-router'
 import { BrowserRouter as Router, Route, } from 'react-router-dom'
 import AsciiContainer from './Containers/AsciiContainer.react'
 import About from './Pages/About.react'
-import Code from './Pages/Code.react'
+import Contact from './Pages/Contact.react'
 import CV from './Pages/CV.react'
 import Analytics from './Pages/Analytics.react'
 import Canary from './Pages/Canary.react'
@@ -21,7 +21,7 @@ export default class Routes extends Component {
         <div>
           <Route exact path='/' component={AsciiContainer} />
           <Route path="/about" component={About} />
-          <Route path="/code" component={Code} />
+          <Route path="/contact" component={Contact} />
           <Route path="/cv" component={CV} />
           <Route path="/analytics" component={Analytics} />
           <Route path="/canary" component={Canary} />

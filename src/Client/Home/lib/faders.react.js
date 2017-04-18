@@ -8,7 +8,7 @@ function fadeAsciiRandomly(callback) {
     elements[i].addEventListener('transitionend', () => {
       invisibleElements++
       if(invisibleElements === elements.length - 1) {
-        setTimeout(callback, 500)
+        setTimeout(callback, 150)
       }
     })
   }
@@ -23,7 +23,7 @@ function fadeAsciiTopToBottom(callback) {
     elements[i].addEventListener('transitionend', () => {
       invisibleElements++
       if(invisibleElements === elements.length - 1) {
-        setTimeout(callback, 500)
+        setTimeout(callback, 150)
       }
     })
     if (elements[i].innerHTML.length > 200) { linearDuration += 100 }
@@ -41,7 +41,7 @@ function fadeAsciiBottomToTop(callback) {
     elements[i].addEventListener('transitionend', () => {
       invisibleElements++
       if(invisibleElements === elements.length - 1) {
-        setTimeout(callback, 500)
+        setTimeout(callback, 150)
       }
     })
     if (elements[i].innerHTML.length > 200) { linearDuration += 100 }

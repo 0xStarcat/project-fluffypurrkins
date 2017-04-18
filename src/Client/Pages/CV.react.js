@@ -1,14 +1,14 @@
 import React, {Component} from 'react'
 import PageHeader from './PageHeader'
 import './Style/cv.scss'
-
+import './Style/page.scss'
 export default class CV extends Component {
 
   render() {
     return(
       <div>
         <PageHeader/>
-        <div className='cv'>
+        <div className='cv page'>
           <section>
             <h2 className='section-header'>Work Experience</h2>
             <div className='sub-section'>
@@ -81,18 +81,26 @@ export default class CV extends Component {
             </div>
             <hr/>
           </section>
+          <section>
+            <h2 className='section-header'>Education</h2>
+            <div className='sub-section'>
+              <p className='sub-header'>B.A. Political Science</p>
+              <p className='sub-header'>B.S. Nursing</p>
+            </div>
+            <hr/>
+          </section>
           <section className='speaking'>
             <h2 className='section-header'>Speaking</h2>
               <div className='sub-section'>
-                <p>2017 - CSFair NYC</p>
+                <p>Mar, 2017 - CSFair NYC</p>
                 <p>Lightning Talk - Digital Privacy: What Do You Look Like?</p>
               </div>
               <div className='sub-section'>
-                <p>2017 - Make A Diff CryptoParty</p>
+                <p>Jan, 2017 - Make A Diff CryptoParty</p>
                 <p>Protect Yo' Self - Network Privacy & Safe Browsing</p>
               </div>
               <div className='sub-section'>
-                <p>2016 - Mozilla + Tactical Tech</p>
+                <p>Dec, 2016 - Mozilla + Tactical Tech</p>
                 <p>The Glass Room - Workshops on Metadata / Safe Browsing</p>
               </div>
             <hr/>

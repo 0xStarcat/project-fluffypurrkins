@@ -1,51 +1,6 @@
 @import '../../style.scss';
 
 .cv {
-  @include font-scale(2.5)
-  margin: 120px 40px;
-
-  section {
-    width: 90%;
-    margin: 0 auto;
-  }
-
-  hr {
-    margin: 80px auto;
-    font-weight: 100;
-  }
-
-  p {
-    @include font-scale(2)
-  }
-
-  li {
-    list-style-position: inside;
-    margin-left: 20px;
-    @include font-scale(2);
-    padding-left: 65px;
-    text-indent: -65px;
-  }
-
-  .section-header {
-    @include font-scale(4);
-    text-align: left;
-    margin-top: 40px;
-    font-weight: bold;
-  }
-  .sub-section {
-    margin-top: 40px;
-    margin-left: 0px;
-    text-align: left;
-  }
-  .title-header {
-    @include font-scale(2.5);
-    line-height: 150%;
-    margin: 20px 0;
-  }
-  .sub-header{
-    @include font-scale(2);
-    font-style: italic;
-  }
 
   .skill-lists {
     display: block;
@@ -57,26 +12,14 @@
 
   @media #{$desktopScreen} {
     @media #{$desktopMedWindow} {
-      margin: 80px 40px;
-      li {
-        padding-left: 0px;
-        text-indent: 0px;
-      }
-
-      .sub-section {
-        margin-left: 80px;
-      }
 
       .skill-lists ul {
-        width: auto;
+        width: 50%;
         display: inline-table;
+
       }
     }
     @media #{$desktopSmWindow} {
-      li {
-        padding-left: 65px;
-        text-indent: -35px;
-      }
 
     }
     @media #{$desktopTinyWindow} {

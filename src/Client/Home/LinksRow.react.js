@@ -19,7 +19,7 @@ export default class LinksRow extends Component {
           </span>
         </Link>
         <span className='divider'>{this.props.shadow ? '' : ' | '}</span>
-        <a href={this.props.shadow ? '' : 'https://0xstarcat.github.io/'}>
+        <a href={this.props.shadow ? '' : 'https://0xstarcat.github.io/'} target='_blank'>
           {this.props.shadow ? '' : 'Blog'}
           <span
             className='hiddenText mirrored'
@@ -41,14 +41,14 @@ export default class LinksRow extends Component {
           </span>
         </Link>
         <span className='divider'> | </span>
-        <Link to={this.props.shadow ? '/canary' : '/code'}>
-          {this.props.shadow ? 'Canary' : 'Code'}
+        <Link to={this.props.shadow ? '#' : '/contact'}>
+          {this.props.shadow ? 'Other Blog' : 'Contact'}
           <span
             className='hiddenText mirrored'
             onMouseOver={startHoverEffect}
             onMouseMove={mirroredHoverShadow}
             onMouseOut={hideShadow}>
-          {this.props.shadow ? 'Canary' : 'Code'}
+          {this.props.shadow ? 'Other Blog' : 'Contact'}
           </span>
         </Link>
       </div>

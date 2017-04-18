@@ -1,0 +1,197 @@
+@import '../../style.scss';
+
+$mobile-header-height: 120px;
+$desktop-header-height: 60px;
+
+.page-header {
+  height: $mobile-header-height;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: white;
+  display: block;
+  text-align: left;
+
+  .header-link-name {
+    @include font-scale(4);
+    line-height: $mobile-header-height;
+    width: 280px;
+    margin-left: calc(40px + 5%);
+    float: left;
+  }
+
+  .small-links-row {
+    width: calc(95% - 380px);
+    margin-right: 40px;
+    @include font-scale(4);
+    display: inline-block;
+    line-height: $mobile-header-height;
+    float: right;
+  }
+
+
+  li.header-link.active { border-bottom: 1px solid black; }
+
+  li.header-link.active:hover { border-bottom: 1px dotted black; }
+
+  li:hover{ border-bottom: 1px dotted black; }
+
+  nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  nav ul,
+  nav li {
+    flex: 1;
+  }
+  nav a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    font-size: 1.8rem;
+  }
+  nav li {
+    position: relative;
+    line-height: 50px;
+    color: black;
+    text-align: center;
+  }
+  nav input,
+  nav label {
+    display: none;
+    width: 36px;
+    height: 36px;
+    background: #555;
+    color: #fff;
+    text-align: center;
+    line-height: 36px;
+    font-size: 1.6rem;
+    border-radius: 4px;
+  }
+  nav label{position: absolute; top: 25%; right: 5%; transition: .4s;}
+  nav label:hover{cursor:pointer;}
+  nav label:before{
+    font-size: 24px;
+    content: "\f0c9";
+    text-align: center;
+  }
+
+  nav ul {
+    transition: all .5s;
+    list-style: none;
+    background: white;
+  }
+  nav li {
+    flex: none;
+    width: 100%;
+  }
+  nav input[type="checkbox"]:checked + ul{
+    transform: translateY(-100%);
+    width: 100%;
+    transition: all .5s;
+  }
+  nav label{display: block;}
+
+  @media #{$desktopScreen} {
+    @media #{$desktopMedWindow} {
+
+      nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 1080px;
+        margin: 0 auto;
+
+      }
+      nav ul,
+      nav li {
+        flex: 1;
+      }
+      nav a {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        font-size: 1.8rem;
+      }
+
+      nav li{
+        position: relative;
+        line-height: 50px;
+        color: black;
+        text-align: center;
+      }
+      nav input,
+      nav label {
+        display: none;
+        width: 36px;
+        height: 36px;
+        background: #555;
+        color: #fff;
+        text-align: center;
+        line-height: 36px;
+        font-size: 1.6rem;
+        border-radius: 4px;
+      }
+      nav label{position: absolute; top: 25%; right: 5%; transition: .4s;}
+      nav label:hover{cursor:pointer;}
+      nav label:before{
+        font-size: 24px;
+        content: "\f0c9";
+        text-align: center;
+      }
+
+      nav input[type="checkbox"]:checked + ul{
+        transform: translateY(0%);
+      }
+
+      height: $desktop-header-height;
+
+      .small-links-row {
+        line-height: $desktop-header-height;
+      }
+      .header-link-name {
+        @include font-scale(3);
+        line-height: $desktop-header-height;
+      }
+      .header-link {
+        @include font-scale(2);
+        line-height: $desktop-header-height;
+        box-sizing: border-box;
+        border-bottom: 1px solid transparent;
+        margin: 0 20px;
+        float: right;
+      }
+
+    @media #{$desktopSmWindow} {
+      .header-link-name {
+        @include font-scale(3);
+        width: 240px;
+      }
+    }
+    @media #{$desktopTinyWindow} {
+      .header-link-name {
+        width: 150px;
+        @include font-scale(2);
+      }
+    }
+  }
+}
+  @media screen and (max-width: 768px) {
+    nav ul {
+      transform: translateY(0);
+      transition: all .5s;
+    }
+    nav li {
+      flex: none;
+      width: 100%;
+    }
+    nav input[type="checkbox"]:checked + ul{
+      transform: translateY(-100%);
+      width: 100%;
+      transition: all .5s;
+    }
+    nav label { display: block; }
+  }
+}

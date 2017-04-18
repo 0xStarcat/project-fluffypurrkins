@@ -116,7 +116,7 @@ export default class AsciiFaces extends Component {
       letters[i].style.fontSize = '25px'
       letters[i].addEventListener('transitionend', this.endLetterTransition)
       sentenceLeft += 15 //why 15px? it's the width of every letter + letter-spacing in .text-wrapper
-      duration += 100;
+      duration += 75;
     }
   }
 
