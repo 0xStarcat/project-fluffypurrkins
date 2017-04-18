@@ -32,7 +32,8 @@
   "scripts": {
     "client": "webpack -d --watch",
     "server": "node ./src/Server/server.js",
-    "build": "webpack -p && node ./src/Server/server.js",
+    "build": "webpack -p",
+    "restart": "webpack -p",
     "start": "webpack-dev-server -d --content-base src/Client/build --progress --colors"
   },
   "repository": {

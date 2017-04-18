@@ -1,2 +1,3 @@
 node_modules
-src/client/Build/
+src/Client/Build/bundle.js
+src/Client/Build/style.css
