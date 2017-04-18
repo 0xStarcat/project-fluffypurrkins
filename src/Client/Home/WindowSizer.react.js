@@ -11,7 +11,7 @@ import { asciiText } from './AsciiText.react'
 
 import { onMobileSize, onDesktopSize, onDesktop } from './lib/windowSizeHelpers.react'
 
-import './style/asciiFaceSizeWrapper.scss'
+import './Style/asciiFaceSizeWrapper.scss'
 
 export default class WindowSizer extends Component {
   constructor(props) {
