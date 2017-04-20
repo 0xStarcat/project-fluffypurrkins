@@ -72,8 +72,8 @@ export default class WindowSizer extends Component {
     this.props.stopPlayback()
     let oldDeviceEvent = onDesktop() ? 'click' : 'touchend'
     document.body.removeEventListener(oldDeviceEvent, this.endAnimations)
-    ReactDOM.findDOMNode(this.refs.face).innerHTML = ''
-    setTimeout(this.appendLinks, 100)
+    ReactDOM.findDOMNode(this.refs.textWrapperElement).innerHTML = ''
+    this.appendLinks()
     this.cueName()
 
   }
@@ -100,9 +100,9 @@ export default class WindowSizer extends Component {
 
   shadowMode() {
     if (!this.props.shadow) {
-      document.body.style.transition = 'all 3000ms ease-in-out';
-      document.body.style.backgroundColor = "dimgrey";
-      document.body.style.color = "white";
+      ReactDOM.findDOMNode(this.refs.mainWrapperElement).style.transition = 'all 3000ms ease-in-out';
+      ReactDOM.findDOMNode(this.refs.mainWrapperElement).style.backgroundColor = "dimgrey";
+      ReactDOM.findDOMNode(this.refs.mainWrapperElement).style.color = "white";
       let suppressed = document.getElementsByClassName('suppressed')
       for (let i = 0; i < suppressed.length; i++) {
         suppressed[i].style.zIndex = 1;
@@ -112,9 +112,9 @@ export default class WindowSizer extends Component {
         this.forceUpdate()
       }.bind(this), 1750)
     } else {
-      document.body.style.transition = 'all 3000ms ease-in-out';
-      document.body.style.backgroundColor = "white";
-      document.body.style.color = "black";
+      ReactDOM.findDOMNode(this.refs.mainWrapperElement).style.transition = 'all 3000ms ease-in-out';
+      ReactDOM.findDOMNode(this.refs.mainWrapperElement).style.backgroundColor = "white";
+      ReactDOM.findDOMNode(this.refs.mainWrapperElement).style.color = "black";
       let suppressed = document.getElementsByClassName('suppressed')
       for (let i = 0; i < suppressed.length; i++) {
         suppressed[i].style.zIndex = -1;
@@ -129,7 +129,7 @@ export default class WindowSizer extends Component {
 
   render() {
     return (
-      <div className='mainWrapper'>
+      <div className='mainWrapper' ref='mainWrapperElement'>
         <div className = 'text-wrapper' ref='textWrapperElement'/>
         <LinksRow
           ref='linksWrapper'
