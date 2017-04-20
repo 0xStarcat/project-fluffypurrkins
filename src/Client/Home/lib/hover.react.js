@@ -35,6 +35,7 @@ function filmEffect() {
   let range = 2
   HoverEffect.blur = focusText ? ((Math.random() * range) + min) : 1
   HoverEffect.target.style.textShadow = `${HoverEffect.shadowX * 2.5}px ${HoverEffect.shadowY * 2.5}px ${HoverEffect.blur}px black`
+  HoverEffect.target.style.display = 'block'
 }
 
 function hideShadow(e) {

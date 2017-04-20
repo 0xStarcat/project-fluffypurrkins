@@ -93,15 +93,21 @@ export default class CV extends Component {
             <h2 className='section-header'>Speaking</h2>
               <div className='sub-section'>
                 <p>Mar, 2017 - CSFair NYC</p>
-                <p>Lightning Talk - Digital Privacy: What Do You Look Like?</p>
+                <p>
+                  <a className='linky' href='https://github.com/0xStarcat/csfair-presentation' target='_blank'>Digital Privacy: What Do You Look Like?</a>
+                </p>
               </div>
               <div className='sub-section'>
                 <p>Jan, 2017 - Make A Diff CryptoParty</p>
-                <p>Protect Yo' Self - Network Privacy & Safe Browsing</p>
+                <p>
+                  <a className='linky' href='https://github.com/0xStarcat/protect-yo-self-browsing' target='_blank'>Protect Yo' Self - Network Privacy & Safe Browsing</a>
+                </p>
               </div>
               <div className='sub-section'>
                 <p>Dec, 2016 - Mozilla + Tactical Tech</p>
-                <p>The Glass Room - Workshops on Metadata / Safe Browsing</p>
+                <p>
+                  <a className='linky' href='https://tacticaltech.org/projects/glass-room' target ='_blank'>The Glass Room - Workshops on Metadata / Safe Browsing</a>
+                </p>
               </div>
             <hr/>
           </section>

@@ -6,12 +6,6 @@
 }
 
 //Mobile-size first
-body, html {
-  font-family: "Courier New", Courier, monospace;
-  @include font-scale(1);
-  color: $primaryFontColor;
-  background-color: $backgroundColor;
-}
 
 a {
   position: relative;
@@ -43,16 +37,26 @@ code {
   left: 15%;
   @include font-scale(10);
   max-width: 20px;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.ascii-letter {
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
 }
 
 .divider { display: block }
 
-.links-wrapper { display: none; }
+.links-wrapper {
+  display: none;
+  pointer-events: none;
+}
 
 .sentence-letter { opacity: 0; }
 
 #myName {
-  display: inline-block;
+  display: block;
   opacity: 0;
   @include font-scale(14);
   position: absolute;
@@ -60,6 +64,8 @@ code {
   left: 15%;
   box-sizing: border-box;
   cursor: pointer;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .hiddenText {
@@ -70,7 +76,10 @@ code {
   width: 100%;
 }
 
-.mirrored { transform: rotateY(180deg); }
+.mirrored {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg) translateZ(0);
+ }
 
 .suppressed { z-index: -1 }
 

@@ -59,7 +59,7 @@ export default class WindowSizer extends Component {
     let textWrapper = ReactDOM.findDOMNode(this.refs.textWrapperElement)
     textWrapper.appendChild(ReactDOM.findDOMNode(this.refs.linksWrapper))
     ReactDOM.findDOMNode(this.refs.linksWrapper).style.display = 'block'
-
+    ReactDOM.findDOMNode(this.refs.linksWrapper).style.pointerEvents = 'all'
   }
 
   cueName() {
@@ -72,9 +72,8 @@ export default class WindowSizer extends Component {
     this.props.stopPlayback()
     let oldDeviceEvent = onDesktop() ? 'click' : 'touchend'
     document.body.removeEventListener(oldDeviceEvent, this.endAnimations)
-
-    ReactDOM.findDOMNode(this.refs.textWrapperElement).innerHTML = ''
-    this.appendLinks()
+    ReactDOM.findDOMNode(this.refs.face).innerHTML = ''
+    setTimeout(this.appendLinks, 100)
     this.cueName()
 
   }
@@ -90,6 +89,7 @@ export default class WindowSizer extends Component {
     this.refs.face.refs.formatter.mountAsciiFace()
     let formatter = ReactDOM.findDOMNode(this.refs.face.refs.formatter.refs.codeElement)
     formatter.removeAttribute('style')
+    ReactDOM.findDOMNode(this.refs.face.refs.formatter).removeAttribute('style')
     ReactDOM.findDOMNode(this.refs.titleNameElement).removeAttribute('style')
     ReactDOM.findDOMNode(this.refs.textWrapperElement).innerHTML = ''
     let spans = formatter.children[0].children

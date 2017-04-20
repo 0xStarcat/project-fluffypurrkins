@@ -16,3 +16,12 @@ $baseFontSize: 10px;
   line-height: 150%;
   font-weight: 200;
 }
+
+body, html {
+  font-family: "Courier New", Courier, monospace;
+  @include font-scale(1);
+  color: $primaryFontColor;
+  background-color: $backgroundColor;
+  height: 100%;
+  -webkit-background-clip: text;
+}

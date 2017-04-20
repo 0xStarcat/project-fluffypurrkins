@@ -50,7 +50,7 @@ export default class AsciiFaces extends Component {
   assignEventListener() {
     if (this.props.play) {
       if (onMobileSize()) this.wrapSentenceChars()
-      let deviceEvent = onDesktop() ? 'mouseover' : 'click'
+      let deviceEvent = onDesktop() ? 'mouseover' : 'touchend'
       let deviceElement = onDesktop() ? document.querySelector('code') : document.body
       deviceElement.addEventListener(deviceEvent, this.fadeAscii)
       this.props.assignCoordinatesToLetters()
@@ -79,7 +79,7 @@ export default class AsciiFaces extends Component {
   }
 
   fadeAscii() {
-    let oldDeviceEvent = onDesktop() ? 'mouseover' : 'click'
+    let oldDeviceEvent = onDesktop() ? 'mouseover' : 'touchend'
     let deviceEvent = onDesktop() ? 'click' : 'touchend'
     let deviceElement = onDesktop() ? document.querySelector('code') : document.body
     deviceElement.removeEventListener(oldDeviceEvent, this.fadeAscii)
@@ -109,7 +109,7 @@ export default class AsciiFaces extends Component {
 
     for (let i = 0; i < letters.length; i++) {
       let degrees = 360 * ((Math.random() * 5) + 3)
-      letters[i].style.transition = `all ${duration}ms linear, opacity ${duration*2}ms ease-in-out`
+      letters[i].style.transition = `all ${duration}ms ease-in-out, opacity ${duration*2}ms ease-in-out`
       letters[i].style.position = 'absolute'
       letters[i].style.top = textWrapper.offsetTop + 17 //why 17px? (25px(font-size) * 1.5 (line-height 150%))... still don't really know
       letters[i].style.left = sentenceLeft + 'px'
@@ -125,7 +125,7 @@ export default class AsciiFaces extends Component {
     let spinDuration = 2000;
     if (parseInt(event.target.getAttribute('number')) == this.props.sentence.split('').length - 1) { degrees = 360 }
     event.target.removeEventListener('transitionend', this.endLetterTransition)
-    event.target.style.transition = `all ${spinDuration}ms ease-in-out, opacity ${spinDuration}ms linear`
+    event.target.style.transition = `all ${spinDuration}ms ease-in-out, opacity ${spinDuration}ms ease-in-out`
     event.target.style.opacity = 0
     event.target.style.transform = `rotateY(${degrees}deg)`
     event.target.style.webkitTransform = `rotateY(${degrees}deg)`
