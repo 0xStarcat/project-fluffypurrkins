@@ -42,6 +42,9 @@ $desktop-header-height: 60px;
     flex-wrap: wrap;
     max-width: 1080px;
     margin: 0 auto;
+    position: fixed;
+    width: 100%;
+    left: 0;
   }
   nav ul,
   nav li {
@@ -51,7 +54,8 @@ $desktop-header-height: 60px;
     text-decoration: none;
     color: inherit;
     display: block;
-    font-size: 1.8rem;
+    font-size: 5rem;
+    margin: 40px 0;
   }
   nav li {
     position: relative;
@@ -62,8 +66,8 @@ $desktop-header-height: 60px;
   nav input,
   nav label {
     display: none;
-    width: 36px;
-    height: 36px;
+    width: 80px;
+    height: 80px;
     background: #555;
     color: #fff;
     text-align: center;
@@ -74,9 +78,10 @@ $desktop-header-height: 60px;
   nav label{position: absolute; top: 25%; right: 5%; transition: .4s;}
   nav label:hover{cursor:pointer;}
   nav label:before{
-    font-size: 24px;
+    font-size: 44px;
     content: "\f0c9";
     text-align: center;
+    line-height: 80px;
   }
 
   nav ul {
@@ -114,6 +119,7 @@ $desktop-header-height: 60px;
         color: inherit;
         display: block;
         font-size: 1.8rem;
+        margin: 0;
       }
 
       nav li{
@@ -125,21 +131,6 @@ $desktop-header-height: 60px;
       nav input,
       nav label {
         display: none;
-        width: 36px;
-        height: 36px;
-        background: #555;
-        color: #fff;
-        text-align: center;
-        line-height: 36px;
-        font-size: 1.6rem;
-        border-radius: 4px;
-      }
-      nav label{position: absolute; top: 25%; right: 5%; transition: .4s;}
-      nav label:hover{cursor:pointer;}
-      nav label:before{
-        font-size: 24px;
-        content: "\f0c9";
-        text-align: center;
       }
 
       nav input[type="checkbox"]:checked + ul{
@@ -168,6 +159,24 @@ $desktop-header-height: 60px;
       .header-link-name {
         @include font-scale(3);
         width: 240px;
+      }
+      nav input,
+      nav label {
+        width: 36px;
+        height: 36px;
+        background: #555;
+        color: #fff;
+        text-align: center;
+        line-height: 36px;
+        font-size: 1.6rem;
+        border-radius: 4px;
+      }
+      nav label{position: absolute; top: 25%; right: 5%; transition: .4s;}
+      nav label:hover{cursor:pointer;}
+      nav label:before{
+        font-size: 24px;
+        content: "\f0c9";
+        text-align: center;
       }
     }
     @media #{$desktopTinyWindow} {
