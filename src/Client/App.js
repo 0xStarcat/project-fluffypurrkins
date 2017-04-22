@@ -7,9 +7,6 @@ import reducer from './Reducers'
 const store = createStore(reducer)
 
 export default class App extends Component {
-  constructor() {
-    super()
-  }
 
   render() {
     return (

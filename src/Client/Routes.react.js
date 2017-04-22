@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-// import { BrowserRouter, Route } from 'react-router-dom'
 import {IndexRoute} from 'react-router'
 import { BrowserRouter as Router, Route, } from 'react-router-dom'
 import AsciiContainer from './Containers/AsciiContainer.react'
@@ -9,11 +8,7 @@ import CV from './Pages/CV.react'
 import Analytics from './Pages/Analytics.react'
 import Canary from './Pages/Canary.react'
 
-
 export default class Routes extends Component {
-  constructor() {
-    super()
-  }
 
   render() {
     return(
