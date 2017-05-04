@@ -47,6 +47,7 @@ export default class CV extends Component {
                   <li>React.js</li>
                   <li>Ruby on Rails</li>
                   <li>Node.js</li>
+                  <li>D3.js</li>
                 </ul>
               </div>
             </div>
@@ -54,14 +55,12 @@ export default class CV extends Component {
               <h4 className='title-header'>DevOps | Architecture Tools</h4>
               <div className='skill-lists'>
                 <ul>
-                  <li>Git/Github</li>
+                  <li>Git / Github</li>
                   <li>Travis & Continuous Integration</li>
                   <li>NGINX</li>
                 </ul>
                 <ul>
-                  <li>Amazon Web Services</li>
-                  <li>Aptible</li>
-                  <li>Heroku</li>
+                  <li>AWS / Aptible / Heroku</li>
                 </ul>
               </div>
             </div>
@@ -72,10 +71,14 @@ export default class CV extends Component {
                   <li>RESTful API</li>
                   <li>Security-minded development</li>
                   <li>Test-driven development</li>
+                  <li>Web scraping</li>
+                  <li>Data visualization</li>
                 </ul>
                 <ul>
                   <li>CMS & static-site generators</li>
                   <li>Hosting & HTTPS</li>
+                  <li>Web-design and UX</li>
+                  <li>Project planning & Agile</li>
                 </ul>
               </div>
             </div>
@@ -86,6 +89,7 @@ export default class CV extends Component {
             <div className='sub-section'>
               <p className='sub-header'>B.A. Political Science</p>
               <p className='sub-header'>B.S. Nursing</p>
+              <p className='sub-header'>General Assembly Web Development Immsersive</p>
             </div>
             <hr/>
           </section>
