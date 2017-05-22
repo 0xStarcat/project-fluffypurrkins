@@ -1,8 +1,9 @@
 class HoverEffect {
-  blur: 5;
-  shadowX: 0;
-  shadowY: 0;
-  target: null;
+  blur: 5
+  shadowX: 0
+  shadowY: 0
+  target: null
+  interval: null
 }
 
 function startHoverEffect(e) {
