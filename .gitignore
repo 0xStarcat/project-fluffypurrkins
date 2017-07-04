@@ -1,4 +1,3 @@
 .gitignore
 node_modules
-src/Client/Build/bundle.js
-src/Client/Build/style.css
+
