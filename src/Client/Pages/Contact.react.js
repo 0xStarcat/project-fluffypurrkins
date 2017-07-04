@@ -7,23 +7,26 @@ export default class Contact extends Component {
   }
   render() {
     return(
-      <div className='page'>
+      <div>
         <PageHeader/>
-        <section>
-          <div className='sub-section'>
-            <p className='sub-header linky'><a href='https://github.com/0xStarcat' target='_blank'>Github</a></p>
-          </div>
-          <div className='sub-section'>
-            <p className='sub-header linky'><a href='https://twitter.com/0xStarcat' target='_blank'>Twitter</a></p>
-          </div>
-          <div className='sub-section'>
-            <p className='sub-header linky'><a href="mailto:jeffahking@gmail.com" target="_top">jeffahking@gmail.com</a></p>
-          </div>
-          <div className='sub-section'>
-            <p className='sub-header'>PGP</p>
-            <p>264D 87F7 C02E 2EC5 079D  ABE0 34CC 90E8 07AF CE6E</p>
-          </div>
-        </section>
+        <div className='page'>
+          
+          <section>
+            <div className='sub-section'>
+              <p className='sub-header linky'><a href='https://github.com/0xStarcat' target='_blank'>Github</a></p>
+            </div>
+            <div className='sub-section'>
+              <p className='sub-header linky'><a href='https://twitter.com/0xStarcat' target='_blank'>Twitter</a></p>
+            </div>
+            <div className='sub-section'>
+              <p className='sub-header linky'><a href="mailto:jeffahking@gmail.com" target="_top">jeffahking@gmail.com</a></p>
+            </div>
+            <div className='sub-section'>
+              <p className='sub-header'>PGP</p>
+              <p>264D 87F7 C02E 2EC5 079D  ABE0 34CC 90E8 07AF CE6E</p>
+            </div>
+          </section>
+        </div>
       </div>
     )
   }

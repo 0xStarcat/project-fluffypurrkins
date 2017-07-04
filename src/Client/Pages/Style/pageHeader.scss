@@ -38,6 +38,10 @@ $desktop-header-height: 60px;
 
   li:hover{ border-bottom: 1px dotted black; }
 
+  li.header-link {
+    padding: 0px;
+  }
+
   nav ul {
     display: flex;
     flex-wrap: wrap;
