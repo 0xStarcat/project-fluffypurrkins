@@ -1,7 +1,5 @@
 # Prepping the ASCII for DOM manipulation
 
-
-
 Basically, the ASCII is just a big wall of text. To do cool stuff with it, we need to prepare it for DOM manipulation by wrapping the right parts of it with the right HTML elements.
 
 The obvious thing to do here would be to hard code in all the HTML elements. That's perfectly fine and safe. But we don't like safe here! We like things to be dynamic and wild and random!
