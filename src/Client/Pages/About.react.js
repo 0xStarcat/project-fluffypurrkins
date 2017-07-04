@@ -21,33 +21,33 @@ export default class About extends Component {
             <br/>
             <h3>Some things I've worked on:</h3>
             <div className='sub-section text-body projects'>
-              <p>
-                <a href='https://trump-tweets-viz.herokuapp.com/' target='blank'>Trump Tweets - </a>
+             <a href='https://trump-tweets-viz.herokuapp.com/' target='blank'>Trump Tweets - </a>
+              <p> 
                 <br/>A data project using D3.js that visualizes and categorizes the targets of Donald Trump's twitter insults.
               </p>
               <br/>
+              <a href='https://github.com/0xStarcat/Trump-Tweets-Scraper' target='blank'>Trump Tweets Scraper - </a>
               <p>
-                <a href='https://github.com/0xStarcat/Trump-Tweets-Scraper' target='blank'>Trump Tweets Scraper - </a>
                 <br/>A Node scraper for supplying Twitter data to Trump Tweets. Collects the latest data from <a href='https://www.nytimes.com/interactive/2016/01/28/upshot/donald-trump-twitter-insults.html' target='blank'>a NYTimes article</a> that continuously updates its coverage of Trump's Twitter.
               </p>
               <br/>
+              <a href='https://github.com/0xStarcat/Census-CPS-Scraper' target='blank'>Census.gov CPS Scraper - </a>
               <p>
-                <a href='https://github.com/0xStarcat/Census-CPS-Scraper' target='blank'>Census.gov CPS Scraper - </a>
                 <br/>A Node scraper for the CPS report from <a href='census.gov'target='blank'>census.gov</a>. Queries the census database, extracts data, and formats population demographic data into a CSV file.
               </p>
               <br/>
+              <a href='https://right2remove.us/' target='blank'>Right2Remove - </a>
               <p>
-                <a href='https://right2remove.us/' target='blank'>Right2Remove - </a>
                 <br/>A static website built with Bootstrap in collaboration with an artist/activist for the promotion of a political cause.
               </p>
               <br/>
+              <a href='https://myIRlog.com' target='blank'>My IRlog - </a>
               <p>
-                <a href='https://myIRlog.com' target='blank'>My IRlog - </a>
                 <br/>A medical data logging and education site architectured, built, and hosted to comply with HIPPA privacy and security regulations. Rails framework + Linux server.
               </p>
               <br/>
+              <a href='https://github.com/0xStarcat/yahoo-login' target='blank'>Yahoo "login" - </a>
               <p>
-                <a href='https://github.com/0xStarcat/yahoo-login' target='blank'>Yahoo "login" - </a>
                 <br/>A spear-ph*shing site set up for educational purposes for a friend's podcast discussion. Mimics appearance of yahoo.com's login site which was tweaked to deliver the user's password to an email address.
               </p>
             </div>
