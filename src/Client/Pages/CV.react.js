@@ -61,7 +61,7 @@ export default class CV extends Component {
                 </ul>
                 <ul>
                   <li>AWS / Heroku</li>
-                  <li>SQL</li>
+                  <li>PostgreSQL</li>
                   <li>MongoDB</li>
                 </ul>
               </div>
