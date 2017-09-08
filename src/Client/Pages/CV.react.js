@@ -52,7 +52,7 @@ export default class CV extends Component {
               </div>
             </div>
             <div className='sub-section'>
-              <h4 className='title-header'>DevOps | Architecture Tools</h4>
+              <h4 className='title-header'>DevOps | Architecture</h4>
               <div className='skill-lists'>
                 <ul>
                   <li>Git / Github</li>
@@ -60,7 +60,19 @@ export default class CV extends Component {
                   <li>NGINX</li>
                 </ul>
                 <ul>
-                  <li>AWS / Aptible / Heroku</li>
+                  <li>AWS / Heroku</li>
+                  <li>SQL</li>
+                  <li>MongoDB</li>
+                </ul>
+              </div>
+            </div>
+            <div className='sub-section'>
+              <h4 className='title-header'>Integrations</h4>
+              <div className='skill-lists'>
+                <ul>
+                  <li>Stripe</li>
+                  <li>Mailchimp</li>
+                  <li>Twilio</li>
                 </ul>
               </div>
             </div>
