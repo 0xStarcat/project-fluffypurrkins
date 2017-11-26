@@ -17,7 +17,7 @@ export default class TitleName extends Component {
         onMouseMove={hoverShadow}
         onMouseOut={hideShadow}
         onClick={this.props.restartPlayback}>
-        Jeff Ahking
+        Jade Ahking
       </span>
       <span
         className='hiddenText suppressed'

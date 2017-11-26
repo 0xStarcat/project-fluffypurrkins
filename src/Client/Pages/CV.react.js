@@ -34,7 +34,7 @@ export default class CV extends Component {
                     <li>CSS/SASS</li>
                   </ul>
                   <ul>
-                    <li>Javascript</li>
+                    <li>Javascript / ES6</li>
                     <li>Ruby</li>
                     <li>C#</li>
                   </ul>
@@ -52,27 +52,19 @@ export default class CV extends Component {
               </div>
             </div>
             <div className='sub-section'>
-              <h4 className='title-header'>DevOps | Architecture</h4>
+              <h4 className='title-header'>DevOps | Architecture | Databases</h4>
               <div className='skill-lists'>
                 <ul>
                   <li>Git / Github</li>
                   <li>Travis & Continuous Integration</li>
                   <li>NGINX</li>
+                  <li>Ubuntu & Debian servers</li>
                 </ul>
                 <ul>
-                  <li>AWS / Heroku</li>
+                  <li>Amazon Web Services</li>
+                  <li>Heroku</li>
                   <li>PostgreSQL</li>
                   <li>MongoDB</li>
-                </ul>
-              </div>
-            </div>
-            <div className='sub-section'>
-              <h4 className='title-header'>Integrations</h4>
-              <div className='skill-lists'>
-                <ul>
-                  <li>Stripe</li>
-                  <li>Mailchimp</li>
-                  <li>Twilio</li>
                 </ul>
               </div>
             </div>
@@ -80,10 +72,10 @@ export default class CV extends Component {
               <h4 className='title-header'>Skills | Practices</h4>
               <div className='skill-lists'>
                 <ul>
-                  <li>RESTful API</li>
-                  <li>Security-minded development</li>
-                  <li>Test-driven development</li>
-                  <li>Web scraping</li>
+                  <li>APIs (REST)</li>
+                  <li>Data security & encryption</li>
+                  <li>Test driven development</li>
+                  <li>Web scraping & crawling</li>
                   <li>Data visualization</li>
                 </ul>
                 <ul>
@@ -107,6 +99,12 @@ export default class CV extends Component {
           </section>
           <section className='speaking'>
             <h2 className='section-header'>Speaking</h2>
+              <div className='sub-section'>
+                <p>Oct, 2017 - Radical Networks</p>
+                <p>
+                  <a className='linky' href='https://livestream.com/accounts/9197973/radnets17/videos/164748864' target='_blank'>Thanks, but we can secure ourselves: Setting up your own VPN with Algo.</a>
+                </p>
+              </div>
               <div className='sub-section'>
                 <p>Mar, 2017 - CSFair NYC</p>
                 <p>

@@ -8,13 +8,13 @@ export default class PageHeader extends Component {
   render() {
     return(
       <div className='page-header'>
-        <Link to='/' className='header-link-name'>Jeff Ahking</Link>
+        <Link to='/' className='header-link-name'>Jade Ahking</Link>
         <div className='small-links-row'>
           <nav>
            <input type="checkbox" id="css-toggle-menu" name="css-toggle-menu" defaultChecked />
            <ul className="main">
              <li className={(window.location.pathname == '/about') ? 'active header-link' : 'header-link'}><Link to='/about' >About</Link></li>
-             <li className='header-link'><a href='https://blog.jeffahking.com/' target='_blank'>Blog</a></li>
+             <li className='header-link'><a href='https://catxmachina.xyz/' target='_blank'>Blog</a></li>
              <li className={(window.location.pathname == '/cv') ? 'active header-link' : 'header-link'}><Link to='/cv'>C.V.</Link></li>
              <li className={(window.location.pathname == '/contact') ? 'active header-link' : 'header-link'}><Link to='/contact'>Contact</Link></li>
            </ul>
