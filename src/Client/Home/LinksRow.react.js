@@ -19,7 +19,7 @@ export default class LinksRow extends Component {
           </span>
         </Link>
         <span className='divider'>{this.props.shadow ? '' : ' | '}</span>
-        <a href={this.props.shadow ? '' : 'https://blog.jeffahking.com/'} target='_blank'>
+        <a href={this.props.shadow ? '' : 'https://catxmachina.xyz/'} target='_blank'>
           {this.props.shadow ? '' : 'Blog'}
           <span
             className='hiddenText mirrored'
