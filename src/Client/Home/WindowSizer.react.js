@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, } from 'react-router-dom'
-import {startHoverEffect, hoverShadow, mirroredHoverShadow, hideShadow } from './lib/hover.react'
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { startHoverEffect, hoverShadow, mirroredHoverShadow, hideShadow } from './lib/hover.react'
 
 import AsciiFaces from './AsciiFaces.react'
 import LinksRow from './LinksRow.react'
@@ -17,7 +17,7 @@ export default class WindowSizer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      sentence: 'About | Blog | C.V. | Contact',
+      sentence: 'About | Blog | C.V. | Contact'
     }
     this.assignCoordinatesToLetters = this.assignCoordinatesToLetters.bind(this)
     this.appendLinks = this.appendLinks.bind(this)
@@ -25,13 +25,12 @@ export default class WindowSizer extends Component {
     this.restartPlayback = this.restartPlayback.bind(this)
     this.resetStyles = this.resetStyles.bind(this)
     this.shadowMode = this.shadowMode.bind(this)
-
+    this.hideFace = this.hideFace.bind(this)
   }
 
   assignCoordinatesToLetters() {
     let letters = document.getElementsByClassName('ascii-letter')
     for (let i = 0; i < letters.length; i++) {
-      var rect = letters[i].getBoundingClientRect()
       letters[i].style.top = letters[i].offsetTop
       letters[i].style.left = letters[i].offsetLeft
     }
@@ -41,20 +40,34 @@ export default class WindowSizer extends Component {
   }
   componentDidMount() {
     this.assignCoordinatesToLetters()
-    this.refs.secret.style.cssText =
-      `cursor: help;
+    this.refs.secret.style.cssText = `cursor: help;
       position: absolute;
       top: 10%;
       left: 40%;
       font-size: 3rem;
       color: transparent;`
 
-    window.addEventListener("resize", this.assignCoordinatesToLetters);
-    if (!this.props.play) { this.endAnimations() }
-    if (this.props.shadow) { this.shadowMode() }
+    window.addEventListener('resize', this.assignCoordinatesToLetters)
+    window.addEventListener('keydown', this.hideFace)
+    if (!this.props.play) {
+      this.endAnimations()
+    }
+    if (this.props.shadow) {
+      this.shadowMode()
+    }
   }
-  componentDidUpdate() { if (!this.props.play) { this.endAnimations() } }
-  componentWillUnmount() { window.removeEventListener("resize", this.assignCoordinatesToLetters); }
+  componentDidUpdate() {
+    if (!this.props.play) {
+      this.endAnimations()
+    }
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.assignCoordinatesToLetters)
+    window.removeEventListener('keydown', this.hideFace)
+  }
+  hideFace() {
+    this.endAnimations()
+  }
   appendLinks() {
     let textWrapper = ReactDOM.findDOMNode(this.refs.textWrapperElement)
     textWrapper.appendChild(ReactDOM.findDOMNode(this.refs.linksWrapper))
@@ -75,7 +88,6 @@ export default class WindowSizer extends Component {
     ReactDOM.findDOMNode(this.refs.textWrapperElement).innerHTML = ''
     this.appendLinks()
     this.cueName()
-
   }
 
   restartPlayback() {
@@ -100,43 +112,49 @@ export default class WindowSizer extends Component {
 
   shadowMode() {
     if (!this.props.shadow) {
-      ReactDOM.findDOMNode(this.refs.mainWrapperElement).style.transition = 'all 3000ms ease-in-out';
-      ReactDOM.findDOMNode(this.refs.mainWrapperElement).style.backgroundColor = "dimgrey";
-      ReactDOM.findDOMNode(this.refs.mainWrapperElement).style.color = "white";
+      ReactDOM.findDOMNode(this.refs.mainWrapperElement).style.transition = 'all 3000ms ease-in-out'
+      ReactDOM.findDOMNode(this.refs.mainWrapperElement).style.backgroundColor = 'dimgrey'
+      ReactDOM.findDOMNode(this.refs.mainWrapperElement).style.color = 'white'
       let suppressed = document.getElementsByClassName('suppressed')
       for (let i = 0; i < suppressed.length; i++) {
-        suppressed[i].style.zIndex = 1;
+        suppressed[i].style.zIndex = 1
       }
-      setTimeout( function() {
-        this.props.enableShadow()
-        this.forceUpdate()
-      }.bind(this), 1750)
+      setTimeout(
+        function() {
+          this.props.enableShadow()
+          this.forceUpdate()
+        }.bind(this),
+        1750
+      )
     } else {
-      ReactDOM.findDOMNode(this.refs.mainWrapperElement).style.transition = 'all 3000ms ease-in-out';
-      ReactDOM.findDOMNode(this.refs.mainWrapperElement).style.backgroundColor = "white";
-      ReactDOM.findDOMNode(this.refs.mainWrapperElement).style.color = "black";
+      ReactDOM.findDOMNode(this.refs.mainWrapperElement).style.transition = 'all 3000ms ease-in-out'
+      ReactDOM.findDOMNode(this.refs.mainWrapperElement).style.backgroundColor = 'white'
+      ReactDOM.findDOMNode(this.refs.mainWrapperElement).style.color = 'black'
       let suppressed = document.getElementsByClassName('suppressed')
       for (let i = 0; i < suppressed.length; i++) {
-        suppressed[i].style.zIndex = -1;
+        suppressed[i].style.zIndex = -1
       }
-      setTimeout( function() {
-        this.props.disableShadow()
-        this.forceUpdate()
-      }.bind(this), 1250)
+      setTimeout(
+        function() {
+          this.props.disableShadow()
+          this.forceUpdate()
+        }.bind(this),
+        1250
+      )
     }
-
   }
 
   render() {
     return (
-      <div className='mainWrapper' ref='mainWrapperElement'>
-        <div className = 'text-wrapper' ref='textWrapperElement'/>
-        <LinksRow
-          ref='linksWrapper'
-          shadow={this.props.shadow}
-        />
+      <div className="mainWrapper" ref="mainWrapperElement">
+        <div className="text-wrapper" ref="textWrapperElement" />
+        <div style={{ position: 'absolute', left: '-10000px', width: '1px', height: '1px' }}>
+          There is a beautiful ASCII image of my face on this page. Press any keyboard key to move
+          on and display the links
+        </div>
+        <LinksRow ref="linksWrapper" shadow={this.props.shadow} />
         <AsciiFaces
-          ref='face'
+          ref="face"
           asciiText={asciiText}
           sentence={this.state.sentence}
           assignCoordinatesToLetters={this.assignCoordinatesToLetters}
@@ -145,7 +163,7 @@ export default class WindowSizer extends Component {
           play={this.props.play}
         />
         <TitleName
-          ref='titleNameElement'
+          ref="titleNameElement"
           restartPlayback={!this.props.play ? this.restartPlayback : null}
         />
         <div>
@@ -156,20 +174,22 @@ export default class WindowSizer extends Component {
                   <your>
                     <computer>
                       <screen>
-                        <secret ref='secret'>
+                        <secret ref="secret">
                           <span
                             onMouseOver={startHoverEffect}
                             onMouseMove={this.props.shadow ? hoverShadow : mirroredHoverShadow}
                             onMouseOut={hideShadow}
-                            onClick={this.shadowMode}>
+                            onClick={this.shadowMode}
+                          >
                             Hello from the other side.
                           </span>
                           <span
-                            className = 'hiddenText mirrored suppressed'
+                            className="hiddenText mirrored suppressed"
                             onMouseOver={startHoverEffect}
-                            onMouseMove={hoverShadow }
+                            onMouseMove={hoverShadow}
                             onMouseOut={hideShadow}
-                            onClick={this.shadowMode}>
+                            onClick={this.shadowMode}
+                          >
                             Hello from the other side.
                           </span>
                         </secret>
