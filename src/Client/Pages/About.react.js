@@ -14,9 +14,9 @@ export default class About extends Component {
           <section>
             <h2 className='section-header'>Hi,</h2>
             <div className='sub-section text-body'>
-              <p>My name is Jade. I'm based in Brooklyn, NY. Some things I like are information security, an internet that respects all people, cultural diversity, open and consensual communities, art, comics, games, and music.</p>
+              <p>My name is Jade. My pronouns are they/them and I'm based in Brooklyn, NY. Some things I like are an internet that respects all people, open and consensual communities, information security, open data and beautiful data visualization, art, comics, video games, music, and rock climbing.</p>
               <br />
-              <p>I currently work as a software engineer for <a href="https://everplans.com" target="_blank" className="linky">Everplans</a> and enjoy doing projects that help activist communities. Before this, I worked as an emergency room nurse and I have a B.A. in political science.</p>
+              <p>I currently work as an independent web developer and tech consultant. Previously, I was a software engineer at <a href="https://everplans.com" target="_blank" className="linky">Everplans</a> and enjoy doing projects that help activist communities. Before this, I worked as an emergency room nurse and I have a B.A. in political science.</p>
             </div>
             <br/>
             <h3>Some things I've worked on:</h3>
@@ -38,7 +38,7 @@ export default class About extends Component {
               <br/>
               <a href='https://right2remove.us/' target='blank'>Right2Remove - </a>
               <p>
-                <br/>A static website built with Bootstrap in collaboration with an artist/activist for the promotion of a political cause.
+                <br/>A static website built in collaboration with an artist/activist for the promotion of a the right to remove your information from search results in the United States and to fight the abuse of personal information on the internet.
               </p>
               <br/>
               <a href='https://myIRlog.com' target='blank'>My IRlog - </a>
