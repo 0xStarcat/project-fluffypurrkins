@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import PageHeader from './PageHeader'
+import { Link } from 'react-router-dom'
 
 import './Style/page.scss'
 export default class About extends Component {
@@ -16,7 +17,9 @@ export default class About extends Component {
             <div className='sub-section text-body'>
               <p>My name is Jade. My pronouns are they/them and I'm based in Brooklyn, NY. Some things I like are an internet that respects all people, open and consensual communities, information security, open data and beautiful data visualization, art, comics, video games, music, and rock climbing.</p>
               <br />
-              <p>I currently work as an independent web developer and tech consultant. Previously, I was a software engineer at <a href="https://everplans.com" target="_blank" className="linky">Everplans</a> and enjoy doing projects that help activist communities. Before this, I worked as an emergency room nurse and I have a B.A. in political science.</p>
+              <p>I currently work as an independent web developer and tech consultant. I enjoy doing projects that help activist communities, teaching people about technology and coding, and helping people with their independent projects. Before this, I was a software engineer at <a href="https://everplans.com" target="_blank" className="linky">Everplans</a>, an emergency room nurse, and I have a B.A. in political science.</p>
+              <br/>
+              <p>Please <Link to='/contact'>reach out</Link> if you'd like to build a web application or put on a workshop.</p>
             </div>
             <br/>
             <h3>Some things I've worked on:</h3>

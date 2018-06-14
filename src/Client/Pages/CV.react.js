@@ -43,7 +43,7 @@ export default class CV extends Component {
                 <ul>
                   <li>Javascript / ES6</li>
                   <li>Ruby</li>
-                  <li>C#</li>
+                  <li>Python</li>
                 </ul>
               </div>
             </div>
@@ -82,7 +82,7 @@ export default class CV extends Component {
                   <li>Data security & encryption</li>
                   <li>Testing</li>
                   <li>Web scraping & crawling</li>
-                  <li>Data visualization</li>
+                  <li>Data visualization & mapping</li>
                 </ul>
                 <ul>
                   <li>CMS & static-site generators</li>
