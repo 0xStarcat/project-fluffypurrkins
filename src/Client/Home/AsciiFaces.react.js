@@ -87,17 +87,18 @@ export default class AsciiFaces extends Component {
 
     let randomFadeMethod = Math.floor(Math.random() * 3)
     let moveLettersMethod = onDesktopSize() ? this.moveLetters : this.mobileMoveLetters
-    switch (randomFadeMethod) {
-      case 0:
-      fadeAsciiRandomly(moveLettersMethod)
-      break
-      case 1:
-      fadeAsciiTopToBottom(moveLettersMethod)
-      break
-      case 2:
-      fadeAsciiBottomToTop(moveLettersMethod)
-      break
-    }
+    fadeAsciiRandomly(moveLettersMethod)
+    // switch (randomFadeMethod) {
+    //   case 0:
+    //   fadeAsciiRandomly(moveLettersMethod)
+    //   break
+    //   case 1:
+    //   fadeAsciiTopToBottom(moveLettersMethod)
+    //   break
+    //   case 2:
+    //   fadeAsciiBottomToTop(moveLettersMethod)
+    //   break
+    // }
   }
   moveLetters() {
     this.refs.formatter.refs.codeElement.style.textShadow = ''
@@ -150,7 +151,7 @@ export default class AsciiFaces extends Component {
     let sentenceLetters = document.getElementsByClassName('sentence-letter')
     let textWrapper = document.querySelector('.text-wrapper')
     let sentenceLeft = window.innerWidth * 0.05
-    let duration = 1500
+    let duration = 500
     for (let i = 0; i < letters.length; i++) {
       letters[i].style.transition = `all ${duration}ms linear`
       letters[i].style.position = 'absolute'
