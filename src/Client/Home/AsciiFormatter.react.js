@@ -32,7 +32,7 @@ export default class AsciiFormatter extends Component {
   insertLetters(str, sentence) {
     let newAsciiString = ''
     for (let i = 0; i < str.length; i++) {
-      if (str.charAt(i).match(/[@#]/) && sentence.length > 0 && this.randomSpot(sentence.length >= this.props.asciiText.length)) {
+      if (str.charAt(i).match(/[@#+;]/) && sentence.length > 0 && this.randomSpot(sentence.length >= this.props.asciiText.length)) {
         if (sentence.charAt(0).match(/[`]/)) {
           newAsciiString += sentence.substr(0, 2)
           sentence = sentence.substr(2)
