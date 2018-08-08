@@ -1,18 +1,40 @@
-export default (state = {play: true, shadow: false}, action) => {
+import * as actions from '../Actions'
+
+const initialState = {
+  play: true,
+  shadow: false,
+  awaitingResponse: false,
+  projects: []
+}
+
+export default (state = initialState, action) => {
   switch (action.type) {
-    case 'STOP_PLAYBACK':
-      return Object.assign({}, state, { play: false })
+    case actions.STOP_PLAYBACK: {
+      return { ...state, play: false }
+    }
 
-    case 'START_PLAYBACK':
-      return Object.assign({}, state, { play: true })
+    case actions.START_PLAYBACK: {
+      return { ...state, play: true }
+    }
 
-    case 'DISABLE_SHADOW':
-      return Object.assign({}, state, { shadow: false })
+    case actions.DISABLE_SHADOW: {
+      return { ...state, shadow: false }
+    }
 
-    case 'ENABLE_SHADOW':
-      return Object.assign({}, state, { shadow: true })
-      
-    default:
+    case actions.ENABLE_SHADOW: {
+      return { ...state, shadow: true }
+    }
+
+    case actions.AWAITING_RESPONSE: {
+      return { ...state, awaitingResponse: true }
+    }
+
+    case actions.HANDLE_READ_PROJECTS_DATA: {
+      return { ...state, projects: action.data, awaitingResponse: false }
+    }
+
+    default: {
       return state
+    }
   }
 }
