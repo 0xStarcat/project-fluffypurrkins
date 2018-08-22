@@ -45,6 +45,13 @@ class About extends Component {
             <br />
             <h3>Some things I've worked on:</h3>
             <div className="sub-section text-body projects">
+              <a href="https://buildingmonitor.nyc/" target="blank">
+                NYC Building montior -{' '}
+              </a>
+              <p>
+                <br />The NYC Building monitor is a tool that NYC tenants can use to help them make informed housing decisions and fight for housing justice. This ongoing project is a daily updated resource of public city data on building violations, building-related 311 calls, and a wealth of other city information visualized and made accessible through a user-friendly map and interface.
+              </p>
+              <br/>
               <a href="https://trump-tweets-viz.herokuapp.com/" target="blank">
                 Trump Tweets -{' '}
               </a>
