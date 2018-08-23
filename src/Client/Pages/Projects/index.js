@@ -10,14 +10,26 @@ import { fetchProjects } from '../../Actions'
 class Projects extends React.Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      activeProject: -1
+    }
+
+    this.setActive = this.setActive.bind(this)
   }
 
   componentDidMount() {
     this.props.dispatch(fetchProjects())
   }
 
+  setActive(index) {
+    this.setState({
+      activeProject: index
+    })
+  }
+
   render() {
-    console.log(this.props)
+    console.log(this.state.activeProject)
     if (!this.props.projects) return null
     return (
       <div id="projects" className="page">
@@ -25,9 +37,12 @@ class Projects extends React.Component {
         {this.props.projects.map((project, index) => {
           return (
             <ProjectItem
+              active={this.state.activeProject === index}
+              index={index}
               key={`Project-${index}`}
               last={index === this.props.projects.length - 1}
               project={project}
+              setActive={this.setActive}
             />
           )
         })}

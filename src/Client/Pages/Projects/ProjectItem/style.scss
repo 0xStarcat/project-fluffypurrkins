@@ -2,12 +2,13 @@
 
 .project-item {
   align-items: flex-start;
+  cursor: pointer;
   @include font-scale(1.8)
   height: 60px;
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
-  line-height: 60px;
+  width: 100%;
 
   .border-container {
     display: flex;
@@ -33,5 +34,22 @@
 
   .bottom-border {
     border-left: dotted 2px black;
+  }
+
+  .project-item-text {
+    box-shadow: 0px 1px 2px 0px gray;
+    line-height: 40px;
+    padding: 10px;
+    width: 100%;
+  }
+
+}
+
+.project-item.selected {
+  .project-item-text {
+    background-color: black;
+    box-shadow: inset 0px 0px 6px 0px white;
+    color: white;
+
   }
 }

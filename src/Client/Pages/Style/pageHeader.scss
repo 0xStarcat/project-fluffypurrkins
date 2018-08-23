@@ -48,10 +48,6 @@ $desktop-header-height: 60px;
 
   li.header-link.active { border-bottom: 1px solid black; }
 
-  li.header-link.active:hover { border-bottom: 1px dotted black; }
-
-  li:hover{ border-bottom: 1px dotted black; }
-
   li.header-link {
     padding: 0px;
   }
@@ -172,7 +168,9 @@ $desktop-header-height: 60px;
         transform: translateY(0%);
       }
 
-      height: $desktop-header-height;
+      li.header-link.active:hover { border-bottom: 1px dotted black; }
+
+      li:hover{ border-bottom: 1px dotted black; }
 
       .small-links-row {
         line-height: $desktop-header-height;
