@@ -6,6 +6,7 @@ import Contact from './Pages/Contact.react'
 import CV from './Pages/CV.react'
 import Analytics from './Pages/Analytics.react'
 import Canary from './Pages/Canary.react'
+import Projects from './Pages/Projects.react'
 
 export default class Routes extends Component {
   render() {
@@ -18,6 +19,7 @@ export default class Routes extends Component {
           <Route path="/cv" component={CV} />
           <Route path="/analytics" component={Analytics} />
           <Route path="/canary" component={Canary} />
+          <Route path="/projects" component={Projects}/>
         </div>
       </Router>
     )

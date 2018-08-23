@@ -30,6 +30,7 @@ export default (state = initialState, action) => {
     }
 
     case actions.HANDLE_READ_PROJECTS_DATA: {
+      console.log(action.data)
       return { ...state, projects: action.data, awaitingResponse: false }
     }
 

@@ -40,12 +40,6 @@ export default class WindowSizer extends Component {
   }
   componentDidMount() {
     this.assignCoordinatesToLetters()
-    this.refs.secret.style.cssText = `cursor: help;
-      position: absolute;
-      top: 10%;
-      left: 40%;
-      font-size: 3rem;
-      color: transparent;`
 
     window.addEventListener('resize', this.assignCoordinatesToLetters)
     window.addEventListener('keydown', this.hideFace)
@@ -166,41 +160,6 @@ export default class WindowSizer extends Component {
           ref="titleNameElement"
           restartPlayback={!this.props.play ? this.restartPlayback : null}
         />
-        <div>
-          <div>
-            <div>
-              <please>
-                <clean>
-                  <your>
-                    <computer>
-                      <screen>
-                        <secret ref="secret">
-                          <span
-                            onMouseOver={startHoverEffect}
-                            onMouseMove={this.props.shadow ? hoverShadow : mirroredHoverShadow}
-                            onMouseOut={hideShadow}
-                            onClick={this.shadowMode}
-                          >
-                            Hello from the other side.
-                          </span>
-                          <span
-                            className="hiddenText mirrored suppressed"
-                            onMouseOver={startHoverEffect}
-                            onMouseMove={hoverShadow}
-                            onMouseOut={hideShadow}
-                            onClick={this.shadowMode}
-                          >
-                            Hello from the other side.
-                          </span>
-                        </secret>
-                      </screen>
-                    </computer>
-                  </your>
-                </clean>
-              </please>
-            </div>
-          </div>
-        </div>
       </div>
     )
   }

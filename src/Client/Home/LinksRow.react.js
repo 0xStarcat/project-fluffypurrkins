@@ -1,57 +1,46 @@
-import React, { Component } from 'react'
-import {startHoverEffect, hoverShadow, mirroredHoverShadow, hideShadow } from './lib/hover.react'
+import React from 'react'
 
-import { Link } from 'react-router-dom'
+import { startHoverEffect, hoverShadow, mirroredHoverShadow, hideShadow } from './lib/hover.react'
 
-export default class LinksRow extends Component {
+import MenuLink from './MenuLink'
+
+export default class LinksRow extends React.Component {
   render() {
-    return (
-      <div className='links-wrapper'>
+    return ( <div className='links-wrapper'>
 
-        <Link to={this.props.shadow ? '/analytics' : '/about'}>
-          {this.props.shadow ? 'Analytics' : 'About'}
-          <span
-            className='hiddenText mirrored'
-            onMouseOver={startHoverEffect}
-            onMouseMove={mirroredHoverShadow}
-            onMouseOut={hideShadow}>
-          {this.props.shadow ? 'Analytics' : 'About'}
-          </span>
-        </Link>
-        <span className='divider'>{this.props.shadow ? '' : ' | '}</span>
-        <a href={this.props.shadow ? '' : 'https://catxmachina.xyz/'} target='_blank'>
-          {this.props.shadow ? '' : 'Blog'}
-          <span
-            className='hiddenText mirrored'
-            onMouseOver={startHoverEffect}
-            onMouseMove={mirroredHoverShadow}
-            onMouseOut={hideShadow}>
-          {this.props.shadow ? '' : 'Blog'}
-          </span>
-        </a>
-        <span className='divider'>{this.props.shadow ? '' : ' | '}</span>
-        <Link to={this.props.shadow ? '' : '/cv'}>
-          {this.props.shadow ? '' : 'C.V.'}
-          <span
-            className='hiddenText mirrored'
-            onMouseOver={startHoverEffect}
-            onMouseMove={mirroredHoverShadow}
-            onMouseOut={hideShadow}>
-          {this.props.shadow ? '' : 'C.V.'}
-          </span>
-        </Link>
-        <span className='divider'> | </span>
-        <Link to={this.props.shadow ? '#' : '/contact'}>
-          {this.props.shadow ? 'Other Blog' : 'Contact'}
-          <span
-            className='hiddenText mirrored'
-            onMouseOver={startHoverEffect}
-            onMouseMove={mirroredHoverShadow}
-            onMouseOut={hideShadow}>
-          {this.props.shadow ? 'Other Blog' : 'Contact'}
-          </span>
-        </Link>
-      </div>
-    )
+      <MenuLink
+        href="/about"
+        startHoverEffect={startHoverEffect}
+        mirroredHoverShadow={mirroredHoverShadow}
+        hideShadow={hideShadow}
+        linkText="About"/>
+      <span className='divider'>{' | '}</span>
+      <a href={'https://catxmachina.xyz/'} target='_blank'>
+        {'Blog'}
+        <span
+          className='hiddenText mirrored'
+          onMouseOver={startHoverEffect}
+          onMouseMove={mirroredHoverShadow}
+          onMouseOut={hideShadow}>
+          {'Blog'}
+        </span>
+      </a>
+      <span className='divider'>{' | '}</span>
+      <MenuLink
+        href="/cv"
+        startHoverEffect={startHoverEffect}
+        mirroredHoverShadow={mirroredHoverShadow}
+        hideShadow={hideShadow}
+        linkText="C.V."/>
+      <span className='divider'>
+        {' | '}
+      </span>
+      <MenuLink
+        href="/contact"
+        startHoverEffect={startHoverEffect}
+        mirroredHoverShadow={mirroredHoverShadow}
+        hideShadow={hideShadow}
+        linkText="Contact"/>
+    </div> )
   }
 }
