@@ -115,3 +115,10 @@ code {
     #myName { max-width: 220px; }
   }
 }
+
+@media #{$phoneScreen} {
+  #myName { @include font-scale(5) }
+  .text-wrapper {
+    @include font-scale(4);
+  }
+}
