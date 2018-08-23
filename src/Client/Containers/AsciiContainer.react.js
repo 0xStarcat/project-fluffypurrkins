@@ -1,11 +1,10 @@
-import { connect } from 'react-redux'
-import { stopPlayback, startPlayback, disableShadow, enableShadow } from '../Actions/index.js'
+import {connect} from 'react-redux'
+import {stopPlayback, startPlayback, disableShadow, enableShadow} from '../Actions/index.js'
 import WindowSizer from '../Home/WindowSizer.react'
 
-const mapStateToProps = (state) => ({
-  play: state.play,
-  shadow: state.shadow
-})
+const mapStateToProps = (state) => {
+  return {play: state.play, shadow: state.shadow}
+}
 
 const mapDispatchToProps = {
   stopPlayback: stopPlayback,
@@ -14,9 +13,6 @@ const mapDispatchToProps = {
   enableShadow: enableShadow
 }
 
-const AsciiContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(WindowSizer)
+const AsciiContainer = connect(mapStateToProps, mapDispatchToProps)(WindowSizer)
 
 export default AsciiContainer

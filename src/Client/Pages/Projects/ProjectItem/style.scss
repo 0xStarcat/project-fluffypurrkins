@@ -1,0 +1,37 @@
+@import '../../../style.scss';
+
+.project-item {
+  align-items: flex-start;
+  @include font-scale(1.8)
+  height: 60px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  line-height: 60px;
+
+  .border-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 20px;
+    height: 100%;
+    margin-right: 20px;
+  }
+
+  .list-border {
+    box-sizing: border-box;
+    height: 50%;
+    width: 100%;
+  }
+
+  .top-border {
+    border-left: dotted 2px black;
+    border-bottom: dotted 2px black;
+
+  }
+
+  .bottom-border {
+    border-left: dotted 2px black;
+  }
+}

@@ -14,6 +14,20 @@ $desktop-header-height: 60px;
   text-align: left;
   z-index: 1;
 
+  nav ul {
+    transform: translateY(0);
+    transition: all .5s;
+  }
+  nav li {
+    flex: none;
+    width: 100%;
+  }
+  nav input[type="checkbox"]:checked + ul{
+    transform: translateY(-100%);
+    width: 100%;
+    transition: all .5s;
+  }
+
   .header-link-name {
     @include font-scale(4);
     line-height: $mobile-header-height;
@@ -50,6 +64,7 @@ $desktop-header-height: 60px;
     position: fixed;
     width: 100%;
     left: 0;
+    top: 0;
   }
   nav ul,
   nav li {
@@ -59,8 +74,8 @@ $desktop-header-height: 60px;
     text-decoration: none;
     color: inherit;
     display: block;
-    font-size: 5rem;
-    margin: 40px 0;
+    @include font-scale(2);
+    margin: 10px 0;
   }
   nav li {
     position: relative;
@@ -68,26 +83,38 @@ $desktop-header-height: 60px;
     color: black;
     text-align: center;
   }
+
+  /* Nav Icon */
   nav input,
   nav label {
     display: none;
-    width: 80px;
-    height: 80px;
-    background: #555;
-    color: #fff;
+    width: 50px;
+    height: 50px;
+    background: transparent;
     text-align: center;
     line-height: 36px;
     font-size: 1.6rem;
     border-radius: 4px;
+
+    path {
+      stroke: black;
+      fill: black;
+    }
   }
+
+
   nav label{position: absolute; top: 25%; right: 5%; transition: .4s;}
-  nav label:hover{cursor:pointer;}
-  nav label:before{
-    font-size: 44px;
-    content: "\f0c9";
-    text-align: center;
-    line-height: 80px;
+
+  nav label:hover,
+  nav label:hover{
+    cursor:pointer;
+
+    path {
+      fill: gray;
+      stroke: gray;
+    }
   }
+
 
   nav ul {
     transition: all .5s;
@@ -107,19 +134,21 @@ $desktop-header-height: 60px;
 
   @media #{$desktopScreen} {
     @media #{$desktopMedWindow} {
-
       nav ul {
         display: flex;
         flex-wrap: wrap;
         max-width: 1080px;
         margin: 0 auto;
         position: relative;
-
+        height: 60px;
+        align-items: center;
       }
+
       nav ul,
       nav li {
         flex: 1;
       }
+
       nav a {
         text-decoration: none;
         color: inherit;
@@ -161,52 +190,36 @@ $desktop-header-height: 60px;
         float: right;
       }
 
-    @media #{$desktopSmWindow} {
-      .header-link-name {
-        @include font-scale(3);
-        width: 240px;
+      @media #{$desktopSmWindow} {
+        .header-link-name {
+          @include font-scale(3);
+          width: 240px;
+        }
+        nav input,
+        nav label {
+          width: 36px;
+          height: 36px;
+          background: #555;
+          color: #fff;
+          text-align: center;
+          line-height: 36px;
+          font-size: 1.6rem;
+          border-radius: 4px;
+        }
+        nav label{position: absolute; top: 25%; right: 5%; transition: .4s;}
+        nav label:hover{cursor:pointer;}
+        nav label:before{
+          font-size: 24px;
+          content: "\f0c9";
+          text-align: center;
+        }
       }
-      nav input,
-      nav label {
-        width: 36px;
-        height: 36px;
-        background: #555;
-        color: #fff;
-        text-align: center;
-        line-height: 36px;
-        font-size: 1.6rem;
-        border-radius: 4px;
-      }
-      nav label{position: absolute; top: 25%; right: 5%; transition: .4s;}
-      nav label:hover{cursor:pointer;}
-      nav label:before{
-        font-size: 24px;
-        content: "\f0c9";
-        text-align: center;
+      @media #{$desktopTinyWindow} {
+        .header-link-name {
+          width: 150px;
+          @include font-scale(2);
+        }
       }
     }
-    @media #{$desktopTinyWindow} {
-      .header-link-name {
-        width: 150px;
-        @include font-scale(2);
-      }
-    }
-  }
-}
-  @media screen and (max-width: 768px) {
-    nav ul {
-      transform: translateY(0);
-      transition: all .5s;
-    }
-    nav li {
-      flex: none;
-      width: 100%;
-    }
-    nav input[type="checkbox"]:checked + ul{
-      transform: translateY(-100%);
-      width: 100%;
-      transition: all .5s;
-    }
-    nav label { display: block; }
   }
 }
