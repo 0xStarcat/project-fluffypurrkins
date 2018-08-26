@@ -1,11 +1,11 @@
 var webpack = require('webpack')
 var path = require('path')
-const autoprefixer = require('autoprefixer')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+var autoprefixer = require('autoprefixer')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 var BUILD_DIR = path.resolve(__dirname, 'Build')
-var APP_DIR = path.resolve(__dirname, 'src/Client/')
-var DEVELOPMENT_DIR = path.join(__dirname, 'src/Client/Build')
+var APP_DIR = path.resolve(__dirname, 'src/')
+var DEVELOPMENT_DIR = path.join(__dirname, 'src/Build')
 module.exports = {
   entry: APP_DIR + '/index.jsx',
   output: {
@@ -71,9 +71,7 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-
-  ],
+  plugins: [],
   resolve: {
     alias: {
       react: path.resolve(__dirname, './node_modules/react'),
