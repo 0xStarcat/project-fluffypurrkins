@@ -12,6 +12,8 @@ $phoneScreen: 'only screen and (max-width: 768px) and (orientation: portrait)';
 //Typography
 $baseFontSize: 10px;
 
+$projectBorder: dotted 1px black;
+
 @mixin font-scale($scale) {
   font-size: $baseFontSize * $scale;
   line-height: 150%;

@@ -1,21 +1,38 @@
 @import '../../../style.scss';
+$border-container-width: 20px;
 
 .project-item {
-  align-items: flex-start;
+  a {
+    border-bottom: 0;
+    padding: 0;
+    text-decoration: underline;
+  }
+
+  align-items: center;
+  box-sizing: border-box;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
   @include font-scale(1.8)
   height: 60px;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: row;
+  justify-content: center;
+  padding: 8px 0;
   width: 100%;
+
+  .inline-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    width: 100%;
+
+  }
 
   .border-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    width: 20px;
+    width: $border-container-width;
     height: 100%;
     margin-right: 20px;
   }
@@ -27,29 +44,119 @@
   }
 
   .top-border {
-    border-left: dotted 2px black;
-    border-bottom: dotted 2px black;
+    border-left: $projectBorder;
+    border-bottom: $projectBorder;
 
   }
 
   .bottom-border {
-    border-left: dotted 2px black;
+    border-left: $projectBorder;
   }
 
   .project-item-text {
-    box-shadow: 0px 1px 2px 0px gray;
+    box-shadow: 2px 0px 2px 0px gray;
     line-height: 40px;
     padding: 10px;
     width: 100%;
   }
 
+  .project-item-full {
+    border-left: 1px dotted white;
+    box-sizing: border-box;
+    height: 0px;
+    overflow: hidden;
+    padding-left: 50px;
+
+  }
+
+  .project-item-full-wrapper {
+    outline: 0;
+  }
+
+  .project-item-full-inner-content {
+    box-sizing: border-box;
+    border-left: 1px dotted white;
+  }
+  .project-image {
+    width: 100%;
+  }
+
+
+  .project-content {
+    display: block;
+    padding: 50px;
+
+
+  }
 }
 
 .project-item.selected {
+  height: auto;
+  overflow: visible;
+  width: calc(100vw + #{$border-container-width});
+  padding: 0;
+
   .project-item-text {
     background-color: black;
-    box-shadow: inset 0px 0px 6px 0px white;
     color: white;
+  }
+
+  .project-item-full-wrapper {
+    background-color: black;
+    color: white;
+    margin-left: -132px;
+
+  }
+
+  .project-item-full {
+    border-left: $projectBorder;
+    box-sizing: border-box;
+    height: 100%;
+    width: calc(100vw + 40px);
+  }
+
+  .no-border {
+    border: 1px solid transparent;
+  }
+}
+
+
+@media #{$desktopScreen} {
+  @media #{$desktopMedWindow} {
+    .project-item {
+      .inline-wrapper {
+
+      }
+    }
+    .project-item.selected {
+      // width: 100%;
+
+      .project-item-full-wrapper {
+        width: 100%;
+        padding-left: 32px;
+      }
+
+      .project-item-full {
+        width: 100%;
+        margin-left: 0px;
+        // padding-left: 38px;
+        border-left: 1px dotted white;
+      }
+
+      .project-image {
+        box-sizing: border-box;
+        display: block;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 40px 0;
+      }
+
+      .project-content {
+        border-left: 0;
+
+
+      }
+    }
 
   }
 }
