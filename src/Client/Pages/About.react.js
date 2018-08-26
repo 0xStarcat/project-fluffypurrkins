@@ -44,9 +44,8 @@ class About extends Component {
               </p>
               <br />
               <p>
-                Please
-                <Link to="/contact">reach out</Link>
-                if you'd like to build a web application or put on a workshop.
+                Please <Link to="/contact">reach out</Link> if you'd like to build a web application
+                or put on a workshop.
               </p>
             </div>
             <br />
