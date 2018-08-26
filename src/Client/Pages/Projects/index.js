@@ -16,6 +16,7 @@ class Projects extends React.Component {
     }
 
     this.setActive = this.setActive.bind(this)
+    this.closeActive = this.closeActive.bind(this)
   }
 
   componentDidMount() {
@@ -25,6 +26,12 @@ class Projects extends React.Component {
   setActive(index) {
     this.setState({
       activeProject: index
+    })
+  }
+
+  closeActive() {
+    this.setState({
+      activeProject: -1
     })
   }
 
@@ -38,6 +45,7 @@ class Projects extends React.Component {
           return (
             <ProjectItem
               active={this.state.activeProject === index}
+              closeActive={this.closeActive}
               index={index}
               key={`Project-${index}`}
               last={index === this.props.projects.length - 1}

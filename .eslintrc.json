@@ -8,8 +8,10 @@
     }
   },
   "rules": {
+    "prettier/prettier": "error",
     "no-console": 0,
     "quotes": ["warn", "single", { "avoidEscape": true }],
+    "jsx-quotes": ["warn", "prefer-double"],
     "semi": ["warn", "never"],
     "react/prop-types": 0,
     "react/no-unescaped-entities": [1, { "forbid": [] }],
@@ -21,5 +23,5 @@
     "es6": true
   },
   "extends": ["eslint:recommended", "plugin:react/recommended"],
-  "plugins": ["react"]
+  "plugins": ["react", "prettier"]
 }

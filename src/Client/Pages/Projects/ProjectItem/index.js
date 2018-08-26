@@ -7,18 +7,18 @@ import './style.scss'
 const ProjectItem = props => {
   const selectItem = e => {
     e.preventDefault()
-    props.setActive(props.index)
+    if (props.active) {
+      props.closeActive()
+    } else {
+      props.setActive(props.index)
+    }
   }
 
   return (
-    <div
-      className={classnames('project-item', { selected: props.active })}
-      onTouchStart={selectItem}
-      onClick={selectItem}
-    >
-      <div className="inline-wrapper">
+    <div className={classnames('project-item', { selected: props.active })}>
+      <div className="inline-wrapper" onTouchStart={selectItem} onClick={selectItem}>
         <div className="border-container">
-          <div className={`list-border top-border`} />
+          <div className={'list-border top-border'} />
           {props.last ? null : <div className="list-border bottom-border" />}
         </div>
         <div className="project-item-text">{props.project.title}</div>
