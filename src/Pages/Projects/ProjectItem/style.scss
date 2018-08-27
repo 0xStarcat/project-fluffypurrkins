@@ -2,29 +2,26 @@
 $border-container-width: 20px;
 
 .project-item {
-  a {
-    border-bottom: 0;
-    padding: 0;
-    text-decoration: underline;
-  }
-
   align-items: center;
   box-sizing: border-box;
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   @include font-scale(1.8)
   height: 60px;
   justify-content: center;
-  padding: 8px 0;
   width: 100%;
 
+  .project-item-text {
+    font-size: 20px;
+  }
+
   .inline-wrapper {
+    align-items: center;
+    cursor: pointer;
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
     width: 100%;
-
   }
 
   .border-container {
@@ -46,7 +43,6 @@ $border-container-width: 20px;
   .top-border {
     border-left: $projectBorder;
     border-bottom: $projectBorder;
-
   }
 
   .bottom-border {
@@ -54,18 +50,19 @@ $border-container-width: 20px;
   }
 
   .project-item-text {
-    box-shadow: 2px 0px 2px 0px gray;
-    line-height: 40px;
+    box-shadow: 0px 0px 2px 0px gray;
+    box-sizing: border-box;
+    height: 40px;
     padding: 10px;
     width: 100%;
   }
 
   .project-item-full {
-    border-left: 1px dotted white;
     box-sizing: border-box;
-    height: 0px;
+    height: 0;
     overflow: hidden;
-    padding-left: 50px;
+    transform: scaleY(0);
+    transition: transform 0.5s ease-in-out;
 
   }
 
@@ -73,20 +70,24 @@ $border-container-width: 20px;
     outline: 0;
   }
 
-  .project-item-full-inner-content {
-    box-sizing: border-box;
-    border-left: 1px dotted white;
-  }
   .project-image {
     width: 100%;
   }
 
-
   .project-content {
     display: block;
     padding: 50px;
+  }
 
+  .project-link {
+    border-bottom: 0;
+    padding: 0;
+    text-decoration: underline;
+  }
 
+  .project-content-item {
+    font-size: 22px;
+    margin: 20px 0;
   }
 }
 
@@ -96,6 +97,10 @@ $border-container-width: 20px;
   width: calc(100vw + #{$border-container-width});
   padding: 0;
 
+  .inline-wrapper {
+    height: 40px;
+  }
+
   .project-item-text {
     background-color: black;
     color: white;
@@ -103,44 +108,40 @@ $border-container-width: 20px;
 
   .project-item-full-wrapper {
     background-color: black;
+    display: block;
     color: white;
-    margin-left: -132px;
-
+    margin-left: -134px;
   }
 
   .project-item-full {
-    border-left: $projectBorder;
     box-sizing: border-box;
-    height: 100%;
+    height: auto;
+    transform: scaleY(1);
+    padding: 20px 20px 20px 54px;
     width: calc(100vw + 40px);
   }
-
-  .no-border {
-    border: 1px solid transparent;
-  }
 }
-
 
 @media #{$desktopScreen} {
   @media #{$desktopMedWindow} {
     .project-item {
-      .inline-wrapper {
-
+      .project-item-text:hover {
+        background-color: black;
+        color: white;
       }
     }
-    .project-item.selected {
-      // width: 100%;
 
+    .project-item.selected {
       .project-item-full-wrapper {
-        width: 100%;
         padding-left: 32px;
+        width: 100%;
       }
 
       .project-item-full {
-        width: 100%;
-        margin-left: 0px;
-        // padding-left: 38px;
         border-left: 1px dotted white;
+        margin-left: 0px;
+        padding: 0 20px 0 50px;
+        width: 100%;
       }
 
       .project-image {
@@ -151,12 +152,26 @@ $border-container-width: 20px;
         padding: 40px 0;
       }
 
-      .project-content {
-        border-left: 0;
-
+      .project-item-content-wrapper {
+        align-items: center;
+        border-left: 1px dotted white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 
       }
-    }
 
+      .project-item-content-wrapper.no-border{
+        border-left: 1px transparent solid;
+      }
+
+      .project-item-content {
+        box-sizing: border-box;
+        height: auto;
+        max-width: 800px;
+        padding: 40px;
+        width: 100%;
+      }
+    }
   }
 }

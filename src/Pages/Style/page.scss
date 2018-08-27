@@ -2,7 +2,7 @@
 
 .page {
   @include font-scale(2.5)
-  margin: 140px 40px;
+  margin: 140px 20px;
 
   section {
     width: 90%;
@@ -84,7 +84,10 @@
 
   @media #{$desktopScreen} {
     @media #{$desktopMedWindow} {
-      margin: 120px 40px;
+      .page {
+        margin: 120px 40px;
+      }
+
       li {
         padding-left: 38px;
         text-indent: -38px;
