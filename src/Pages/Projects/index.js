@@ -39,21 +39,23 @@ class Projects extends React.Component {
     console.log(this.props.projects)
     if (!this.props.projects) return null
     return (
-      <div id="projects" className="page">
+      <div id="projects">
         <PageHeader />
-        {this.props.projects.map((project, index) => {
-          return (
-            <ProjectItem
-              active={this.state.activeProject === index}
-              closeActive={this.closeActive}
-              index={index}
-              key={`Project-${index}`}
-              last={index === this.props.projects.length - 1}
-              project={project}
-              setActive={this.setActive}
-            />
-          )
-        })}
+        <div className="page">
+          {this.props.projects.map((project, index) => {
+            return (
+              <ProjectItem
+                active={this.state.activeProject === index}
+                closeActive={this.closeActive}
+                index={index}
+                key={`Project-${index}`}
+                last={index === this.props.projects.length - 1}
+                project={project}
+                setActive={this.setActive}
+              />
+            )
+          })}
+        </div>
       </div>
     )
   }

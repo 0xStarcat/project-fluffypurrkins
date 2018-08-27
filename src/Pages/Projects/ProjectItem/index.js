@@ -29,16 +29,23 @@ const ProjectItem = props => {
             <div className="project-item-content">
               {props.project.mainImage && (
                 <img
-                  alt="NYC Building Monitor image"
+                  alt="Project Image"
                   className="project-image project-content-item"
                   src={`https://cms.starcat.xyz${props.project.mainImage.url}`}
                 />
               )}
-              <a className="project-link project-content-item" href={`${props.project.link}`}>
+              <a
+                className="project-link project-content-item"
+                href={`${props.project.link}`}
+                target="_blank"
+              >
                 View this project
               </a>
               {props.project.generalDescription && (
                 <p className="project-content-item">{props.project.generalDescription}</p>
+              )}
+              {props.project.technicalDescription && (
+                <pre className="project-content-item">{props.project.technicalDescription}</pre>
               )}
             </div>
           </div>

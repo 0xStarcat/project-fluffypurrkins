@@ -2,7 +2,7 @@
 $border-container-width: 20px;
 
 .project-item {
-  align-items: center;
+  align-items: flex-start;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -86,16 +86,20 @@ $border-container-width: 20px;
   }
 
   .project-content-item {
+    display: block;
     font-size: 22px;
+    height: auto;
     margin: 20px 0;
+    white-space: pre-wrap;
   }
 }
 
 .project-item.selected {
   height: auto;
+  max-width: none;
   overflow: visible;
-  width: calc(100vw + #{$border-container-width});
   padding: 0;
+  width: calc(100vw + #{$border-container-width});
 
   .inline-wrapper {
     height: 40px;
@@ -110,14 +114,14 @@ $border-container-width: 20px;
     background-color: black;
     display: block;
     color: white;
-    margin-left: -134px;
+    margin-left: -60px;
   }
 
   .project-item-full {
     box-sizing: border-box;
     height: auto;
     transform: scaleY(1);
-    padding: 20px 20px 20px 54px;
+    padding: 20px 20px 20px 60px;
     width: calc(100vw + 40px);
   }
 }
@@ -125,6 +129,9 @@ $border-container-width: 20px;
 @media #{$desktopScreen} {
   @media #{$desktopMedWindow} {
     .project-item {
+      .inline-wrapper{
+        width: 600px;
+      }
       .project-item-text:hover {
         background-color: black;
         color: white;
@@ -132,6 +139,9 @@ $border-container-width: 20px;
     }
 
     .project-item.selected {
+      .inline-wrapper{
+        width: 100%;
+      }
       .project-item-full-wrapper {
         padding-left: 32px;
         width: 100%;
@@ -140,7 +150,7 @@ $border-container-width: 20px;
       .project-item-full {
         border-left: 1px dotted white;
         margin-left: 0px;
-        padding: 0 20px 0 50px;
+        padding: 0 20px 0 27px;
         width: 100%;
       }
 
