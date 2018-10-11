@@ -124,6 +124,10 @@ $border-container-width: 20px;
     padding: 20px 20px 20px 60px;
     width: calc(100vw + 40px);
   }
+
+  .project-item-content {
+    height: fit-content;
+  }
 }
 
 @media #{$desktopScreen} {
