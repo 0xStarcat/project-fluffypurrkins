@@ -44,8 +44,8 @@ class About extends Component {
               </p>
               <br />
               <p>
-                Currently I operate a sole propriotorship / LLC for technology product development
-                and consulting called Data Automatica.
+                Currently I operate an LLC for technology product development and consulting called
+                Data Automatica.
               </p>
               <br />
               <p>
