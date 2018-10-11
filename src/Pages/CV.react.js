@@ -12,7 +12,7 @@ export default class CV extends Component {
             <h2 className="section-header">Work Experience</h2>
             <div className="sub-section">
               <h4 className="title-header">
-                Data Automatica
+                Data Automatica, LLC
                 <span className="sub-header"> - current</span>
               </h4>
               <p className="sub-header">Independent tech consultant</p>
@@ -57,21 +57,24 @@ export default class CV extends Component {
                   <li>Ruby on Rails</li>
                   <li>Node.js</li>
                 </ul>
+                <ul>
+                  <li>Flask</li>
+                </ul>
               </div>
             </div>
             <div className="sub-section">
               <h4 className="title-header">DevOps | Architecture | Databases</h4>
               <div className="skill-lists">
                 <ul>
-                  <li>Git / Github</li>
-                  <li>Travis & Continuous Integration</li>
-                  <li>NGINX</li>
-                  <li>Ubuntu & Debian servers</li>
+                  <li>Git / Github / version control</li>
+                  <li>Travis & continuous Integration</li>
+                  <li>Docker</li>
+                  <li>Linux system administration</li>
                 </ul>
                 <ul>
                   <li>Amazon Web Services</li>
                   <li>Heroku</li>
-                  <li>PostgreSQL</li>
+                  <li>SQL databases</li>
                   <li>MongoDB</li>
                 </ul>
               </div>
@@ -82,20 +85,25 @@ export default class CV extends Component {
                 <ul>
                   <li>APIs</li>
                   <li>Data security & encryption</li>
-                  <li>Testing</li>
+                  <li>Regression testing and TDD</li>
                   <li>Data scraping</li>
                   <li>Data visualization & maps</li>
                 </ul>
                 <ul>
                   <li>CMS & static-site generators</li>
-                  <li>Hosting & Web Server Admin</li>
-                  <li>Web-design and UX</li>
-                  <li>Project planning & Agile</li>
+                  <li>Product/UX design and research</li>
+                  <li>Project life-cycle planning</li>
                   <li>Consentful, inclusive, accessible products</li>
                 </ul>
               </div>
             </div>
             <hr />
+          </section>
+          <section>
+            <h2 className="section-header">Recent clients</h2>
+            <div className="sub-section">
+              <p className="sub-header">Please inquire for specifics.</p>
+            </div>
           </section>
           <section>
             <h2 className="section-header">Education</h2>
