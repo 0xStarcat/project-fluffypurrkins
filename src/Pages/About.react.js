@@ -24,13 +24,13 @@ class About extends Component {
             <div className="sub-section text-body">
               <p>
                 I'm a web developer and technology consultant based in Brooklyn, NY. Some things I
-                like are an internet that respects all people, open and consensual communities, data
-                activism, comics, video games, music, and rock climbing.
+                enjoy are an internet that respects all people, open and consensual communities,
+                data activism, comics, video games, music, and rock climbing.
               </p>
               <br />
               <p>
-                I enjoy doing projects that align with my values for a more just and egalitarian
-                world, teaching people about technology and coding, and helping people with their
+                I enjoy projects that align with my values for a more just and egalitarian world,
+                teaching people about technology and coding, and helping people with their
                 independent projects. Before this, I was a software engineer at{' '}
                 <a
                   href="https://everplans.com"
@@ -41,6 +41,11 @@ class About extends Component {
                   Everplans
                 </a>
                 , an emergency room nurse, and I have a B.A. in political science.
+              </p>
+              <br />
+              <p>
+                Currently I operate a sole propriotorship / LLC for technology product development
+                and consulting called Data Automatica.
               </p>
               <br />
               <p>
