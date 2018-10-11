@@ -87,7 +87,7 @@ $border-container-width: 20px;
 
   .project-content-item {
     display: block;
-    font-size: 22px;
+    font-size: 24px;
     height: auto;
     margin: 20px 0;
     white-space: pre-wrap;
@@ -135,6 +135,10 @@ $border-container-width: 20px;
       .project-item-text:hover {
         background-color: black;
         color: white;
+      }
+
+      .project-content-item {
+        font-size: 22px;
       }
     }
 
