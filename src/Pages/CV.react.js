@@ -15,7 +15,7 @@ export default class CV extends Component {
                 Data Automatica, LLC
                 <span className="sub-header"> - current</span>
               </h4>
-              <p className="sub-header">Independent tech consultant</p>
+              <p className="sub-header">Founder, Software Engineer</p>
             </div>
             <div className="sub-section">
               <h4 className="title-header">
