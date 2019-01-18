@@ -44,8 +44,8 @@ class About extends Component {
               </p>
               <br />
               <p>
-                Currently I operate an LLC for technology product development and consulting called
-                Data Automatica.
+                I'm currently a founder / software engineer at Data Automatica, a tech collective
+                and consultancy.
               </p>
               <br />
               <p>
@@ -54,7 +54,7 @@ class About extends Component {
             </div>
             <br />
           </section>
-          <section className="writing">
+          {/* <section className="writing">
             <h3 className="section-header">Writing</h3>
             <div className="sub-section">
               <p>
@@ -137,7 +137,7 @@ class About extends Component {
               </p>
             </div>
             <hr />
-          </section>
+          </section> */}
         </div>
       </div>
     )
