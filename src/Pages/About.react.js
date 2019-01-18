@@ -43,10 +43,7 @@ class About extends Component {
                 , an emergency room nurse, and I have a B.A. in political science.
               </p>
               <br />
-              <p>
-                I'm currently a founder / software engineer at Data Automatica, a tech collective
-                and consultancy.
-              </p>
+              <p>Currently, I'm a founder / software engineer at Data Automatica.</p>
               <br />
               <p>
                 Please <Link to="/contact">reach out</Link> if you'd like to collaborate.
