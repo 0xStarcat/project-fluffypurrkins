@@ -23,15 +23,15 @@ class About extends Component {
             <h2 className="section-header">Hi, my name is Jade.</h2>
             <div className="sub-section text-body">
               <p>
-                I'm a web developer and technology consultant based in Brooklyn, NY. Some things I
-                enjoy are an internet that respects all people, open and consensual communities,
-                data activism, comics, video games, music, and rock climbing.
+                I'm an engineer & designer based in Brooklyn, NY. I enjoy automating boring things,
+                work that doesn't reinforce non-consensual hierarchies, open and inclusive
+                communities, comics, video games, and rock climbing.
               </p>
               <br />
               <p>
-                I enjoy projects that align with my values for a more just and egalitarian world,
+                I like projects that align with my values for a more just and egalitarian world,
                 teaching people about technology and coding, and helping people with their
-                independent projects. Before this, I was a software engineer at{' '}
+                independent projects. Formerly, I was a software engineer at{' '}
                 <a
                   href="https://everplans.com"
                   target="_blank"
@@ -40,10 +40,15 @@ class About extends Component {
                 >
                   Everplans
                 </a>
-                , an emergency room nurse, and I have a B.A. in political science.
+                , an emergency room nurse, and have a B.A. in political science.
               </p>
               <br />
-              <p>Currently, I'm a founder / software engineer at Data Automatica.</p>
+              <p>
+                Currently, I'm freelancing as{' '}
+                <a href="https://data.automatica.love" target="_blakn">
+                  Data Automatica.
+                </a>
+              </p>
               <br />
               <p>
                 Please <Link to="/contact">reach out</Link> if you'd like to collaborate.
