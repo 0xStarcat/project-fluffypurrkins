@@ -35,7 +35,7 @@ export default class LinksRow extends React.Component {
             {'Blog'}
           </span>
         </a> */}
-        <span className="divider">{' | '}</span>
+        {/* <span className="divider">{' | '}</span> */}
         <MenuLink
           href="/cv"
           startHoverEffect={startHoverEffect}
