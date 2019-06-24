@@ -24,7 +24,7 @@ export default class LinksRow extends React.Component {
           linkText="Projects"
         />
         <span className="divider">{' | '}</span>
-        <a href={'https://catxmachina.xyz/'} target="_blank">
+        {/* <a href={'https://catxmachina.xyz/'} target="_blank">
           {'Blog'}
           <span
             className="hiddenText mirrored"
@@ -34,7 +34,7 @@ export default class LinksRow extends React.Component {
           >
             {'Blog'}
           </span>
-        </a>
+        </a> */}
         <span className="divider">{' | '}</span>
         <MenuLink
           href="/cv"

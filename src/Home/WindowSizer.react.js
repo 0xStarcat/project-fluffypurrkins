@@ -17,7 +17,7 @@ export default class WindowSizer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      sentence: 'About | Blog | C.V. | Contact'
+      sentence: 'About | C.V. | Contact'
     }
     this.assignCoordinatesToLetters = this.assignCoordinatesToLetters.bind(this)
     this.appendLinks = this.appendLinks.bind(this)
