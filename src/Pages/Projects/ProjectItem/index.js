@@ -44,9 +44,9 @@ const ProjectItem = props => {
               {props.project.generalDescription && (
                 <p className="project-content-item">{props.project.generalDescription}</p>
               )}
-              {props.project.technicalDescription && (
+              {/* {props.project.technicalDescription && (
                 <pre className="project-content-item">{props.project.technicalDescription}</pre>
-              )}
+              )} */}
             </div>
           </div>
         </div>

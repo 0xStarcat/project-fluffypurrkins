@@ -39,13 +39,13 @@ export default class CV extends Component {
               <div className="skill-lists">
                 <ul>
                   <li>HTML</li>
-                  <li>Markdown</li>
                   <li>CSS/SASS</li>
                 </ul>
                 <ul>
                   <li>Javascript / ES6</li>
                   <li>Ruby</li>
                   <li>Python</li>
+                  <li>C#</li>
                 </ul>
               </div>
             </div>
@@ -59,6 +59,7 @@ export default class CV extends Component {
                 </ul>
                 <ul>
                   <li>Flask</li>
+                  <li>Django</li>
                 </ul>
               </div>
             </div>
@@ -67,12 +68,10 @@ export default class CV extends Component {
               <div className="skill-lists">
                 <ul>
                   <li>Git / Github / version control</li>
-                  <li>Travis & continuous Integration</li>
                   <li>Docker</li>
                   <li>Linux system administration</li>
                 </ul>
                 <ul>
-                  <li>Amazon Web Services</li>
                   <li>Heroku</li>
                   <li>SQL databases</li>
                   <li>MongoDB</li>
@@ -84,26 +83,18 @@ export default class CV extends Component {
               <div className="skill-lists">
                 <ul>
                   <li>APIs</li>
-                  <li>Data security & encryption</li>
-                  <li>Regression testing and TDD</li>
-                  <li>Data scraping</li>
-                  <li>Data visualization & maps</li>
+                  <li>Authorization & encryption</li>
+                  <li>Data analytics systems</li>
+                  <li>Geo-information & mapping</li>
                 </ul>
                 <ul>
-                  <li>CMS & static-site generators</li>
-                  <li>Product/UX design and research</li>
-                  <li>Project life-cycle planning</li>
-                  <li>Consentful, inclusive, accessible products</li>
+                  <li>Content management systems (CMS)</li>
+                  <li>Testing & site reliability</li>
+                  <li>Project management</li>
                 </ul>
               </div>
             </div>
             <hr />
-          </section>
-          <section>
-            <h2 className="section-header">Recent clients</h2>
-            <div className="sub-section">
-              <p className="sub-header">Please inquire for specifics.</p>
-            </div>
           </section>
           <section>
             <h2 className="section-header">Education</h2>

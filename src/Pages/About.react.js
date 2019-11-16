@@ -10,7 +10,7 @@ class About extends Component {
     super(props)
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.dispatch(fetchProjects())
   }
 
@@ -22,16 +22,11 @@ class About extends Component {
           <section>
             <h2 className="section-header">Hi, my name is Jade.</h2>
             <div className="sub-section text-body">
-              <p>
-                I'm an engineer & designer based in Brooklyn, NY. I enjoy automating boring things,
-                work that doesn't reinforce non-consensual hierarchies, open and inclusive
-                communities, comics, video games, and rock climbing.
-              </p>
+              <p>I'm a software engineer based in Brooklyn, NY.</p>
               <br />
               <p>
-                I like projects that align with my values for a more just and egalitarian world,
-                teaching people about technology and coding, and helping people with their
-                independent projects. Formerly, I was a software engineer at{' '}
+                I like projects that align with my values for a more just and egalitarian world.
+                Formerly, I was a software engineer at{' '}
                 <a
                   href="https://everplans.com"
                   target="_blank"
@@ -39,8 +34,8 @@ class About extends Component {
                   className="linky"
                 >
                   Everplans
-                </a>
-                , an emergency room nurse, and have a B.A. in political science.
+                </a>{' '}
+                and an emergency room nurse.
               </p>
               <br />
               <p>
@@ -50,9 +45,6 @@ class About extends Component {
                 </a>
               </p>
               <br />
-              <p>
-                Please <Link to="/contact">reach out</Link> if you'd like to collaborate.
-              </p>
             </div>
             <br />
           </section>
