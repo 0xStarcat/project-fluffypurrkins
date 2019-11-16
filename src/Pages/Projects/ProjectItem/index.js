@@ -15,8 +15,8 @@ const ProjectItem = props => {
   }
 
   return (
-    <div className={classnames('project-item', { selected: props.active })} onClick={selectItem}>
-      <div className="inline-wrapper" onTouchEnd={selectItem}>
+    <div className={classnames('project-item', { selected: props.active })}>
+      <div className="inline-wrapper" onTouchEnd={selectItem} onClick={selectItem}>
         <div className="border-container">
           <div className={classnames('list-border top-border', { 'last-border': props.last })} />
           {props.last ? null : <div className="list-border bottom-border" />}

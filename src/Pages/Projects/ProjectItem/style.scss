@@ -4,7 +4,6 @@ $border-container-width: 20px;
 .project-item {
   align-items: flex-start;
   box-sizing: border-box;
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   @include font-scale(1.8)
@@ -13,6 +12,7 @@ $border-container-width: 20px;
   width: 100%;
 
   .project-item-text {
+    cursor: pointer;
     font-size: 20px;
     transition: background-color 0.6s ease-in-out, color 0.6s ease-in-out;
   }
@@ -85,6 +85,11 @@ $border-container-width: 20px;
     border-bottom: 0;
     padding: 0;
     text-decoration: underline;
+
+    &:hover {
+      border-bottom: none;
+      text-decoration: dotted underline;
+    }
   }
 
   .project-content-item {
@@ -138,37 +143,37 @@ $border-container-width: 20px;
         width: 600px;
       }
 
-      &:nth-child(7n + 1):hover .project-item-text {
+      &:nth-child(7n + 1) .project-item-text:hover {
         background-color: hotpink;
         color: white;
       }
 
-      &:nth-child(7n + 2):hover .project-item-text {
+      &:nth-child(7n + 2) .project-item-text:hover {
         background-color: tomato;
         color: white;
       }
 
-      &:nth-child(7n + 3):hover .project-item-text {
+      &:nth-child(7n + 3) .project-item-text:hover {
         background-color: darkorange;
         color: white;
       }
 
-      &:nth-child(7n + 4):hover .project-item-text {
+      &:nth-child(7n + 4) .project-item-text:hover {
         background-color: yellow;
         color: black;
       }
 
-      &:nth-child(7n + 5):hover .project-item-text {
+      &:nth-child(7n + 5) .project-item-text:hover {
         background-color: lime;
         color: black;
       }
 
-      &:nth-child(7n + 6):hover .project-item-text {
+      &:nth-child(7n + 6) .project-item-text:hover {
         background-color: dodgerblue;
         color: white;
       }
 
-      &:nth-child(7n + 7):hover .project-item-text {
+      &:nth-child(7n + 7) .project-item-text:hover {
         background-color: violet;
         color: white;
       }
