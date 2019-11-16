@@ -36,7 +36,6 @@ class Projects extends React.Component {
   }
 
   render() {
-    console.log(this.props.projects)
     if (!this.props.projects) return null
     return (
       <div id="projects">
