@@ -20,7 +20,7 @@ class About extends Component {
         <PageHeader />
         <div className="page">
           <section>
-            <h2 className="section-header">Hi, my name is Jade.</h2>
+            <h2 className="section-header">Hi, my name is Jade. My pronouns are they/them.</h2>
             <div className="sub-section text-body">
               <p>I'm a software engineer based in Brooklyn, NY.</p>
               <br />
