@@ -41,19 +41,21 @@ class Projects extends React.Component {
       <div id="projects">
         <PageHeader />
         <div className="page">
-          {this.props.projects.map((project, index) => {
-            return (
-              <ProjectItem
-                active={this.state.activeProject === index}
-                closeActive={this.closeActive}
-                index={index}
-                key={`Project-${index}`}
-                last={index === this.props.projects.length - 1}
-                project={project}
-                setActive={this.setActive}
-              />
-            )
-          })}
+          {this.props.projects
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            .map((project, index) => {
+              return (
+                <ProjectItem
+                  active={this.state.activeProject === index}
+                  closeActive={this.closeActive}
+                  index={index}
+                  key={`Project-${index}`}
+                  last={index === this.props.projects.length - 1}
+                  project={project}
+                  setActive={this.setActive}
+                />
+              )
+            })}
         </div>
       </div>
     )

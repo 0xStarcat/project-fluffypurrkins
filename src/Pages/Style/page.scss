@@ -27,12 +27,14 @@
     border-bottom: 1px solid black;
   }
 
+  ul {
+    margin-bottom: 20px;
+  }
+
   li {
-    list-style-position: inside;
-    margin-left: 20px;
+    margin-left: 40px;
     @include font-scale(2);
     padding-left: 65px;
-    text-indent: -65px;
   }
 
   .section-header {
@@ -90,7 +92,6 @@
 
       li {
         padding-left: 38px;
-        text-indent: -38px;
       }
 
       .sub-section {
@@ -100,7 +101,6 @@
     @media #{$desktopSmWindow} {
         li {
           padding-left: 65px;
-          text-indent: -35px;
         }
 
       }

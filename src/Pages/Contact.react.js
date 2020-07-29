@@ -13,8 +13,8 @@ export default class Contact extends Component {
           <section>
             <div className="sub-section text-body">
               <p className="sub-header linky large-text">
-                <a href="https://github.com/0xStarcat" target="_blank">
-                  Personal Github
+                <a href="https://github.com/0xStarcat" target="_blank" rel="noopener noreferrer">
+                  Github
                 </a>
               </p>
             </div>
@@ -27,8 +27,12 @@ export default class Contact extends Component {
             </div>
             <div className="sub-section text-body">
               <p className="sub-header large-text">
-                <a href="https://keybase.io/starcat" target="_blank">
-                  Keybase
+                <a
+                  href="https://www.linkedin.com/in/ahking-j/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  LinkedIn
                 </a>
               </p>
             </div>

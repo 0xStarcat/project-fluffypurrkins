@@ -12,28 +12,38 @@ export default class CV extends Component {
             <h2 className="section-header">Work Experience</h2>
             <div className="sub-section">
               <h4 className="title-header">
-                Data Automatica, LLC
-                <span className="sub-header"> - current</span>
+                <a href="https://data.automatica.love" target="_blank" rel="noopener noreferrer">
+                  Data Automatica, LLC
+                </a>
               </h4>
               <p className="sub-header">Founder, Software Engineer</p>
+              <p className="sub-header">Jan. 2018 - current</p>
             </div>
             <div className="sub-section">
               <h4 className="title-header">
-                Everplans
-                <span className="sub-header" />
+                <a href="https://everplans.com" target="_blank" rel="noopener noreferrer">
+                  {' '}
+                  Everplans
+                </a>
               </h4>
               <p className="sub-header">Software Engineer</p>
+              <p className="sub-header">Dec. 2016 - Jan. 2018</p>
             </div>
             <div className="sub-section">
-              <h4 className="title-header">Hartford Hospital</h4>
+              <h4 className="title-header">
+                <a href="https://hartfordhospital.org/" target="_blank" rel="noopener noreferrer">
+                  Hartford Hospital
+                </a>
+              </h4>
               <p className="sub-header">Emergency Room R.N.</p>
+              <p className="sub-header">Pre 2016</p>
             </div>
 
             <hr />
           </section>
 
           <section>
-            <h2 className="section-header">Code/Tech Stuff</h2>
+            <h2 className="section-header">Code/Tech Keywords</h2>
             <div className="sub-section">
               <h4 className="title-header">Markup | Scripting | Programming Languages</h4>
               <div className="skill-lists">
@@ -42,7 +52,7 @@ export default class CV extends Component {
                   <li>CSS/SASS</li>
                 </ul>
                 <ul>
-                  <li>Javascript / ES6</li>
+                  <li>Javascript / Typescript</li>
                   <li>Ruby</li>
                   <li>Python</li>
                   <li>C#</li>
@@ -50,15 +60,14 @@ export default class CV extends Component {
               </div>
             </div>
             <div className="sub-section">
-              <h4 className="title-header">Frameworks | Libraries</h4>
+              <h4 className="title-header">App + Server Frameworks | Libraries</h4>
               <div className="skill-lists">
                 <ul>
                   <li>React.js</li>
-                  <li>Ruby on Rails</li>
                   <li>Node.js</li>
                 </ul>
                 <ul>
-                  <li>Flask</li>
+                  <li>Ruby on Rails</li>
                   <li>Django</li>
                 </ul>
               </div>
@@ -67,30 +76,40 @@ export default class CV extends Component {
               <h4 className="title-header">DevOps | Architecture | Databases</h4>
               <div className="skill-lists">
                 <ul>
-                  <li>Git / Github / version control</li>
+                  <li>Git / Github</li>
                   <li>Docker</li>
-                  <li>Linux system administration</li>
+                  <li>Linux systems</li>
+                  <li>Heroku</li>
                 </ul>
                 <ul>
-                  <li>Heroku</li>
                   <li>SQL databases</li>
                   <li>MongoDB</li>
+                  <li>Redis</li>
                 </ul>
               </div>
             </div>
             <div className="sub-section">
-              <h4 className="title-header">Specialties</h4>
+              <h4 className="title-header">Full Stack Experiences</h4>
               <div className="skill-lists">
                 <ul>
-                  <li>APIs</li>
-                  <li>Authorization & encryption</li>
-                  <li>Data analytics systems</li>
+                  <h6>Backend</h6>
+                  <li>RESTful API implementation</li>
+                  <li>Large dataset query & retrieval optimization</li>
                   <li>Geo-information & mapping</li>
+                  <li>Public/private key encryption</li>
+                  <li>Automated & scheduled tasks</li>
                 </ul>
                 <ul>
-                  <li>Content management systems (CMS)</li>
-                  <li>Testing & site reliability</li>
-                  <li>Project management</li>
+                  <h6>Frontend</h6>
+                  <li>Atomic design system implementation</li>
+                  <li>Content management systems</li>
+                  <li>Page builder tools</li>
+                  <li>Animation & SVG graphic implemention</li>
+                </ul>
+                <ul>
+                  <h6>Bonus</h6>
+                  <li>Automated testing & site reliability</li>
+                  <li>Full app lifecycle experience</li>
                 </ul>
               </div>
             </div>
@@ -99,9 +118,9 @@ export default class CV extends Component {
           <section>
             <h2 className="section-header">Education</h2>
             <div className="sub-section">
-              <p className="sub-header">B.A. Political Science</p>
-              <p className="sub-header">B.S. Nursing</p>
               <p className="sub-header">General Assembly Web Development Immsersive</p>
+              <p className="sub-header">B.S. Nursing</p>
+              <p className="sub-header">B.A. Political Science</p>
             </div>
             <hr />
           </section>

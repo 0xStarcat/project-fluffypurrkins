@@ -22,11 +22,10 @@ class About extends Component {
           <section>
             <h2 className="section-header">Hi, my name is Jade. My pronouns are they/them.</h2>
             <div className="sub-section text-body">
-              <p>I'm a software engineer based in Brooklyn, NY.</p>
+              <p>I'm a freelance software engineer based in Brooklyn, NY.</p>
               <br />
               <p>
-                I like projects that align with my values for a more just and egalitarian world.
-                Formerly, I was a software engineer at{' '}
+                Formerly, I was a staff software engineer at{' '}
                 <a
                   href="https://everplans.com"
                   target="_blank"
@@ -35,14 +34,15 @@ class About extends Component {
                 >
                   Everplans
                 </a>{' '}
-                and an emergency room nurse.
+                and before then, an emergency room nurse.
               </p>
               <br />
               <p>
                 Currently, I'm freelancing as{' '}
-                <a href="https://data.automatica.love" target="_blakn">
-                  Data Automatica.
+                <a href="https://data.automatica.love" target="_blank">
+                  Data Automatica
                 </a>
+                .
               </p>
               <br />
             </div>
