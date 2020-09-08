@@ -105,7 +105,6 @@ export default class CV extends Component {
                 <ul>
                   <h6>Frontend</h6>
                   <li>Design system and component library creation + implementation</li>
-                  <li>Content management systems</li>
                   <li>Page builder & CMS tools</li>
                   <li>Animation & SVG graphic implemention</li>
                 </ul>
