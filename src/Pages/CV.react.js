@@ -65,10 +65,12 @@ export default class CV extends Component {
                 <ul>
                   <li>React.js</li>
                   <li>Node.js</li>
+                  <li>GatsbyJS</li>
                 </ul>
                 <ul>
                   <li>Ruby on Rails</li>
                   <li>Django</li>
+                  <li>Headless Wordpress</li>
                 </ul>
               </div>
             </div>
@@ -85,6 +87,7 @@ export default class CV extends Component {
                   <li>SQL databases</li>
                   <li>MongoDB</li>
                   <li>Redis</li>
+                  <li>GraphQL</li>
                 </ul>
               </div>
             </div>
@@ -101,9 +104,9 @@ export default class CV extends Component {
                 </ul>
                 <ul>
                   <h6>Frontend</h6>
-                  <li>Atomic design system implementation</li>
+                  <li>Design system and component library creation + implementation</li>
                   <li>Content management systems</li>
-                  <li>Page builder tools</li>
+                  <li>Page builder & CMS tools</li>
                   <li>Animation & SVG graphic implemention</li>
                 </ul>
                 <ul>
