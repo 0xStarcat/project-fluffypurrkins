@@ -16,10 +16,12 @@ a.project-item {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  @include font-scale(1.8)
+  @include font-scale(1.8);
   height: 60px;
   justify-content: center;
   width: 100%;
+
+
 
   .project-item-text {
     cursor: pointer;
@@ -143,6 +145,22 @@ a.project-item {
 
   .project-item-content {
     height: fit-content;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+
+    @media #{$desktopXLWindow} {
+      flex-direction: row;
+    }
+  }
+
+  .project-item__text-content {
+    @media #{$desktopXLWindow} {
+      margin-left: 40px;
+    }
   }
 }
 
@@ -213,7 +231,7 @@ a.project-item {
         box-sizing: border-box;
         display: block;
         max-width: 600px;
-        padding: 40px 0;
+        padding: 0 0 40px;
       }
 
       .project-item-content-wrapper {
@@ -236,7 +254,7 @@ a.project-item {
       .project-item-content {
         box-sizing: border-box;
         height: auto;
-        max-width: 1000px;
+        max-width: 1400px;
         padding: 40px;
         width: 100%;
       }

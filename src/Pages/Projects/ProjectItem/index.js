@@ -36,25 +36,29 @@ const ProjectItem = props => {
                   src={`https://cms.starcat.xyz${props.project.mainImage.url}`}
                 />
               )}
-              <a
-                className="project-link project-content-item"
-                href={`${props.project.link}`}
-                target="_blank"
-              >
-                View this project
-              </a>
-              {props.project.generalDescription && (
-                <ReactMarkdown
-                  className="project-content-item"
-                  rehypePlugins={[rehypeRaw]}
-                  skipHtml={false}
+              <div className="project-item__text-content">
+                <a
+                  className="project-link project-content-item"
+                  href={`${props.project.link}`}
+                  target="_blank"
                 >
-                  {props.project.generalDescription}
-                </ReactMarkdown>
-              )}
+                  View this project
+                </a>
+                {props.project.generalDescription && (
+                  <ReactMarkdown
+                    className="project-content-item"
+                    rehypePlugins={[rehypeRaw]}
+                    skipHtml={false}
+                  >
+                    {props.project.generalDescription}
+                  </ReactMarkdown>
+                )}
 
-              <h4>Tech Tags</h4>
-              {props.project.technicalDescription && <h6>{props.project.technicalDescription}</h6>}
+                <h4>Tech Tags</h4>
+                {props.project.technicalDescription && (
+                  <h6>{props.project.technicalDescription}</h6>
+                )}
+              </div>
             </div>
           </div>
         </div>

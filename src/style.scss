@@ -4,6 +4,8 @@ $primaryFontColor: black;
 
 //Breakpoints
 $desktopScreen: 'screen and (min-device-width: 768px)';
+$desktopXLWindow: 'screen and (min-width: 1280px)';
+$desktopLargeWindow: 'screen and (min-width: 1056px)';
 $desktopMedWindow: 'screen and (min-width: 768px)';
 $desktopSmWindow: 'screen and (max-width: 768px)';
 $desktopTinyWindow: 'screen and (max-width: 468px)';
