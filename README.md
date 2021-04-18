@@ -5,7 +5,9 @@
 
 # Deployment
 
-1. `git push production master`
+1. build `npm run build`
+
+2. push `git push production master`
 
 make sure to setup the production bare repo
 
