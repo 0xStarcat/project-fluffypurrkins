@@ -6,6 +6,7 @@ import PageHeader from '../PageHeader'
 import ProjectItem from './ProjectItem'
 
 import { fetchProjects } from '../../Actions'
+import { pathify } from '@utilities'
 
 class Projects extends React.Component {
   constructor(props) {
@@ -23,13 +24,29 @@ class Projects extends React.Component {
     this.props.dispatch(fetchProjects())
   }
 
+  componentDidUpdate() {
+    // set the active project based on the hash
+    this.props.projects.forEach((project, index) => {
+      if (
+        this.state.activeProject !== index &&
+        this.props.location.hash === `#${pathify(project.title)}`
+      ) {
+        this.setState({ activeProject: index })
+      }
+    })
+  }
+
   setActive(index) {
+    this.props.history.push(
+      `${this.props.location.pathname}#${pathify(this.props.projects[index].title)}`
+    )
     this.setState({
       activeProject: index
     })
   }
 
   closeActive() {
+    this.props.history.push(this.props.location.pathname)
     this.setState({
       activeProject: -1
     })

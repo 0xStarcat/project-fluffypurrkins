@@ -1,6 +1,16 @@
 @import '../../../style.scss';
 $border-container-width: 20px;
 
+a.project-item {
+  border-bottom: none;
+  color: black;
+
+  &:hover,
+  &:focus {
+    border-bottom: none;
+  }
+}
+
 .project-item {
   align-items: flex-start;
   box-sizing: border-box;

@@ -85,7 +85,8 @@ module.exports = {
       react: path.resolve(__dirname, './node_modules/react'),
       React: path.resolve(__dirname, './node_modules/react'),
       '@images': path.resolve(__dirname, './src/images'),
-      '@home': path.resolve(__dirname, './src/Home')
+      '@home': path.resolve(__dirname, './src/Home'),
+      '@utilities': path.resolve(__dirname, './src/utilities')
     }
   }
 }

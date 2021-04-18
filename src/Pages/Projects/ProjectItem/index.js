@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
 
 import './style.scss'
 
@@ -42,11 +44,17 @@ const ProjectItem = props => {
                 View this project
               </a>
               {props.project.generalDescription && (
-                <p className="project-content-item">{props.project.generalDescription}</p>
+                <ReactMarkdown
+                  className="project-content-item"
+                  rehypePlugins={[rehypeRaw]}
+                  skipHtml={false}
+                >
+                  {props.project.generalDescription}
+                </ReactMarkdown>
               )}
-              {/* {props.project.technicalDescription && (
-                <pre className="project-content-item">{props.project.technicalDescription}</pre>
-              )} */}
+
+              <h4>Tech Tags</h4>
+              {props.project.technicalDescription && <h6>{props.project.technicalDescription}</h6>}
             </div>
           </div>
         </div>

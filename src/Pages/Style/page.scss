@@ -20,22 +20,26 @@
   }
 
   a {
-    border-bottom: 1px dotted black;
+    border-bottom: 1px dotted mediumslateblue;
     box-sizing: border-box;
+    color: mediumslateblue;
   }
 
   a:hover {
-    border-bottom: 1px solid black;
+    border-bottom: 1px dashed mediumslateblue;
   }
 
-  ul {
+  ul, ol {
     margin-bottom: 20px;
+    white-space: initial;
   }
+  
 
   li {
     margin-left: 40px;
     @include font-scale(2);
     padding-left: 65px;
+    margin-bottom: 20px;
   }
 
   .section-header {
