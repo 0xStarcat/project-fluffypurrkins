@@ -58,6 +58,8 @@ const ImageFace = props => {
     imageRef.current.style.height = `${cursorPositionDownImage * 101}%` // add an extra 1% to ensure events fire
     if (cursorY > imageY + imageHeight + 100 || imageHeight > containerHeight + 100) {
       setDragging(false) // safety check to stop.
+    } else if (cursorY < imageY) {
+      setDragging(false) // safety check to stop.
     }
   }
 
