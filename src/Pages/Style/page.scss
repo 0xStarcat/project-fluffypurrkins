@@ -1,12 +1,13 @@
 @import '../../style.scss';
 
 .page {
-  @include font-scale(2.5)
+  @include font-scale(2.5);
   margin: 140px 20px;
 
   section {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
+    max-width: 800px;
   }
 
   hr {
@@ -93,10 +94,6 @@
       li {
         padding-left: 38px;
       }
-
-      .sub-section {
-        margin-left: 80px;
-      }
     }
     @media #{$desktopSmWindow} {
         li {
@@ -109,3 +106,4 @@
     }
   }
 }
+

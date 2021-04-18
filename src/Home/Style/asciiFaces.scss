@@ -13,23 +13,21 @@ a {
   color: inherit;
 }
 
-pre {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  position: relative;
-}
+// pre {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   position: relative;
+// }
 
-code {
-  font-family: "Courier New", Courier, monospace;
-  font-size: 0.65rem;
-  line-height: 53%;
-  font-weight: 200;
-  max-width: 780px;
-  z-index: 1;
-}
+// code {
+//   font-family: "Courier New", Courier, monospace;
+//   font-size: 0.65rem;
+//   line-height: 150%; // adjust this depending on the image
+//   font-weight: 200;
+//   max-width: 780px;
+//   z-index: 1;
+// }
 
 .text-wrapper {
   position: absolute;

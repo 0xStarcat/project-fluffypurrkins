@@ -32,6 +32,14 @@ module.exports = {
             }
           },
           {
+            test: /\.(png|jpe?g|gif)$/i,
+            use: [
+              {
+                loader: 'file-loader'
+              }
+            ]
+          },
+          {
             test: /\.scss$/,
             use: [
               {
@@ -75,7 +83,9 @@ module.exports = {
   resolve: {
     alias: {
       react: path.resolve(__dirname, './node_modules/react'),
-      React: path.resolve(__dirname, './node_modules/react')
+      React: path.resolve(__dirname, './node_modules/react'),
+      '@images': path.resolve(__dirname, './src/images'),
+      '@home': path.resolve(__dirname, './src/Home')
     }
   }
 }

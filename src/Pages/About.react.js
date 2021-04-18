@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PageHeader from './PageHeader'
-import { Link } from 'react-router-dom'
 import { fetchProjects } from '../Actions'
 
 import './Style/page.scss'
+import './Style/about.scss'
+
+import ImageFace from './components/ImageFace'
 class About extends Component {
   constructor(props) {
     super(props)
+
+    this.imageRef = React.createRef()
   }
 
   componentDidMount() {
@@ -18,7 +22,8 @@ class About extends Component {
     return (
       <div>
         <PageHeader />
-        <div className="page">
+        <div className="page about">
+          <ImageFace ref={this.imageRef} />
           <section>
             <h2 className="section-header">Hi, my name is Jade. My pronouns are they/them.</h2>
             <div className="sub-section text-body">
