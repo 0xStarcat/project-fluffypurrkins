@@ -52,6 +52,14 @@ export default (state = initialState, action) => {
       }
     }
 
+    case actions.HANDLE_READ_WORK_DESCRIPTION_DATA: {
+      return {
+        ...state,
+        workDescriptions: action.data.sort((a, b) => b.date > a.date),
+        awaitingResponse: false
+      }
+    }
+
     default: {
       return state
     }

@@ -7,19 +7,23 @@ import CV from './Pages/CV.react'
 import Analytics from './Pages/Analytics.react'
 import Canary from './Pages/Canary.react'
 import Projects from './Pages/Projects'
+import WorkDescriptions from './Pages/WorkDescriptions'
 
 export default class Routes extends Component {
   render() {
-    return ( <Router>
-      <div>
-        <Route exact={true} path="/" component={AsciiContainer}/>
-        <Route path="/about" component={About}/>
-        <Route path="/contact" component={Contact}/>
-        <Route path="/cv" component={CV}/>
-        <Route path="/analytics" component={Analytics}/>
-        <Route path="/canary" component={Canary}/>
-        <Route path="/projects" component={Projects}/>
-      </div>
-    </Router> )
+    return (
+      <Router>
+        <div>
+          <Route exact={true} path="/" component={AsciiContainer} />
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/cv" component={CV} />
+          <Route path="/analytics" component={Analytics} />
+          <Route path="/canary" component={Canary} />
+          <Route path="/projects" component={Projects} />
+          <Route path="/work" component={WorkDescriptions} />
+        </div>
+      </Router>
+    )
   }
 }

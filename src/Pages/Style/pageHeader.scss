@@ -42,7 +42,7 @@ $desktop-header-height: 60px;
   }
 
   .small-links-row {
-    width: calc(95% - 380px);
+    width: auto;
     margin-right: 40px;
     @include font-scale(4);
     display: inline-block;

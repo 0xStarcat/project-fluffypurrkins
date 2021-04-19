@@ -33,6 +33,13 @@ export default class PageHeader extends Component {
               >
                 <Link to="/projects">Projects</Link>
               </li>
+              <li
+                className={
+                  window.location.pathname == '/work' ? 'active header-link' : 'header-link'
+                }
+              >
+                <Link to="/work">Work</Link>
+              </li>
               {/* <li className="header-link">
                 <a href="https://catxmachina.xyz/" target="_blank">
                   Blog

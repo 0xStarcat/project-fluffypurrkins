@@ -4,9 +4,9 @@ import classnames from 'classnames'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 
-import './style.scss'
+import '../../Projects/ProjectItem/style.scss'
 
-const ProjectItem = props => {
+const WorkDescriptionItem = props => {
   const selectItem = e => {
     e.preventDefault()
     if (props.active) {
@@ -16,6 +16,20 @@ const ProjectItem = props => {
     }
   }
 
+  const renderDate = (startDate, endDate, present) => {
+    let years
+
+    if (new Date(startDate).getFullYear() == new Date(endDate).getFullYear())
+      years = `${new Date(startDate).getFullYear()}`
+    else {
+      years = `${new Date(startDate).getFullYear()}-${
+        present ? 'Present' : new Date(endDate).getFullYear()
+      }`
+    }
+
+    return `(${years})`
+  }
+
   return (
     <div className={classnames('project-item', { selected: props.active })}>
       <div className="inline-wrapper" onTouchEnd={selectItem} onClick={selectItem}>
@@ -23,48 +37,53 @@ const ProjectItem = props => {
           <div className={classnames('list-border top-border', { 'last-border': props.last })} />
           {props.last ? null : <div className="list-border bottom-border" />}
         </div>
-        <div className="project-item-text">{props.project.title}</div>
+        <div className="project-item-text">
+          {props.work.title} {renderDate(props.work.date, props.work.endDate, props.work.present)}
+          {props.work.freelance ? '*' : ''}
+        </div>
       </div>
       <div className="project-item-full-wrapper">
         <div className={classnames('project-item-full')}>
           <div className={classnames('project-item-content-wrapper', { 'no-border': props.last })}>
             <div className="project-item-content">
-              {props.project.mainImage && (
+              {props.work.mainImage && (
                 <a
                   className="project-image-link"
                   aria-hidden={true}
-                  href={`https://cms.starcat.xyz${props.project.mainImage.url}`}
+                  href={`https://cms.starcat.xyz${props.work.mainImage.url}`}
                   target="_blank"
                 >
                   <img
                     alt="Project Image"
                     className="project-image project-content-item"
-                    src={`https://cms.starcat.xyz${props.project.mainImage.url}`}
+                    src={`https://cms.starcat.xyz${props.work.mainImage.url}`}
                   />
                 </a>
               )}
               <div className="project-item__text-content">
-                <a
-                  className="project-link project-content-item"
-                  href={`${props.project.link}`}
-                  target="_blank"
-                >
-                  View this project
-                </a>
-                {props.project.generalDescription && (
+                {props.work.link && (
+                  <a
+                    className="project-link project-content-item"
+                    href={`${props.work.link}`}
+                    target="_blank"
+                  >
+                    View this organization
+                  </a>
+                )}
+
+                {props.work.description && (
                   <ReactMarkdown
                     className="project-content-item"
                     rehypePlugins={[rehypeRaw]}
                     skipHtml={false}
                   >
-                    {props.project.generalDescription}
+                    {props.work.description}
                   </ReactMarkdown>
                 )}
-
-                {props.project.technicalDescription && (
+                {props.work.techTags && (
                   <div>
                     <h4>Tech Tags</h4>
-                    <h6>{props.project.technicalDescription}</h6>
+                    <h6>{props.work.techTags}</h6>
                   </div>
                 )}
               </div>
@@ -76,12 +95,12 @@ const ProjectItem = props => {
   )
 }
 
-ProjectItem.propTypes = {
+WorkDescriptionItem.propTypes = {
   active: PropTypes.bool,
   index: PropTypes.number,
   last: PropTypes.bool,
-  project: PropTypes.object,
+  work: PropTypes.object,
   setActive: PropTypes.func
 }
 
-export default ProjectItem
+export default WorkDescriptionItem

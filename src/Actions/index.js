@@ -7,6 +7,8 @@ export const ENABLE_SHADOW = 'ENABLE_SHADOW'
 
 export const AWAITING_RESPONSE = 'AWAITING_RESPONSE'
 export const HANDLE_READ_PROJECTS_DATA = 'HANDLE_READ_PROJECTS_DATA'
+export const HANDLE_READ_WORK_DESCRIPTION_DATA = 'HANDLE_READ_WORK_DESCRIPTION_DATA'
+
 export const HANDLE_ERROR_RESPONSE = 'HANDLE_ERROR_RESPONSE'
 
 export const stopPlayback = () => ({
@@ -34,6 +36,11 @@ export const handleReadProjectsData = response => ({
   data: response.data
 })
 
+export const handleReadWorkDescriptionData = response => ({
+  type: HANDLE_READ_WORK_DESCRIPTION_DATA,
+  data: response.data
+})
+
 export const handleErrorResponse = error => ({
   type: HANDLE_ERROR_RESPONSE,
   data: error
@@ -44,6 +51,17 @@ export const fetchProjects = () => dispatch => {
   Axios.get('https://cms.starcat.xyz/project')
     .then(response => {
       dispatch(handleReadProjectsData(response))
+    })
+    .catch(error => {
+      dispatch(handleErrorResponse(error))
+    })
+}
+
+export const fetchWorkDescriptions = () => dispatch => {
+  dispatch(awaitingResponse())
+  Axios.get('https://cms.starcat.xyz/workdescription')
+    .then(response => {
+      dispatch(handleReadWorkDescriptionData(response))
     })
     .catch(error => {
       dispatch(handleErrorResponse(error))

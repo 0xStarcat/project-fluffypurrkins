@@ -21,7 +21,7 @@ const ImageFace = props => {
   useEffect(
     () => {
       animationTimeout = setTimeout(animate, 1000)
-      setTimeout(animate, 3000)
+      setTimeout(animate, 1000)
     },
     [isAnimating]
   )
@@ -56,7 +56,7 @@ const ImageFace = props => {
     const cursorPositionDownImage = (cursorY - imageY) / containerHeight
     imageRef.current.style.transition = 'none'
     imageRef.current.style.height = `${cursorPositionDownImage * 101}%` // add an extra 1% to ensure events fire
-    if (cursorY > imageY + imageHeight + 100 || imageHeight > containerHeight + 100) {
+    if (cursorY > imageY + imageHeight + 100 || imageHeight > containerHeight + 300) {
       setDragging(false) // safety check to stop.
     } else if (cursorY < imageY) {
       setDragging(false) // safety check to stop.

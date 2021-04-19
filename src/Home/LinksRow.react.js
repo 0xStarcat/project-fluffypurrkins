@@ -24,6 +24,14 @@ export default class LinksRow extends React.Component {
           linkText="Projects"
         />
         <span className="divider">{' | '}</span>
+        <MenuLink
+          href="/work"
+          startHoverEffect={startHoverEffect}
+          mirroredHoverShadow={mirroredHoverShadow}
+          hideShadow={hideShadow}
+          linkText="Work"
+        />
+        <span className="divider">{' | '}</span>
         {/* <a href={'https://catxmachina.xyz/'} target="_blank">
           {'Blog'}
           <span
