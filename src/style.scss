@@ -53,8 +53,8 @@ $projectBorder: dotted 1px black;
 }
 
 body, html {
+  font-size: 16px;
   font-family: "Courier New", Courier, monospace;
-  @include body-text;
   color: $primaryFontColor;
   background-color: $backgroundColor;
   height: 100%;
