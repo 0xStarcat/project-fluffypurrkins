@@ -21,7 +21,19 @@ a.project-item {
   justify-content: center;
   width: 100%;
 
+  .project-image-link {
+    display: block;
+    // flex: 0 0 100%;
+    border-bottom: none;
+    width: 100%;
+    display: flex;
+    align-items: center;
 
+    @media #{$desktopXLWindow} {
+      width: 800px;
+
+    }
+  }
 
   .project-item-text {
     cursor: pointer;
@@ -218,20 +230,6 @@ a.project-item {
 
       .project-content-item {
         font-size: 22px;
-      }
-    }
-
-    .project-image-link {
-      display: block;
-      // flex: 0 0 100%;
-      border-bottom: none;
-      width: 100%;
-      display: flex;
-      align-items: center;
-
-      @media #{$desktopXLWindow} {
-        width: 800px;
-
       }
     }
 

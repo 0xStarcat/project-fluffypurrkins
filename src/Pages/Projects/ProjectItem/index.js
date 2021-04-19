@@ -63,8 +63,8 @@ const ProjectItem = props => {
 
                 {props.project.technicalDescription && (
                   <div>
-                    <h4>Tech Tags</h4>
-                    <h6>{props.project.technicalDescription}</h6>
+                    <h4 class="heading-sm">Tech Tags</h4>
+                    <h6 class="system-text-sm">{props.project.technicalDescription}</h6>
                   </div>
                 )}
               </div>
