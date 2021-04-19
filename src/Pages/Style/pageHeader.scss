@@ -32,8 +32,13 @@ $desktop-header-height: 60px;
     @include font-scale(4);
     line-height: $mobile-header-height;
     width: 280px;
-    margin-left: calc(40px + 5%);
+    margin-left: calc(20px);
     float: left;
+
+    @media #{$desktopMedWindow} {
+      margin-left: calc(20px);
+
+    }
   }
 
   .small-links-row {

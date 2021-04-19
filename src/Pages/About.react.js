@@ -30,7 +30,7 @@ class About extends Component {
               <p>I'm a freelance software engineer based in Brooklyn, NY.</p>
               <br />
               <p>
-                Formerly, I was a staff software engineer at{' '}
+                Formerly, I was a software engineer at{' '}
                 <a
                   href="https://everplans.com"
                   target="_blank"
