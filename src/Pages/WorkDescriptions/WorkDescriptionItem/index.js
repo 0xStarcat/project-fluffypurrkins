@@ -83,7 +83,7 @@ const WorkDescriptionItem = props => {
                 {props.work.techTags && (
                   <div>
                     <h4 class="heading-sm">Tech Tags</h4>
-                    <h6 class="system-text-sm">{props.work.technicalDescription}</h6>
+                    <h6 class="system-text-sm">{props.work.techTags}</h6>
                   </div>
                 )}
               </div>

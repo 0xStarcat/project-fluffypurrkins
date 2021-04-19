@@ -29,7 +29,7 @@ $desktop-header-height: 60px;
   }
 
   .header-link-name {
-    @include header-xl;
+    @include heading-xl;
     line-height: $mobile-header-height;
     width: 280px;
     margin-left: calc(20px);
@@ -44,7 +44,7 @@ $desktop-header-height: 60px;
   .small-links-row {
     width: auto;
     margin-right: 40px;
-    @include header-xl;
+    @include heading-xl;
     display: inline-block;
     line-height: $mobile-header-height;
     float: right;
