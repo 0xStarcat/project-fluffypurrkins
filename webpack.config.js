@@ -1,11 +1,10 @@
-var webpack = require('webpack')
-var path = require('path')
-var autoprefixer = require('autoprefixer')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
+const path = require('path')
+const autoprefixer = require('autoprefixer')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-var BUILD_DIR = path.resolve(__dirname, 'Build')
-var APP_DIR = path.resolve(__dirname, 'src/')
-var DEVELOPMENT_DIR = path.join(__dirname, 'src/Build')
+const BUILD_DIR = path.resolve(__dirname, 'Build')
+const APP_DIR = path.resolve(__dirname, 'src/')
+const DEVELOPMENT_DIR = path.join(__dirname, 'src')
 module.exports = {
   entry: APP_DIR + '/index.jsx',
   output: {
@@ -79,8 +78,15 @@ module.exports = {
       }
     ]
   },
-  plugins: [],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'src', 'index.html')
+    })
+  ],
   resolve: {
+    fallback: {
+      path: require.resolve('path-browserify') // cannot resolve 'path' in postcss
+    },
     alias: {
       react: path.resolve(__dirname, './node_modules/react'),
       React: path.resolve(__dirname, './node_modules/react'),
