@@ -221,6 +221,20 @@ a.project-item {
       }
     }
 
+    .project-image-link {
+      display: block;
+      // flex: 0 0 100%;
+      border-bottom: none;
+      width: 100%;
+      display: flex;
+      align-items: center;
+
+      @media #{$desktopXLWindow} {
+        width: 800px;
+
+      }
+    }
+
     .project-item.selected {
       .inline-wrapper{
         width: 100%;
@@ -237,19 +251,7 @@ a.project-item {
         width: 100%;
       }
 
-      .project-image-link {
-        display: block;
-        // flex: 0 0 100%;
-        border-bottom: none;
-        width: 100%;
-        display: flex;
-        align-items: center;
-
-        @media #{$desktopXLWindow} {
-          width: 800px;
-
-        }
-      }
+      
 
       .project-image {
         box-sizing: border-box;
