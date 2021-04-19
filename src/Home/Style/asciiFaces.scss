@@ -31,12 +31,16 @@ a {
 
 .text-wrapper {
   position: absolute;
-  top: 32%;
+  top: 100px;
   left: 15%;
-  @include font-scale(10);
+  @include body-text;
   max-width: 20px;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
+
+  @media #{$desktopMedWindow} {
+    top: 32%;
+  }
 }
 
 .ascii-letter {
@@ -56,7 +60,7 @@ a {
 #myName {
   display: block;
   opacity: 0;
-  @include font-scale(14);
+  @include display-text;
   position: absolute;
   top: 5%;
   left: 15%;
@@ -89,7 +93,7 @@ a {
       top: 25%;
       max-width: 100%;
       margin: 0;
-      @include font-scale(2.5);
+      @include body-text;
     }
 
     .divider { display: inline }
@@ -97,26 +101,12 @@ a {
     #myName {
       top: 60%;
       left: 50%;
-      @include font-scale(5);
     }
   }
   // Desktop small window
-  @media #{$desktopSmWindow} {
-    body, html { @include font-scale(0.5); }
-    #myName { @include font-scale(6) }
-
-    .text-wrapper { @include font-scale(5); }
-  }
 
   // Desktop Tiny window
   @media #{$desktopTinyWindow} {
     #myName { max-width: 220px; }
-  }
-}
-
-@media #{$phoneScreen} {
-  #myName { @include font-scale(5) }
-  .text-wrapper {
-    @include font-scale(4);
   }
 }

@@ -22,9 +22,39 @@ $projectBorder: dotted 1px black;
   font-weight: 200;
 }
 
+@mixin body-text {
+  font-size: 16px;
+  line-height: 150%;
+  font-weight: 200;
+
+  @media #{$desktopMedWindow} {
+    font-size: 20px;
+  }
+}
+
+@mixin header-xl {
+  font-size: 32px;
+  line-height: 150%;
+  font-weight: bold;
+
+  @media #{$desktopMedWindow} {
+    font-size: 40px;
+  }
+}
+
+@mixin display-text {
+  font-size: 38px;
+    line-height: 150%;
+    font-weight: 200;
+
+  @media #{$desktopMedWindow} {
+    font-size: 50px;
+  }
+}
+
 body, html {
   font-family: "Courier New", Courier, monospace;
-  @include font-scale(1);
+  @include body-text;
   color: $primaryFontColor;
   background-color: $backgroundColor;
   height: 100%;

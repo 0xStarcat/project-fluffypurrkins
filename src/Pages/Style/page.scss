@@ -1,7 +1,7 @@
 @import '../../style.scss';
 
 .page {
-  @include font-scale(2.5);
+  @include body-text;
   margin: 140px 20px;
 
   section {
@@ -16,7 +16,7 @@
   }
 
   p {
-    @include font-scale(2)
+    @include body-text;
   }
 
   a {
@@ -37,13 +37,13 @@
 
   li {
     margin-left: 40px;
-    @include font-scale(2);
+    @include body-text;
     padding-left: 65px;
     margin-bottom: 20px;
   }
 
   .section-header {
-    @include font-scale(4);
+    @include header-xl;
     text-align: left;
     margin-top: 40px;
     font-weight: bold;
@@ -54,12 +54,12 @@
     text-align: left;
   }
   .title-header {
-    @include font-scale(2.5);
+    @include body-text;
     line-height: 150%;
     margin: 20px 0;
   }
   .sub-header{
-    @include font-scale(2);
+    @include body-text;
     font-style: italic;
   }
 
