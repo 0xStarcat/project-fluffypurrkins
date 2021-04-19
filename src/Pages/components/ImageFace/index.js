@@ -56,7 +56,7 @@ const ImageFace = props => {
     const cursorPositionDownImage = (cursorY - imageY) / containerHeight
     imageRef.current.style.transition = 'none'
     imageRef.current.style.height = `${cursorPositionDownImage * 101}%` // add an extra 1% to ensure events fire
-    if (cursorY > imageY + imageHeight + 100 || imageHeight > containerHeight + 300) {
+    if (cursorY > imageY + imageHeight + 100 || imageHeight > containerHeight + 100) {
       setDragging(false) // safety check to stop.
     } else if (cursorY < imageY) {
       setDragging(false) // safety check to stop.
@@ -76,7 +76,7 @@ const ImageFace = props => {
 
       clearTimeout(animationTimeout)
       animationTimeout = setTimeout(animate, 5000)
-    } else if (heightFloat > 110) {
+    } else if (heightFloat > 100) {
       clearTimeout(animationTimeout)
       animationTimeout = setTimeout(() => {
         heightFloat = 0
@@ -85,7 +85,7 @@ const ImageFace = props => {
         animate()
       }, 3000)
     } else {
-      heightFloat += 20
+      heightFloat += 15
       imageRef.current.style.transition = 'height 1s linear'
       animationTimeout = setTimeout(animate, 1000)
     }
