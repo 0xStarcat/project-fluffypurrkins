@@ -66,15 +66,6 @@ module.exports = env => {
               ]
             },
             {
-              test: /.ejs$/,
-              loader: 'ejs-loader',
-              options: {
-                variable: 'data',
-                interpolate: '\\{\\{(.+?)\\}\\}',
-                evaluate: '\\[\\[(.+?)\\]\\]'
-              }
-            },
-            {
               test: /\.scss$/,
               use: [
                 {
@@ -118,13 +109,10 @@ module.exports = env => {
       new webpack.DefinePlugin(envKeys),
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, 'src', 'index.ejs'),
-        filename: 'index.html',
-        head: {
-          imagePath: path.resolve(__dirname, 'src', 'images', 'selfie.jpg')
+        templateParameters: {
+          metaTitle: "Jade's Portfolio",
+          metaDescription: "Jade's Portfolio, Resume, and other things."
         }
-      }),
-      new webpack.ProvidePlugin({
-        _: 'underscore'
       })
     ],
     resolve: {
