@@ -15,6 +15,22 @@
     font-weight: 100;
   }
 
+  b, strong {
+    font-weight: bold;
+  }
+
+  em, i {
+    font-style: italic;
+  }
+  
+  ol {
+    list-style: decimal;
+  }
+
+  ul {
+    list-style: disc;
+  }
+
   p {
     @include body-text;
   }

@@ -48,7 +48,7 @@ const WorkDescriptionItem = props => {
         <div className="project-item-text">
           {props.work.title} {renderDate(props.work.date, props.work.endDate, props.work.present)}
           {props.work.freelance ? '*' : ''}
-          {props.work.freelance ? <span class="sr-only">Freelance</span> : ''}
+          {props.work.freelance ? <span className="sr-only">Freelance</span> : ''}
         </div>
       </button>
       <div className="project-item-full-wrapper">
@@ -94,8 +94,8 @@ const WorkDescriptionItem = props => {
 
                 {props.work.techTags && (
                   <div tabindex="0">
-                    <h4 class="heading-sm">Tech Tags</h4>
-                    <h6 class="system-text-sm">{props.work.techTags}</h6>
+                    <h4 className="heading-sm">Tech Tags</h4>
+                    <h6 className="system-text-sm">{props.work.techTags}</h6>
                   </div>
                 )}
               </div>

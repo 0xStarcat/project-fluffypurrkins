@@ -13,6 +13,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "classnames": "^2.2.6",
     "css-loader": "^0.26.1",
+    "dotenv": "^8.2.0",
     "eslint-config-prettier": "^3.0.1",
     "extract-text-webpack-plugin": "^3.0.2",
     "node-sass": "^5.0.0",
@@ -25,6 +26,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
+    "react-ga": "^3.3.0",
     "react-markdown": "^6.0.0",
     "react-redux": "^5.0.4",
     "react-router": "^4.0.0",
@@ -50,11 +52,11 @@
     "webpack-dev-server": "^3.11.2"
   },
   "scripts": {
-    "client": "webpack -d --watch",
+    "client": "webpack --env.ENVIRONMENT=production -d --watch",
     "server": "node ./src/Server/server.js",
-    "build": "webpack -p",
-    "restart": "webpack -p",
-    "start": "webpack-dev-server -d --content-base src/Client/build --progress --colors"
+    "build": "webpack --env.ENVIRONMENT=production -p",
+    "restart": "webpack --env.ENVIRONMENT=production -p",
+    "start": "webpack-dev-server --env.ENVIRONMENT=production -d --content-base src/Client/build --progress --colors"
   },
   "repository": {
     "type": "git",
