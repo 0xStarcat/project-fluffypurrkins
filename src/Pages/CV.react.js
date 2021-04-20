@@ -3,6 +3,7 @@ import PageHeader from './PageHeader'
 import Resume from '@images/jade-ahking-resume.pdf'
 import './Style/cv.scss'
 import './Style/page.scss'
+
 export default class CV extends Component {
   render() {
     return (
