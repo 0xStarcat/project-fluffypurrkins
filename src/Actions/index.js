@@ -48,7 +48,7 @@ export const handleErrorResponse = error => ({
 
 export const fetchProjects = () => dispatch => {
   dispatch(awaitingResponse())
-  Axios.get('https://cms.ahking.me/project')
+  Axios.get('https://cms.ahking.me/projects')
     .then(response => {
       dispatch(handleReadProjectsData(response))
     })
@@ -59,7 +59,7 @@ export const fetchProjects = () => dispatch => {
 
 export const fetchWorkDescriptions = () => dispatch => {
   dispatch(awaitingResponse())
-  Axios.get('https://cms.ahking.me/workdescription')
+  Axios.get('https://cms.ahking.me/workdescriptions')
     .then(response => {
       dispatch(handleReadWorkDescriptionData(response))
     })
