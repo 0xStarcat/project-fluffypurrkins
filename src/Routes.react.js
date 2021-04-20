@@ -9,18 +9,17 @@ import Canary from './Pages/Canary.react'
 import Projects from './Pages/Projects'
 import WorkDescriptions from './Pages/WorkDescriptions'
 import { createBrowserHistory } from 'history'
+import { trackProjectOpen } from './utilities'
 import ReactGA from 'react-ga'
 
 export default function Routes() {
   const history = createBrowserHistory()
 
   history.listen(location => {
-    // console.log('!!!', location, process.env.ENVIRONMENT)
-    ReactGA.initialize(process.env.REACT_GA_CODE, {
-      debug: process.env.ENVIRONMENT === 'development'
-    })
     ReactGA.set({ page: location.pathname }) // Update the user's current page
-    ReactGA.pageview(location.pathname) // Record a pageview for the given page
+    if (!trackProjectOpen(location)) {
+      ReactGA.pageview(location.pathname) // Record a pageview for the given page
+    }
   })
 
   return (

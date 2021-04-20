@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import selfie from '@images/selfie.jpg'
+import ReactGA from 'react-ga'
 
 import { asciiText } from '@home/AsciiText.react'
 
@@ -40,6 +41,12 @@ const ImageFace = props => {
     setAnimating(false)
     clearTimeout(animationTimeout)
     setDragging(true)
+
+    ReactGA.event({
+      category: '/about',
+      action: 'Click',
+      label: 'ImageFace'
+    })
   }
 
   const handleMouseUp = e => {

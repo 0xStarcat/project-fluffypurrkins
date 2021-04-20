@@ -4,6 +4,8 @@ import Resume from '@images/jade-ahking-resume.pdf'
 import './Style/cv.scss'
 import './Style/page.scss'
 
+import ReactGA from 'react-ga'
+
 export default class CV extends Component {
   render() {
     return (
@@ -11,9 +13,14 @@ export default class CV extends Component {
         <PageHeader />
         <main id="maincontent" className="cv page">
           <section className="section">
-            <a className="cv__download" href={Resume} target="_blank">
+            <ReactGA.OutboundLink
+              className="cv__download"
+              eventLabel="CV Open"
+              to={Resume}
+              target="_blank"
+            >
               Open Resume PDF
-            </a>
+            </ReactGA.OutboundLink>
             <embed src={Resume} type="application/pdf" />
           </section>
         </main>

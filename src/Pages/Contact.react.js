@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import PageHeader from './PageHeader'
+
+import ReactGA from 'react-ga'
+
 import './Style/page.scss'
 export default class Contact extends Component {
   constructor() {
@@ -13,27 +16,38 @@ export default class Contact extends Component {
           <section className="section">
             <div className="sub-section text-body">
               <p className="sub-header linky large-text">
-                <a href="https://github.com/0xStarcat" target="_blank" rel="noopener noreferrer">
+                <ReactGA.OutboundLink
+                  eventLabel="Github"
+                  to="https://github.com/0xStarcat"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
                   Github
-                </a>
+                </ReactGA.OutboundLink>
               </p>
             </div>
             <div className="sub-section text-body">
               <p className="sub-header linky large-text">
-                <a href="mailto:jadeahking@gmail.com" target="_top">
+                <ReactGA.OutboundLink
+                  eventLabel="Mail"
+                  to="mailto:jadeahking@gmail.com"
+                  rel="noopener noreferrer"
+                  target="_top"
+                >
                   jadeahking@gmail.com
-                </a>
+                </ReactGA.OutboundLink>
               </p>
             </div>
             <div className="sub-section text-body">
               <p className="sub-header large-text">
-                <a
-                  href="https://www.linkedin.com/in/ahking-j/"
-                  target="_blank"
+                <ReactGA.OutboundLink
+                  eventLabel="LinkedIn"
+                  to="https://www.linkedin.com/in/ahking-j/"
                   rel="noopener noreferrer"
+                  target="_blank"
                 >
                   LinkedIn
-                </a>
+                </ReactGA.OutboundLink>
               </p>
             </div>
           </section>
