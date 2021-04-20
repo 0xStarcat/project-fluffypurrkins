@@ -12,14 +12,14 @@ export default class TitleName extends Component {
   render() {
     return (
       <div id="myName">
-        <span
+        <h1
           onMouseOver={startHoverEffect}
           onMouseMove={hoverShadow}
           onMouseOut={hideShadow}
           onClick={this.props.restartPlayback}
         >
           Jade Ahking
-        </span>
+        </h1>
         <span
           aria-hidden="true"
           className="hiddenText suppressed"
