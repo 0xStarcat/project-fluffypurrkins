@@ -9,10 +9,10 @@ import ReactGA from 'react-ga'
 export default class CV extends Component {
   render() {
     return (
-      <div>
+      <div className="full-height">
         <PageHeader />
-        <main id="maincontent" className="cv page">
-          <section className="section">
+        <main id="maincontent" className="cv page full-height">
+          <section className="section full-height">
             <ReactGA.OutboundLink
               className="cv__download"
               eventLabel="CV Open"

@@ -20,7 +20,7 @@ class About extends Component {
 
   render() {
     return (
-      <div>
+      <div className="full-height">
         <PageHeader />
         <main id="maincontent" className="page about">
           <ImageFace ref={this.imageRef} />

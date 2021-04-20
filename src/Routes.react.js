@@ -29,7 +29,7 @@ export default function Routes() {
   })
 
   return (
-    <div>
+    <div className="full-height">
       <Helmet>
         <title>
           {`Jade's portfolio - ${location.pathname.toLowerCase().replace(/[^a-z]/gi, '') ||
@@ -37,7 +37,7 @@ export default function Routes() {
         </title>
       </Helmet>
       <Router history={history}>
-        <div>
+        <div className="full-height">
           <Route exact={true} path="/" component={AsciiContainer} />
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
