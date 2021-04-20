@@ -5,7 +5,7 @@
 
 # Deployment
 
-1. build `npm run build`
+1. build `npm run build` & commit (optional, the server should run build itself)
 
 2. push `git push production master`
 
