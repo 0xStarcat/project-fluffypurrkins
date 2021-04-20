@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Router, Route } from 'react-router-dom'
 import AsciiContainer from './Containers/AsciiContainer.react'
 import About from './Pages/About.react'
@@ -13,13 +13,18 @@ import { trackProjectOpen } from './utilities'
 import ReactGA from 'react-ga'
 
 export default function Routes() {
+  const [prevPath, setPrevPath] = useState(null)
   const history = createBrowserHistory()
 
   history.listen(location => {
-    ReactGA.set({ page: location.pathname }) // Update the user's current page
-    if (!trackProjectOpen(location)) {
+    if (location.pathname !== prevPath) {
+      // only trigger when changing paths / pages
+      ReactGA.set({ page: location.pathname }) // Update the user's current page
       ReactGA.pageview(location.pathname) // Record a pageview for the given page
+    } else {
+      trackProjectOpen(location)
     }
+    setPrevPath(location.pathname)
   })
 
   return (
