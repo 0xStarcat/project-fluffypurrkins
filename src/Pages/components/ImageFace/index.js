@@ -108,7 +108,7 @@ const ImageFace = props => {
             onMouseUp={handleMouseUp}
             aria-hidden="true"
             className="image"
-            style={{ height: '60%', maxHeight: '98%', backgroundImage: `url(${selfie})` }}
+            style={{ height: '40%', maxHeight: '98%', backgroundImage: `url(${selfie})` }}
           />
           {asciiText}
         </code>
