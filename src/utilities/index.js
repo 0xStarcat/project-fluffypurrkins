@@ -10,7 +10,7 @@ export const pathify = string => {
 export const trackProjectOpen = location => {
   if (location.hash && (location.pathname === '/work' || location.pathname === '/projects')) {
     // track project clicks
-    ReactGA.event({
+    return ReactGA.event({
       category: location.pathname,
       action: 'Open list item',
       label: location.hash
