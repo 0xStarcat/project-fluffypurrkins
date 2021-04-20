@@ -111,7 +111,8 @@ module.exports = env => {
         template: path.resolve(__dirname, 'src', 'index.ejs'),
         templateParameters: {
           metaTitle: "Jade's Portfolio",
-          metaDescription: "Jade's Portfolio, Resume, and other things."
+          metaDescription: "Jade's Portfolio, Resume, and other things.",
+          siteUrl: 'https://jade.ahking.me/'
         }
       })
     ],
