@@ -1,3 +1,5 @@
+// meta image https://bggenerator.com/bars_background.php
+
 const path = require('path')
 const autoprefixer = require('autoprefixer')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
