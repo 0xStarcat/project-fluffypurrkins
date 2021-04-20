@@ -18,18 +18,19 @@ const ProjectItem = props => {
 
   return (
     <div role="listitem" className={classnames('project-item', { selected: props.active })}>
-      <button className="inline-wrapper" onTouchEnd={selectItem} onClick={selectItem}>
+      <button
+        aria-expanded={props.active}
+        className="inline-wrapper"
+        onTouchEnd={selectItem}
+        onClick={selectItem}
+      >
         <div className="border-container">
           <div className={classnames('list-border top-border', { 'last-border': props.last })} />
           {props.last ? null : <div className="list-border bottom-border" />}
         </div>
         <div className="project-item-text">{props.project.title}</div>
       </button>
-      <div
-        className="project-item-full-wrapper"
-        tabindex={props.active ? '0' : '-1'}
-        aria-hidden={!props.active}
-      >
+      <div className="project-item-full-wrapper" aria-hidden={!props.active}>
         <div className={classnames('project-item-full')}>
           <div className={classnames('project-item-content-wrapper', { 'no-border': props.last })}>
             <div className="project-item-content">
@@ -56,18 +57,19 @@ const ProjectItem = props => {
                 >
                   View this project
                 </a>
-                {props.project.generalDescription && (
-                  <ReactMarkdown
-                    className="project-content-item"
-                    rehypePlugins={[rehypeRaw]}
-                    skipHtml={false}
-                  >
-                    {props.project.generalDescription}
-                  </ReactMarkdown>
-                )}
-
+                <div tabindex="0">
+                  {props.project.generalDescription && (
+                    <ReactMarkdown
+                      className="project-content-item"
+                      rehypePlugins={[rehypeRaw]}
+                      skipHtml={false}
+                    >
+                      {props.project.generalDescription}
+                    </ReactMarkdown>
+                  )}
+                </div>
                 {props.project.technicalDescription && (
-                  <div>
+                  <div tabindex="0">
                     <h4 class="heading-sm">Tech Tags</h4>
                     <h6 class="system-text-sm">{props.project.technicalDescription}</h6>
                   </div>

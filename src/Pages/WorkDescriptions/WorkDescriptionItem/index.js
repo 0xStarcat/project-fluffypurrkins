@@ -35,7 +35,12 @@ const WorkDescriptionItem = props => {
 
   return (
     <div role="listitem" className={classnames('project-item', { selected: props.active })}>
-      <button className="inline-wrapper" onTouchEnd={selectItem} onClick={selectItem}>
+      <button
+        aria-expanded={props.active}
+        className="inline-wrapper"
+        onTouchEnd={selectItem}
+        onClick={selectItem}
+      >
         <div className="border-container">
           <div className={classnames('list-border top-border', { 'last-border': props.last })} />
           {props.last ? null : <div className="list-border bottom-border" />}
@@ -75,18 +80,20 @@ const WorkDescriptionItem = props => {
                     View this organization
                   </a>
                 )}
+                <div tabindex="0">
+                  {props.work.description && (
+                    <ReactMarkdown
+                      className="project-content-item"
+                      rehypePlugins={[rehypeRaw]}
+                      skipHtml={false}
+                    >
+                      {props.work.description}
+                    </ReactMarkdown>
+                  )}
+                </div>
 
-                {props.work.description && (
-                  <ReactMarkdown
-                    className="project-content-item"
-                    rehypePlugins={[rehypeRaw]}
-                    skipHtml={false}
-                  >
-                    {props.work.description}
-                  </ReactMarkdown>
-                )}
                 {props.work.techTags && (
-                  <div>
+                  <div tabindex="0">
                     <h4 class="heading-sm">Tech Tags</h4>
                     <h6 class="system-text-sm">{props.work.techTags}</h6>
                   </div>
