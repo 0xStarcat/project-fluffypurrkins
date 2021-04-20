@@ -39,13 +39,13 @@ const ProjectItem = props => {
                   tabindex="-1"
                   className="project-image-link"
                   aria-hidden={true}
-                  href={`https://cms.starcat.xyz${props.project.mainImage.url}`}
+                  href={`https://cms.ahking.me${props.project.mainImage.url}`}
                   target="_blank"
                 >
                   <img
                     alt="Project Image"
                     className="project-image project-content-item"
-                    src={`https://cms.starcat.xyz${props.project.mainImage.url}`}
+                    src={`https://cms.ahking.me${props.project.mainImage.url}`}
                   />
                 </a>
               )}

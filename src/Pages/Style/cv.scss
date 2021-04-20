@@ -1,6 +1,17 @@
 @import '../../style.scss';
 
 .cv {
+  embed {
+    height: 100%;
+    width: 100%;
+    max-width: 800px;
+  }
+
+  &__download {
+    display: block;
+    margin-bottom: 40px;
+    width: fit-content;
+  }
 
   .skill-lists {
     display: block;
