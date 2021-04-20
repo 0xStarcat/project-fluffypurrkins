@@ -9,7 +9,7 @@ export default class CV extends Component {
         <PageHeader />
         <main id="maincontent" className="cv page">
           <section aria-label="Work Experience" role="list" className="section">
-            <h2 tabindex="0" className="section-header">
+            <h2 tabIndex="0" className="section-header">
               Work Experience
             </h2>
             <div role="listitem" className="sub-section">
@@ -45,7 +45,7 @@ export default class CV extends Component {
           </section>
 
           {/* <section className="section">
-            <h2 tabindex="0" className="section-header">Code/Tech Keywords</h2>
+            <h2 tabIndex="0" className="section-header">Code/Tech Keywords</h2>
             <div className="sub-section">
               <h4 className="title-header">Markup | Scripting | Programming Languages</h4>
               <div className="skill-lists">
@@ -120,7 +120,7 @@ export default class CV extends Component {
             <hr />
           </section> */}
           <section role="list" aria-label="Education" className="section">
-            <h2 tabindex="0" className="section-header">
+            <h2 tabIndex="0" className="section-header">
               Education
             </h2>
             <div role="listitem" className="sub-section">

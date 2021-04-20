@@ -25,10 +25,10 @@ class About extends Component {
         <main id="maincontent" className="page about">
           <ImageFace ref={this.imageRef} />
           <section className="section">
-            <h2 tabindex="0" className="section-header">
+            <h2 tabIndex="0" className="section-header">
               Hi, my name is Jade
             </h2>
-            <div tabindex="0" className="sub-section text-body">
+            <div tabIndex="0" className="sub-section text-body">
               <p>My pronouns are they, them, theirs.</p>
               <br />
               <p>I'm a freelance software engineer based in Brooklyn, NY.</p>

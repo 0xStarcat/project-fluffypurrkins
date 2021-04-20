@@ -52,11 +52,11 @@
     "webpack-dev-server": "^3.11.2"
   },
   "scripts": {
-    "client": "webpack --env.ENVIRONMENT=production -d --watch",
+    "client": "webpack --env.ENVIRONMENT=development -d --watch",
     "server": "node ./src/Server/server.js",
     "build": "webpack --env.ENVIRONMENT=production -p",
-    "restart": "webpack --env.ENVIRONMENT=production -p",
-    "start": "webpack-dev-server --env.ENVIRONMENT=production -d --content-base src/Client/build --progress --colors"
+    "restart": "webpack --env.ENVIRONMENT=development -p",
+    "start": "webpack-dev-server --env.ENVIRONMENT=development -d --content-base src/Client/build --progress --colors"
   },
   "repository": {
     "type": "git",

@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Router, Route } from 'react-router-dom'
 import AsciiContainer from './Containers/AsciiContainer.react'
 import About from './Pages/About.react'
 import Contact from './Pages/Contact.react'
@@ -15,7 +15,7 @@ export default function Routes() {
   const history = createBrowserHistory()
 
   history.listen(location => {
-    console.log('!!!', location)
+    // console.log('!!!', location, process.env.REACT_GA_CODE)
     ReactGA.initialize(process.env.REACT_GA_CODE)
     ReactGA.set({ page: location.pathname }) // Update the user's current page
     ReactGA.pageview(location.pathname) // Record a pageview for the given page

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 const MenuLink = props => {
   return (
-    <Link tabindex="0" to={props.href}>
+    <Link tabIndex="0" to={props.href}>
       <h2>{props.linkText}</h2>
       <span
         aria-hidden="true"

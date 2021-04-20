@@ -36,7 +36,7 @@ const ProjectItem = props => {
             <div className="project-item-content">
               {props.project.mainImage && (
                 <a
-                  tabindex="-1"
+                  tabIndex="-1"
                   className="project-image-link"
                   aria-hidden={true}
                   href={`https://cms.ahking.me${props.project.mainImage.url}`}
@@ -57,7 +57,7 @@ const ProjectItem = props => {
                 >
                   View this project
                 </a>
-                <div tabindex="0">
+                <div tabIndex="0">
                   {props.project.generalDescription && (
                     <ReactMarkdown
                       className="project-content-item"
@@ -69,7 +69,7 @@ const ProjectItem = props => {
                   )}
                 </div>
                 {props.project.technicalDescription && (
-                  <div tabindex="0">
+                  <div tabIndex="0">
                     <h4 className="heading-sm">Tech Tags</h4>
                     <h6 className="system-text-sm">{props.project.technicalDescription}</h6>
                   </div>
