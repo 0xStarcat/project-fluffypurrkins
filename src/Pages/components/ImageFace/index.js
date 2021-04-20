@@ -21,7 +21,7 @@ const ImageFace = props => {
   useEffect(
     () => {
       animationTimeout = setTimeout(animate, 1000)
-      setTimeout(animate, 1000)
+      setTimeout(animate, 3000) // initial delay before starting.
     },
     [isAnimating]
   )
@@ -108,7 +108,7 @@ const ImageFace = props => {
             onMouseUp={handleMouseUp}
             aria-hidden="true"
             className="image"
-            style={{ height: '0.001%', backgroundImage: `url(${selfie})` }}
+            style={{ height: '60%', maxHeight: '98%', backgroundImage: `url(${selfie})` }}
           />
           {asciiText}
         </code>
