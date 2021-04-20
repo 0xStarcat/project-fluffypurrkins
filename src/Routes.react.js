@@ -11,6 +11,8 @@ import WorkDescriptions from './Pages/WorkDescriptions'
 import { createBrowserHistory } from 'history'
 import { trackProjectOpen } from './utilities'
 import ReactGA from 'react-ga'
+import { Helmet } from 'react-helmet'
+import favicon from '@images/favicon.png'
 
 export default function Routes() {
   const [prevPath, setPrevPath] = useState(null)
@@ -28,17 +30,25 @@ export default function Routes() {
   })
 
   return (
-    <Router history={history}>
-      <div>
-        <Route exact={true} path="/" component={AsciiContainer} />
-        <Route path="/about" component={About} />
-        <Route path="/contact" component={Contact} />
-        <Route path="/cv" component={CV} />
-        <Route path="/analytics" component={Analytics} />
-        <Route path="/canary" component={Canary} />
-        <Route path="/projects" component={Projects} />
-        <Route path="/work" component={WorkDescriptions} />
-      </div>
-    </Router>
+    <div>
+      <Helmet>
+        <title>
+          {`Jade's portfolio - ${location.pathname.toLowerCase().replace(/[^a-z]/gi, '') ||
+            'home'}`}
+        </title>
+        <meta property="og:image" content={selfie} />
+        <link rel="icon" type="image/png" href={favicon} />
+      </Helmet>
+      <Router history={history}>
+        <div>
+          <Route exact={true} path="/" component={AsciiContainer} />
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/cv" component={CV} />
+          <Route path="/projects" component={Projects} />
+          <Route path="/work" component={WorkDescriptions} />
+        </div>
+      </Router>
+    </div>
   )
 }
