@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
+import ReactGA from 'react-ga'
 
 import '../../Projects/ProjectItem/style.scss'
 
@@ -72,13 +73,15 @@ const WorkDescriptionItem = props => {
               )}
               <div className="project-item__text-content">
                 {props.work.link && (
-                  <a
+                  <ReactGA.OutboundLink
                     className="project-link project-content-item"
-                    href={`${props.work.link}`}
+                    eventLabel={props.work.link}
+                    to={props.work.link}
                     target="_blank"
+                    rel="noopener nofollow"
                   >
                     View this organization
-                  </a>
+                  </ReactGA.OutboundLink>
                 )}
                 <div tabIndex="0">
                   {props.work.description && (
