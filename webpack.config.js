@@ -6,10 +6,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const dotenv = require('dotenv')
 const fs = require('fs') // to check if the file exists
+const RobotstxtPlugin = require('robotstxt-webpack-plugin')
 
 const BUILD_DIR = path.resolve(__dirname, 'Build')
 const APP_DIR = path.resolve(__dirname, 'src/')
 const DEVELOPMENT_DIR = path.join(__dirname, 'src')
+
+const robotOptions = {}
+
 module.exports = env => {
   const currentPath = path.join(__dirname)
 
@@ -116,7 +120,8 @@ module.exports = env => {
           metaDescription: "Jade's Portfolio, Resume, and other things.",
           siteUrl: 'https://jade.ahking.me/'
         }
-      })
+      }),
+      new RobotstxtPlugin(robotOptions)
     ],
     resolve: {
       fallback: {
