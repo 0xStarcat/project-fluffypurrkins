@@ -6,11 +6,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const dotenv = require('dotenv')
 const fs = require('fs') // to check if the file exists
+const SitemapPlugin = require('sitemap-webpack-plugin').default
 const RobotstxtPlugin = require('robotstxt-webpack-plugin')
 
 const BUILD_DIR = path.resolve(__dirname, 'Build')
 const APP_DIR = path.resolve(__dirname, 'src/')
 const DEVELOPMENT_DIR = path.join(__dirname, 'src')
+
+const SITE_URL = 'https://jade.ahking.me/'
+const sitemapPaths = ['/', '/about', '/projects', '/work', '/cv', '/contact']
 
 const robotOptions = {}
 
@@ -118,9 +122,10 @@ module.exports = env => {
         templateParameters: {
           metaTitle: "Jade's Portfolio",
           metaDescription: "Jade's Portfolio, Resume, and other things.",
-          siteUrl: 'https://jade.ahking.me/'
+          siteUrl: SITE_URL
         }
       }),
+      new SitemapPlugin({ base: SITE_URL, paths: sitemapPaths }),
       new RobotstxtPlugin(robotOptions)
     ],
     resolve: {
