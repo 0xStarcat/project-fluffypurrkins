@@ -58,9 +58,21 @@ module.exports = env => {
               test: /\.(png|jpe?g|gif|pdf)$/i,
               use: [
                 {
-                  loader: 'file-loader'
+                  loader: 'file-loader',
+                  options: {
+                    esModule: false
+                  }
                 }
               ]
+            },
+            {
+              test: /.ejs$/,
+              loader: 'ejs-loader',
+              options: {
+                variable: 'data',
+                interpolate: '\\{\\{(.+?)\\}\\}',
+                evaluate: '\\[\\[(.+?)\\]\\]'
+              }
             },
             {
               test: /\.scss$/,
@@ -105,7 +117,14 @@ module.exports = env => {
     plugins: [
       new webpack.DefinePlugin(envKeys),
       new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, 'src', 'index.html')
+        template: path.resolve(__dirname, 'src', 'index.ejs'),
+        filename: 'index.html',
+        head: {
+          imagePath: path.resolve(__dirname, 'src', 'images', 'selfie.jpg')
+        }
+      }),
+      new webpack.ProvidePlugin({
+        _: 'underscore'
       })
     ],
     resolve: {

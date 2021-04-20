@@ -12,8 +12,6 @@ import { createBrowserHistory } from 'history'
 import { trackProjectOpen } from './utilities'
 import ReactGA from 'react-ga'
 import { Helmet } from 'react-helmet'
-import favicon from '@images/favicon.png'
-import selfie from '@images/selfie.jpg'
 
 export default function Routes() {
   const [prevPath, setPrevPath] = useState(null)
@@ -37,8 +35,6 @@ export default function Routes() {
           {`Jade's portfolio - ${location.pathname.toLowerCase().replace(/[^a-z]/gi, '') ||
             'home'}`}
         </title>
-        <meta property="og:image" content={selfie} />
-        <link rel="icon" type="image/png" href={favicon} />
       </Helmet>
       <Router history={history}>
         <div>
