@@ -7,8 +7,8 @@ export default class CV extends Component {
     return (
       <div>
         <PageHeader />
-        <div className="cv page">
-          <section>
+        <main id="maincontent" className="cv page">
+          <section className="section">
             <h2 className="section-header">Work Experience</h2>
             <div className="sub-section">
               <h4 className="title-header">
@@ -42,7 +42,7 @@ export default class CV extends Component {
             <hr />
           </section>
 
-          <section>
+          <section className="section">
             <h2 className="section-header">Code/Tech Keywords</h2>
             <div className="sub-section">
               <h4 className="title-header">Markup | Scripting | Programming Languages</h4>
@@ -117,7 +117,7 @@ export default class CV extends Component {
             </div>
             <hr />
           </section>
-          <section>
+          <section className="section">
             <h2 className="section-header">Education</h2>
             <div className="sub-section">
               <p className="sub-header">General Assembly Web Development Immsersive</p>
@@ -126,7 +126,10 @@ export default class CV extends Component {
             </div>
             <hr />
           </section>
-        </div>
+          <a href="#nav" className="sr-link">
+            Skip to navigation
+          </a>
+        </main>
       </div>
     )
   }

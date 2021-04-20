@@ -15,7 +15,9 @@ export default class LinksRow extends React.Component {
           hideShadow={hideShadow}
           linkText="About"
         />
-        <span className="divider">{' | '}</span>
+        <span aria-hidden="true" className="divider">
+          {' | '}
+        </span>
         <MenuLink
           href="/projects"
           startHoverEffect={startHoverEffect}
@@ -23,7 +25,9 @@ export default class LinksRow extends React.Component {
           hideShadow={hideShadow}
           linkText="Projects"
         />
-        <span className="divider">{' | '}</span>
+        <span aria-hidden="true" className="divider">
+          {' | '}
+        </span>
         <MenuLink
           href="/work"
           startHoverEffect={startHoverEffect}
@@ -31,7 +35,9 @@ export default class LinksRow extends React.Component {
           hideShadow={hideShadow}
           linkText="Work"
         />
-        <span className="divider">{' | '}</span>
+        <span aria-hidden="true" className="divider">
+          {' | '}
+        </span>
         {/* <a href={'https://catxmachina.xyz/'} target="_blank">
           {'Blog'}
           <span
@@ -43,7 +49,7 @@ export default class LinksRow extends React.Component {
             {'Blog'}
           </span>
         </a> */}
-        {/* <span className="divider">{' | '}</span> */}
+        {/* <span aria-hidden="true" className="divider">{' | '}</span> */}
         <MenuLink
           href="/cv"
           startHoverEffect={startHoverEffect}
@@ -51,7 +57,9 @@ export default class LinksRow extends React.Component {
           hideShadow={hideShadow}
           linkText="C.V."
         />
-        <span className="divider">{' | '}</span>
+        <span aria-hidden="true" className="divider">
+          {' | '}
+        </span>
         <MenuLink
           href="/contact"
           startHoverEffect={startHoverEffect}

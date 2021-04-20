@@ -4,7 +4,7 @@
   @include body-text;
   margin: 140px 20px;
 
-  section {
+  .section {
     width: 100%;
     margin: 0 auto;
     max-width: 800px;
@@ -20,10 +20,7 @@
   }
 
   a {
-    border-bottom: 1px dotted mediumslateblue;
-    box-sizing: border-box;
-    color: mediumslateblue;
-    letter-spacing: 2px;
+    @include text-link;
   }
 
   a:hover {

@@ -9,8 +9,8 @@ export default class Contact extends Component {
     return (
       <div>
         <PageHeader />
-        <div className="page">
-          <section>
+        <main id="maincontent" className="page">
+          <section className="section">
             <div className="sub-section text-body">
               <p className="sub-header linky large-text">
                 <a href="https://github.com/0xStarcat" target="_blank" rel="noopener noreferrer">
@@ -37,7 +37,10 @@ export default class Contact extends Component {
               </p>
             </div>
           </section>
-        </div>
+          <a href="#nav" className="sr-link">
+            Skip to navigation
+          </a>
+        </main>
       </div>
     )
   }

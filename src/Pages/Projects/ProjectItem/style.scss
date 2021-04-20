@@ -42,6 +42,7 @@ a.project-item {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    text-align: left;
 
     @media #{$desktopMedWindow} {
       font-size: 20px;
@@ -132,6 +133,9 @@ a.project-item {
     white-space: pre-wrap;
   }
 }
+.project-item-content {
+  display: none;
+}
 
 .project-item.selected {
   height: auto;
@@ -143,15 +147,9 @@ a.project-item {
     height: 40px;
   }
 
-  .project-item-text {
-    // background-color: black;
-    // color: white;
-  }
 
   .project-item-full-wrapper {
-    // background-color: black;
     display: block;
-    // color: white;
     margin-left: -60px;
   }
 

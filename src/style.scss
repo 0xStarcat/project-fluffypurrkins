@@ -1,3 +1,5 @@
+@import "./reset";
+
 //Colors
 $backgroundColor: white;
 $primaryFontColor: black;
@@ -40,6 +42,13 @@ $projectBorder: dotted 1px black;
   @media #{$desktopMedWindow} {
     font-size: 18px;
   }
+}
+
+@mixin text-link {
+  border-bottom: 1px dotted mediumslateblue;
+  box-sizing: border-box;
+  color: mediumslateblue;
+  letter-spacing: 2px;
 }
 
 @mixin system-text-sm {
@@ -96,4 +105,29 @@ body, html {
 
 #root {
 	overflow: hidden;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+.sr-link {
+  @include text-link;
+  position: absolute;
+  top: 0;
+  left: -10000px;
+  z-index: 100000;
+
+  &:focus {
+    position: relative;
+    left: 16px;
+    top: 32px;
+  }
 }

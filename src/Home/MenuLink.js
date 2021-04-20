@@ -4,16 +4,20 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 const MenuLink = props => {
-  return <Link to={props.href}>
-    {props.linkText}
-    <span
-      className='hiddenText mirrored'
-      onMouseOver={props.startHoverEffect}
-      onMouseMove={props.mirroredHoverShadow}
-      onMouseOut={props.hideShadow}>
-      {props.linkText}
-    </span>
-  </Link>
+  return (
+    <Link tabindex="0" to={props.href}>
+      <h2>{props.linkText}</h2>
+      <span
+        aria-hidden="true"
+        className="hiddenText mirrored"
+        onMouseOver={props.startHoverEffect}
+        onMouseMove={props.mirroredHoverShadow}
+        onMouseOut={props.hideShadow}
+      >
+        {props.linkText}
+      </span>
+    </Link>
+  )
 }
 
 MenuLink.propTypes = {

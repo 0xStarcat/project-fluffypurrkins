@@ -32,7 +32,7 @@ a {
 .text-wrapper {
   position: absolute;
   top: 100px;
-  left: 15%;
+  left: 16px;
   @include body-text;
   max-width: 20px;
   transform: translateZ(0);
@@ -40,6 +40,7 @@ a {
 
   @media #{$desktopMedWindow} {
     top: 32%;
+    left: 15%;
   }
 }
 
@@ -51,8 +52,13 @@ a {
 .divider { display: block }
 
 .links-wrapper {
+  @include lead-text;
   display: none;
   pointer-events: none;
+
+  h2 {
+    display: inline-block;
+  }
 }
 
 .sentence-letter { opacity: 0; }
@@ -62,12 +68,17 @@ a {
   opacity: 0;
   @include display-text;
   position: absolute;
-  top: 5%;
-  left: 15%;
+  top: 32px;
+  left: 16px;
   box-sizing: border-box;
-  cursor: pointer;
+  // cursor: pointer;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
+
+  @media #{$desktopMedWindow} {
+    top: 60%;
+    left: 50%;
+  }
 }
 
 .hiddenText {
@@ -76,6 +87,7 @@ a {
   top: 0px;
   color: transparent;
   width: 100%;
+  user-select: none;
 }
 
 .mirrored {
@@ -98,15 +110,9 @@ a {
 
     .divider { display: inline }
 
-    #myName {
-      top: 60%;
-      left: 50%;
-    }
+
   }
   // Desktop small window
 
-  // Desktop Tiny window
-  @media #{$desktopTinyWindow} {
-    #myName { max-width: 220px; }
-  }
+
 }

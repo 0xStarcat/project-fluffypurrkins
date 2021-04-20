@@ -58,33 +58,39 @@ class WorkDescriptions extends React.Component {
     return (
       <div id="work-descriptions">
         <PageHeader />
-        <div className="page">
-          <p>* = Freelance</p>
-          {this.props.workDescriptions
-            .sort((a, b) => {
-              if (a.present && b.present) {
-                return new Date(b.date) - new Date(a.date)
-              } else {
+        <main id="maincontent" className="page">
+          <section aria-label="Work" role="list">
+            <p aria-hidden="true">* = Freelance</p>
+            {this.props.workDescriptions
+              .sort((a, b) => {
+                if (a.present && b.present) {
+                  return new Date(b.date) - new Date(a.date)
+                } else {
+                  return (
+                    new Date(b.present ? new Date() : b.date) -
+                    new Date(a.present ? new Date() : a.date)
+                  )
+                }
+              })
+              .map((work, index) => {
                 return (
-                  new Date(b.present ? new Date() : b.date) -
-                  new Date(a.present ? new Date() : a.date)
+                  <WorkDescriptionItem
+                    active={this.state.activeIndex === index}
+                    closeActive={this.closeActive}
+                    index={index}
+                    key={`Work-${index}`}
+                    last={index === this.props.workDescriptions.length - 1}
+                    work={work}
+                    setActive={this.setActive}
+                  />
                 )
-              }
-            })
-            .map((work, index) => {
-              return (
-                <WorkDescriptionItem
-                  active={this.state.activeIndex === index}
-                  closeActive={this.closeActive}
-                  index={index}
-                  key={`Work-${index}`}
-                  last={index === this.props.workDescriptions.length - 1}
-                  work={work}
-                  setActive={this.setActive}
-                />
-              )
-            })}
-        </div>
+              })}
+          </section>
+
+          <a href="#nav" className="sr-link">
+            Skip to navigation
+          </a>
+        </main>
       </div>
     )
   }

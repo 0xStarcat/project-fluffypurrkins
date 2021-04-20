@@ -22,11 +22,15 @@ class About extends Component {
     return (
       <div>
         <PageHeader />
-        <div className="page about">
+        <main id="maincontent" className="page about">
           <ImageFace ref={this.imageRef} />
-          <section>
-            <h2 className="section-header">Hi, my name is Jade. My pronouns are they/them.</h2>
-            <div className="sub-section text-body">
+          <section className="section">
+            <h2 tabindex="0" className="section-header">
+              Hi, my name is Jade
+            </h2>
+            <div tabindex="0" className="sub-section text-body">
+              <p>My pronouns are they, them, theirs.</p>
+              <br />
               <p>I'm a freelance software engineer based in Brooklyn, NY.</p>
               <br />
               <p>
@@ -137,7 +141,10 @@ class About extends Component {
             </div>
             <hr />
           </section> */}
-        </div>
+          <a href="#nav" className="sr-link">
+            Skip to navigation
+          </a>
+        </main>
       </div>
     )
   }

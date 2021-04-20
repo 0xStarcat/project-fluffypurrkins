@@ -17,20 +17,25 @@ const ProjectItem = props => {
   }
 
   return (
-    <div className={classnames('project-item', { selected: props.active })}>
-      <div className="inline-wrapper" onTouchEnd={selectItem} onClick={selectItem}>
+    <div role="listitem" className={classnames('project-item', { selected: props.active })}>
+      <button className="inline-wrapper" onTouchEnd={selectItem} onClick={selectItem}>
         <div className="border-container">
           <div className={classnames('list-border top-border', { 'last-border': props.last })} />
           {props.last ? null : <div className="list-border bottom-border" />}
         </div>
         <div className="project-item-text">{props.project.title}</div>
-      </div>
-      <div className="project-item-full-wrapper">
+      </button>
+      <div
+        className="project-item-full-wrapper"
+        tabindex={props.active ? '0' : '-1'}
+        aria-hidden={!props.active}
+      >
         <div className={classnames('project-item-full')}>
           <div className={classnames('project-item-content-wrapper', { 'no-border': props.last })}>
             <div className="project-item-content">
               {props.project.mainImage && (
                 <a
+                  tabindex="-1"
                   className="project-image-link"
                   aria-hidden={true}
                   href={`https://cms.starcat.xyz${props.project.mainImage.url}`}

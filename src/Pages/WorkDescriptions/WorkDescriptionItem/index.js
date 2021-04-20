@@ -20,19 +20,22 @@ const WorkDescriptionItem = props => {
     let years
 
     if (new Date(startDate).getFullYear() == new Date(endDate).getFullYear())
-      years = `${new Date(startDate).getFullYear()}`
+      years = <span>{new Date(startDate).getFullYear()}</span>
     else {
-      years = `${new Date(startDate).getFullYear()}-${
-        present ? 'Present' : new Date(endDate).getFullYear()
-      }`
+      years = (
+        <span>
+          {new Date(startDate).getFullYear()}-<span className="sr-only"> to </span>
+          {present ? 'Present' : new Date(endDate).getFullYear()}
+        </span>
+      )
     }
 
-    return `(${years})`
+    return <span>({years})</span>
   }
 
   return (
-    <div className={classnames('project-item', { selected: props.active })}>
-      <div className="inline-wrapper" onTouchEnd={selectItem} onClick={selectItem}>
+    <div role="listitem" className={classnames('project-item', { selected: props.active })}>
+      <button className="inline-wrapper" onTouchEnd={selectItem} onClick={selectItem}>
         <div className="border-container">
           <div className={classnames('list-border top-border', { 'last-border': props.last })} />
           {props.last ? null : <div className="list-border bottom-border" />}
@@ -40,14 +43,16 @@ const WorkDescriptionItem = props => {
         <div className="project-item-text">
           {props.work.title} {renderDate(props.work.date, props.work.endDate, props.work.present)}
           {props.work.freelance ? '*' : ''}
+          {props.work.freelance ? <span class="sr-only">Freelance</span> : ''}
         </div>
-      </div>
+      </button>
       <div className="project-item-full-wrapper">
         <div className={classnames('project-item-full')}>
           <div className={classnames('project-item-content-wrapper', { 'no-border': props.last })}>
             <div className="project-item-content">
               {props.work.mainImage && (
                 <a
+                  tabindex="-1"
                   className="project-image-link"
                   aria-hidden={true}
                   href={`https://cms.starcat.xyz${props.work.mainImage.url}`}

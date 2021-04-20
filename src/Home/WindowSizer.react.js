@@ -35,14 +35,15 @@ export default class WindowSizer extends Component {
       letters[i].style.left = letters[i].offsetLeft
     }
   }
+
   componentWillUpdate() {
     if (this.props.play) this.resetStyles()
   }
   componentDidMount() {
     this.assignCoordinatesToLetters()
 
-    window.addEventListener('resize', this.assignCoordinatesToLetters)
-    window.addEventListener('keydown', this.hideFace)
+    // window.addEventListener('resize', this.assignCoordinatesToLetters)
+    // window.addEventListener('keydown', this.hideFace)
     if (!this.props.play) {
       this.endAnimations()
     }
@@ -56,8 +57,8 @@ export default class WindowSizer extends Component {
     }
   }
   componentWillUnmount() {
-    window.removeEventListener('resize', this.assignCoordinatesToLetters)
-    window.removeEventListener('keydown', this.hideFace)
+    // window.removeEventListener('resize', this.assignCoordinatesToLetters)
+    // window.removeEventListener('keydown', this.hideFace)
   }
   hideFace() {
     this.endAnimations()
@@ -142,12 +143,12 @@ export default class WindowSizer extends Component {
     return (
       <div className="mainWrapper" ref="mainWrapperElement">
         <div className="text-wrapper" ref="textWrapperElement" />
-        <div style={{ position: 'absolute', left: '-10000px', width: '1px', height: '1px' }}>
+        {/* <div style={{ position: 'absolute', left: '-10000px', width: '1px', height: '1px' }}>
           There is a beautiful ASCII image of my face on this page. Press any keyboard key to move
           on and display the links
-        </div>
+        </div> */}
         <LinksRow ref="linksWrapper" shadow={this.props.shadow} />
-        <AsciiFaces
+        {/* <AsciiFaces
           ref="face"
           asciiText={asciiText}
           sentence={this.state.sentence}
@@ -155,7 +156,7 @@ export default class WindowSizer extends Component {
           appendLinks={this.appendLinks}
           endAnimations={this.endAnimations}
           play={this.props.play}
-        />
+        /> */}
         <TitleName
           ref="titleNameElement"
           restartPlayback={!this.props.play ? this.restartPlayback : null}
