@@ -15,8 +15,10 @@ export default function Routes() {
   const history = createBrowserHistory()
 
   history.listen(location => {
-    // console.log('!!!', location, process.env.REACT_GA_CODE)
-    ReactGA.initialize(process.env.REACT_GA_CODE)
+    // console.log('!!!', location, process.env.ENVIRONMENT)
+    ReactGA.initialize(process.env.REACT_GA_CODE, {
+      debug: process.env.ENVIRONMENT === 'development'
+    })
     ReactGA.set({ page: location.pathname }) // Update the user's current page
     ReactGA.pageview(location.pathname) // Record a pageview for the given page
   })
