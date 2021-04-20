@@ -13,6 +13,7 @@ import { trackProjectOpen } from './utilities'
 import ReactGA from 'react-ga'
 import { Helmet } from 'react-helmet'
 import favicon from '@images/favicon.png'
+import selfie from '@images/selfie.jpg'
 
 export default function Routes() {
   const [prevPath, setPrevPath] = useState(null)
