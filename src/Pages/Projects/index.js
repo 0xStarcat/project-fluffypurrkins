@@ -13,27 +13,42 @@ class Projects extends React.Component {
     super(props)
 
     this.state = {
-      activeProject: -1
+      activeIndex: null
     }
 
     this.setActive = this.setActive.bind(this)
     this.closeActive = this.closeActive.bind(this)
+    this.setActiveFromHash = this.setActiveFromHash.bind(this)
   }
 
   componentDidMount() {
     this.props.dispatch(fetchProjects())
+    this.unlisten = this.props.history.listen((location, action) => {
+      this.setActiveFromHash(location.hash)
+    })
+  }
+
+  componentWillUnmount() {
+    this.unlisten()
   }
 
   componentDidUpdate() {
     // set the active project based on the hash
-    this.props.projects.forEach((project, index) => {
-      if (
-        this.state.activeProject !== index &&
-        this.props.location.hash === `#${pathify(project.title)}`
-      ) {
-        this.setState({ activeProject: index })
-      }
-    })
+    if (this.props.location.hash && this.state.activeIndex === null) {
+      this.setActiveFromHash(this.props.location.hash)
+    }
+  }
+
+  setActiveFromHash(hash) {
+    if (hash) {
+      this.props.projects.forEach((project, index) => {
+        if (this.state.activeIndex !== index && hash === `#${pathify(project.title)}`) {
+          this.setState({ activeIndex: index })
+        }
+      })
+    } else {
+      this.setState({ activeIndex: -1 })
+    }
   }
 
   setActive(index) {
@@ -41,14 +56,14 @@ class Projects extends React.Component {
       `${this.props.location.pathname}#${pathify(this.props.projects[index].title)}`
     )
     this.setState({
-      activeProject: index
+      activeIndex: index
     })
   }
 
   closeActive() {
     this.props.history.push(this.props.location.pathname)
     this.setState({
-      activeProject: -1
+      activeIndex: -1
     })
   }
 
@@ -64,7 +79,7 @@ class Projects extends React.Component {
               .map((project, index) => {
                 return (
                   <ProjectItem
-                    active={this.state.activeProject === index}
+                    active={this.state.activeIndex === index}
                     closeActive={this.closeActive}
                     index={index}
                     key={`Project-${index}`}

@@ -7,34 +7,51 @@ import WorkDescriptionItem from './WorkDescriptionItem'
 
 import { fetchWorkDescriptions } from '../../Actions'
 import { pathify } from '@utilities'
-import { stringify } from 'postcss'
 
 class WorkDescriptions extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      activeIndex: -1
+      activeIndex: null
     }
 
     this.setActive = this.setActive.bind(this)
     this.closeActive = this.closeActive.bind(this)
+    this.setActiveFromHash = this.setActiveFromHash.bind(this)
   }
 
   componentDidMount() {
     this.props.dispatch(fetchWorkDescriptions())
+
+    this.unlisten = this.props.history.listen((location, action) => {
+      this.setActiveFromHash(location.hash)
+    })
+  }
+
+  componentWillUnmount() {
+    this.unlisten()
   }
 
   componentDidUpdate() {
-    // set the active project based on the hash
-    this.props.workDescriptions.forEach((work, index) => {
-      if (
-        this.state.activeIndex !== index &&
-        this.props.location.hash === `#${pathify(work.title)}`
-      ) {
-        this.setState({ activeIndex: index })
-      }
-    })
+    // set the active project based on the hash on load
+    if (this.props.location.hash && this.state.activeIndex === null) {
+      this.setActiveFromHash(this.props.location.hash)
+    }
+  }
+
+  setActiveFromHash(hash) {
+    if (hash) {
+      this.props.workDescriptions.forEach((work, index) => {
+        if (this.state.activeIndex !== index && hash === `#${pathify(work.title)}`) {
+          this.setState({ activeIndex: index })
+        }
+      })
+    } else {
+      this.setState({
+        activeIndex: -1
+      })
+    }
   }
 
   setActive(index) {
