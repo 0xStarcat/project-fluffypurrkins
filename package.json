@@ -18,7 +18,7 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "node-sass": "^5.0.0",
     "pino": "^6.11.3",
-    "postcss": "^7.0.2",
+    "postcss": "^8.2.10",
     "postcss-flexbugs-fixes": "^4.1.0",
     "postcss-loader": "^3.0.0",
     "prettier": "^1.14.2",
