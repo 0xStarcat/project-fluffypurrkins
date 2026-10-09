@@ -19,23 +19,23 @@ const sitemapPaths = ['/', '/about', '/projects', '/work', '/cv', '/contact']
 const robotOptions = {}
 
 module.exports = env => {
-  const currentPath = path.join(__dirname)
-
-  // Create the fallback path (the production .env)
-  const basePath = currentPath + '/.env'
-
-  // We're concatenating the environment name to our filename to specify the correct env file!
-  const envPath = basePath + '.' + env.ENVIRONMENT
-
-  // Check if the file exists, otherwise fall back to the production .env
+  const environment = (env && env.ENVIRONMENT) || process.env.ENVIRONMENT || 'production'
+  const basePath = path.join(__dirname, '.env')
+  const envPath = `${basePath}.${environment}`
   const finalPath = fs.existsSync(envPath) ? envPath : basePath
+  const fileEnv = fs.existsSync(finalPath)
+    ? dotenv.config({ path: finalPath }).parsed || {}
+    : {}
+  const envNames = new Set([...Object.keys(fileEnv), 'ENVIRONMENT', 'REACT_GA_CODE'])
 
-  // Set the path parameter in the dotenv config
-  const fileEnv = dotenv.config({ path: finalPath }).parsed
-
-  // reduce it to a nice object, the same as before (but with the variables from the file)
-  const envKeys = Object.keys(fileEnv).reduce((prev, next) => {
-    prev[`process.env.${next}`] = JSON.stringify(fileEnv[next])
+  const envKeys = Array.from(envNames).reduce((prev, name) => {
+    const value =
+      name === 'ENVIRONMENT'
+        ? environment
+        : Object.prototype.hasOwnProperty.call(process.env, name)
+          ? process.env[name]
+          : fileEnv[name]
+    prev[`process.env.${name}`] = JSON.stringify(value)
     return prev
   }, {})
 
@@ -46,7 +46,7 @@ module.exports = env => {
       filename: 'bundle.js'
     },
     devServer: {
-      contentBase: DEVELOPMENT_DIR,
+      static: DEVELOPMENT_DIR,
       compress: true,
       port: 8080,
       historyApiFallback: true
@@ -84,30 +84,33 @@ module.exports = env => {
                 {
                   loader: require.resolve('css-loader'),
                   options: {
-                    importLoaders: 1,
-                    minimize: true
+                    importLoaders: 1
                   }
                 },
                 {
                   loader: require.resolve('postcss-loader'),
                   options: {
-                    ident: 'postcss',
-                    plugins: () => [
-                      require('postcss-flexbugs-fixes'),
-                      autoprefixer({
-                        browsers: [
-                          '>1%',
-                          'last 4 versions',
-                          'Firefox ESR',
-                          'not ie < 9' // React doesn't support IE8 anyway
-                        ],
-                        flexbox: 'no-2009'
-                      })
-                    ]
+                    postcssOptions: {
+                      plugins: [
+                        require('postcss-flexbugs-fixes'),
+                        autoprefixer({
+                          overrideBrowserslist: [
+                            '>1%',
+                            'last 4 versions',
+                            'Firefox ESR',
+                            'not ie < 9'
+                          ],
+                          flexbox: 'no-2009'
+                        })
+                      ]
+                    }
                   }
                 },
                 {
-                  loader: require.resolve('sass-loader')
+                  loader: require.resolve('sass-loader'),
+                  options: {
+                    implementation: require('sass')
+                  }
                 }
               ]
             }

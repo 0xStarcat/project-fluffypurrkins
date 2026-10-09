@@ -16,7 +16,6 @@
     "dotenv": "^8.2.0",
     "eslint-config-prettier": "^3.0.1",
     "extract-text-webpack-plugin": "^3.0.2",
-    "node-sass": "^5.0.0",
     "pino": "^6.11.3",
     "postcss": "^7.0.2",
     "postcss-flexbugs-fixes": "^4.1.0",
@@ -35,7 +34,7 @@
     "redux": "^3.6.0",
     "redux-thunk": "^2.3.0",
     "rehype-raw": "^5.1.0",
-    "sass-loader": "^5.0.1",
+    "sass-loader": "^11.1.1",
     "style-loader": "^0.13.1"
   },
   "devDependencies": {
@@ -48,18 +47,19 @@
     "html-webpack-plugin": "^5.3.1",
     "path-browserify": "^1.0.1",
     "robotstxt-webpack-plugin": "^7.0.0",
+    "sass": "^1.105.1",
     "sitemap-webpack-plugin": "^1.1.0",
-    "webpack": "^5.34.0",
-    "webpack-cli": "^3.3.12",
+    "webpack": "^5",
+    "webpack-cli": "^6",
     "webpack-dev-middleware": "^4.1.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^5"
   },
   "scripts": {
-    "client": "webpack --env.ENVIRONMENT=development -d --watch",
+    "client": "webpack --env ENVIRONMENT=development --mode development --watch",
     "server": "node ./src/Server/server.js",
-    "build": "webpack --env.ENVIRONMENT=production -p",
-    "restart": "webpack --env.ENVIRONMENT=development -p",
-    "start": "webpack-dev-server --env.ENVIRONMENT=development -d --content-base src/Client/build --progress --colors"
+    "build": "webpack --env ENVIRONMENT=production --mode production",
+    "restart": "webpack --env ENVIRONMENT=development --mode production",
+    "start": "webpack serve --env ENVIRONMENT=development --mode development"
   },
   "repository": {
     "type": "git",
