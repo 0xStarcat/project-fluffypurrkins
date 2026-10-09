@@ -1,4 +1,4 @@
-@import '../../../style.scss';
+@use '../../../style.scss' as *;
 $border-container-width: 20px;
 
 a.project-item {

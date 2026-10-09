@@ -1,4 +1,4 @@
-@import '../../style.scss';
+@use '../../style.scss' as *;
 
 .page {
   @include body-text;
@@ -119,4 +119,3 @@
     }
   }
 }
-
