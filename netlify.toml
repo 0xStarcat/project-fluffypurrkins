@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "https://www.jade.ahking.me/*"
+  to = "https://jade.ahking.me/:splat"
+  status = 301
+  force = true
