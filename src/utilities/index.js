@@ -1,5 +1,15 @@
 import ReactGA from 'react-ga'
 
+const portfolioImages = require.context('../images/portfolio', true, /\.(gif|jpe?g|png|svg)$/i)
+
+export const getPortfolioImage = image => {
+  const imagePath = `.${image.url}`
+  if (!portfolioImages.keys().includes(imagePath)) {
+    throw new Error(`Portfolio image is missing from the local assets: ${image.url}`)
+  }
+  return portfolioImages(imagePath)
+}
+
 export const pathify = string => {
   return string
     .toLowerCase()

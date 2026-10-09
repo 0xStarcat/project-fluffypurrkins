@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import PageHeader from './PageHeader'
-import { fetchProjects } from '../Actions'
 
 import './Style/page.scss'
 import './Style/about.scss'
@@ -12,10 +10,6 @@ class About extends Component {
     super(props)
 
     this.imageRef = React.createRef()
-  }
-
-  componentDidMount() {
-    this.props.dispatch(fetchProjects())
   }
 
   render() {
@@ -150,4 +144,4 @@ class About extends Component {
   }
 }
 
-export default connect()(About)
+export default About

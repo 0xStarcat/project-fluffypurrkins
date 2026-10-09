@@ -1,12 +1,19 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 
 import PageHeader from '../PageHeader'
 import WorkDescriptionItem from './WorkDescriptionItem'
 
-import { fetchWorkDescriptions } from '../../Actions'
 import { pathify } from '@utilities'
+import workDescriptions from '../../data/workdescriptions.json'
+
+const sortedWorkDescriptions = workDescriptions.slice().sort((a, b) => {
+  if (a.present && b.present) {
+    return new Date(b.date) - new Date(a.date)
+  }
+  return (
+    new Date(b.present ? new Date() : b.date) - new Date(a.present ? new Date() : a.date)
+  )
+})
 
 class WorkDescriptions extends React.Component {
   constructor(props) {
@@ -22,8 +29,6 @@ class WorkDescriptions extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(fetchWorkDescriptions())
-
     this.unlisten = this.props.history.listen((location, action) => {
       this.setActiveFromHash(location.hash)
     })
@@ -42,7 +47,7 @@ class WorkDescriptions extends React.Component {
 
   setActiveFromHash(hash) {
     if (hash) {
-      this.props.workDescriptions.forEach((work, index) => {
+      sortedWorkDescriptions.forEach((work, index) => {
         if (this.state.activeIndex !== index && hash === `#${pathify(work.title)}`) {
           this.setState({ activeIndex: index })
         }
@@ -56,7 +61,7 @@ class WorkDescriptions extends React.Component {
 
   setActive(index) {
     this.props.history.push(
-      `${this.props.location.pathname}#${pathify(this.props.workDescriptions[index].title)}`
+      `${this.props.location.pathname}#${pathify(sortedWorkDescriptions[index].title)}`
     )
     this.setState({
       activeIndex: index
@@ -71,37 +76,23 @@ class WorkDescriptions extends React.Component {
   }
 
   render() {
-    if (!this.props.workDescriptions) return null
     return (
       <div id="work-descriptions">
         <PageHeader />
         <main id="maincontent" className="page">
           <section aria-label="Work" role="list">
             <p aria-hidden="true">* = Freelance</p>
-            {this.props.workDescriptions
-              .sort((a, b) => {
-                if (a.present && b.present) {
-                  return new Date(b.date) - new Date(a.date)
-                } else {
-                  return (
-                    new Date(b.present ? new Date() : b.date) -
-                    new Date(a.present ? new Date() : a.date)
-                  )
-                }
-              })
-              .map((work, index) => {
-                return (
-                  <WorkDescriptionItem
-                    active={this.state.activeIndex === index}
-                    closeActive={this.closeActive}
-                    index={index}
-                    key={`Work-${index}`}
-                    last={index === this.props.workDescriptions.length - 1}
-                    work={work}
-                    setActive={this.setActive}
-                  />
-                )
-              })}
+            {sortedWorkDescriptions.map((work, index) => (
+              <WorkDescriptionItem
+                active={this.state.activeIndex === index}
+                closeActive={this.closeActive}
+                index={index}
+                key={`Work-${index}`}
+                last={index === sortedWorkDescriptions.length - 1}
+                work={work}
+                setActive={this.setActive}
+              />
+            ))}
           </section>
 
           <a href="#nav" className="sr-link">
@@ -113,14 +104,4 @@ class WorkDescriptions extends React.Component {
   }
 }
 
-WorkDescriptions.propTypes = {
-  dispatch: PropTypes.func
-}
-
-const mapStateToProps = state => {
-  return {
-    workDescriptions: state.workDescriptions
-  }
-}
-
-export default connect(mapStateToProps)(WorkDescriptions)
+export default WorkDescriptions

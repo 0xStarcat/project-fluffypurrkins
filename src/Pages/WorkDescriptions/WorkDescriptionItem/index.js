@@ -4,6 +4,7 @@ import classnames from 'classnames'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import ReactGA from 'react-ga'
+import { getPortfolioImage } from '@utilities'
 
 import '../../Projects/ProjectItem/style.scss'
 
@@ -61,13 +62,13 @@ const WorkDescriptionItem = props => {
                   tabIndex="-1"
                   className="project-image-link"
                   aria-hidden={true}
-                  href={`https://cms.ahking.me${props.work.mainImage.url}`}
+                  href={getPortfolioImage(props.work.mainImage)}
                   target="_blank"
                 >
                   <img
                     alt="Project Image"
                     className="project-image project-content-item"
-                    src={`https://cms.ahking.me${props.work.mainImage.url}`}
+                    src={getPortfolioImage(props.work.mainImage)}
                   />
                 </a>
               )}
